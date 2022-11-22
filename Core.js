@@ -1390,6 +1390,17 @@ function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
 
+
+
+
+let smallinput = budy.toLowerCase()
+    if (smallinput.includes('hi' || 'hello')) {
+      replay(`Don't be scared, i am still active 😁`);
+    } 
+
+
+
+
            
 
 switch(command) {
@@ -1884,7 +1895,7 @@ break
 case'gamble':  case 'lottery': {
 	 var response = await Miku.groupInviteCode(from)
      var link1 = `https://chat.whatsapp.com/${response}`
-     var link2 = `https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM`
+     var link2 = `https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl`
      var texts = text.trim().split(" ");
      var opp = texts[1];// your value
      var value = texts[0].toLowerCase();
@@ -2005,11 +2016,13 @@ break
 
 //=======================================
 
-
+/*
 case 'hi': case 'hello': {
       replay(`Don't be scared, i am still active 😁`)
     }
     break
+*/
+
 
 
 case 'nsfwmenu':
