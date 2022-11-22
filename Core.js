@@ -1394,7 +1394,7 @@ return list[Math.floor(list.length * Math.random())]
 
 
 let smallinput = budy.toLowerCase()
-    if (smallinput.includes(('hi') || ('hello')) {
+    if (smallinput.includes('hi','hello') {
       replay(`Don't be scared, i am still active 😁`);
     } 
 
