@@ -1394,7 +1394,7 @@ return list[Math.floor(list.length * Math.random())]
 
 
 let smallinput = budy.toLowerCase()
-    if (smallinput.includes('hi' || 'hello')) {
+    if (smallinput.includes(('hi') || ('hello')) {
       replay(`Don't be scared, i am still active 😁`);
     } 
 
@@ -1537,7 +1537,7 @@ break
 case 'support': case 'casino': {
      if (!m.isGroup) return reply(mess.grouponly)
      await Miku.sendMessage(`${m.sender}`, 
-            {text: `*🛑 CASINO GC*\n\n *📮【About Group】:* This is a suggestion/gamble group for Ethan-v2( New Commands/Bugs)\n\n*🧮【Link】:* https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTMl\n`},
+            {text: `*🛑 CASINO GC*\n\n *📮【About Group】:* This is a suggestion/gamble group for Ethan-v2( New Commands/Bugs)\n\n*🧮【Link】:* https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl\n`},
             { quoted: m }
         )
         return replay(`*🃏I s𝐞𝐧𝐭 gamble group link in DM 🀄*`) //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
