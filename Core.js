@@ -214,8 +214,8 @@ const mongoose = require("mongoose");
 
 
 
-
-/////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - //////////////////
+/*
+/////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
 if (!isCmd && !m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
@@ -224,7 +224,7 @@ if (!isCmd && !m.isGroup){
     } 
 
 //////////////////////////////////////////////////////////////////////////////////////
-
+*/
 
 _sewa.expiredCheck(Miku, sewa)
 
@@ -1558,13 +1558,13 @@ case 'details': case 'about': {
         return replay(`🧧 𝐒𝐞𝐧𝐭 𝐲𝐨𝐮 𝐭𝐡𝐞 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐢𝐧𝐟𝐨 𝐢𝐧 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 🧧`);   //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
     }
     break
-
+/*
 if (!isCmd && m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
-
+*/
 
 case 'rules': case 'botrule': {
           if (isBan) return replay(mess.banned)
@@ -3916,38 +3916,38 @@ break
 
 
 
-
-case 'getmusic': case 'getvideo': case 'yt': case 'youtube': case 'ytvideo': case 'ytmp3': case 'ytmp4': case 'ytmusic': {
+case 'music': case 'play': case 'song': case 'ytplay': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
- if (!args[0]) return reply(mess.nolink)
- try {
- hx.youtube(args[0]).then(async(res) => {
- textyt = `「  _Miku Youtube Downloader_  」
-*Title :* ${res.title}
-*Size :* ${res.size}
-*Quality :* ${res.quality}
-*Select video or audio and wait a while*`
+ const YT=require('./lib/ytdlcore')
+ const { isUrl, fetchBuffer } = require('./lib/Function')
+
+ if(!text) return Miku.sendMessage(from,{text:"Pls enter song name to play!"},{quoted:m})
+ let yts = require("yt-search")
+ let search = await yts(text)
+ let anu = search.videos[0]
  let buttons = [
- {buttonId: `${prefix}ytvd ${res.link}`, buttonText: {displayText: '► Video'}, type: 1},
- {buttonId: `${prefix}ytad ${res.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+ {buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+ {buttonId: `${prefix}ytvd ${text}`, buttonText: {displayText: '► Video'}, type: 1}
+
  ]
  let buttonMessage = {
- image: {url:res.thumb},
- caption: textyt,
- footer: `${BotName}`,
+ image: { url: anu.thumbnail },
+ caption: `「  _Miku Youtube Player 2.0_  」
+*Title :* ${anu.title}
+*Duration :* ${anu.timestamp}
+*Viewers :* ${anu.views}
+*Uploaded :* ${anu.ago}
+*Channel :* ${anu.author.name}
+*Url :* ${anu.url}`,
+ footer: `${global.BotName}`,
  buttons: buttons,
  headerType: 4,
 
  }
- Miku.sendMessage(from, buttonMessage, {quoted:m})
- }).catch(_ => _)
- } catch {
- reply("Link error!")
- }
+ Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
  }
  break
-
 
  case 'ytad': {
     if (isBan) return reply(mess.banned)	 			
@@ -3978,8 +3978,10 @@ case 'getmusic': case 'getvideo': case 'yt': case 'youtube': case 'ytvideo': cas
  Miku.sendMessage(from, {video:{url:ytmp4play.videoUrl}, mimetype:"video/mp4", caption:anu.title+' By *Miku MD*',}, {quoted:m})
  }
  break
-                
-case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
+
+
+
+ case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(mess.nolink)
@@ -3996,7 +3998,7 @@ case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
  ]
  let buttonMessage = {
  image: { url: anu.thumbnail },
- caption: `「  _Ethan Youtube Downloader 2.0_  」
+ caption: `「  _Miku Youtube Downloader 2.0_  」
 *Title :* ${anu.title}
 *Duration :* ${anu.timestamp}
 *Viewers :* ${anu.views}
@@ -4036,6 +4038,7 @@ case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
  Miku.sendMessage(from, {video:{url:ytmp4play2.videoUrl}, mimetype:"video/mp4", caption:'Downloaded by *Miku MD*',}, {quoted:m})
  }
  break
+
 
 
 
@@ -6351,7 +6354,7 @@ default:
     }	 			
 */
 
- 
+ /*
      if (isCmd) {      		    
        await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=${q}]`)
        .then((response) => {
@@ -6363,7 +6366,7 @@ default:
           }
       )
    }
-
+*/
 
 
 if (budy.startsWith('=>')) {
