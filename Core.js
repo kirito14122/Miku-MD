@@ -69,7 +69,7 @@ const {
 
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
-
+let ethanaudio = JSON.parse(fs.readFileSync('./Media-Database/audio.json'));
  let _limit = JSON.parse(fs.readFileSync('./storage/user/limit.json'));
  let _buruan = JSON.parse(fs.readFileSync('./storage/user/bounty.json'));
  let _darahOrg = JSON.parse(fs.readFileSync('./storage/user/blood.json'))
@@ -1391,10 +1391,17 @@ return list[Math.floor(list.length * Math.random())]
 }
 
 
+for (let anju of ethanaudio){
+				if (budy === anju){
+					result = fs.readFileSync(`./Assets/audio/${anju}.mp3`)
+					Miku.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
+					}
+			}
+
 
 
 let smallinput = budy.toLowerCase()
-    if (smallinput.includes('hi','hello')) {
+    if (smallinput.includes('hi')) {
       replay(`Don't be scared, i am still active 😁`);
     } 
 
