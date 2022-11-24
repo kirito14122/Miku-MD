@@ -1900,9 +1900,9 @@ break
 
 
 case'gamble':  case 'lottery': {
-	 var response = await Miku.groupInviteCode(from)
-     var link1 = `https://chat.whatsapp.com/${response}`
-     var link2 = `https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl`
+	 //var response = await Miku.groupInviteCode(from)
+     //var link1 = `https://chat.whatsapp.com/${response}`
+     //var link2 = `https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl`
      var texts = text.trim().split(" ");
      var opp = texts[1];// your value
      var value = texts[0].toLowerCase();
@@ -1919,7 +1919,7 @@ case'gamble':  case 'lottery': {
 	 if (isBan) return reply(mess.banned)	 			
      if (isBanChat) return reply(mess.bangc)
      if (!m.isGroup) return reply(mess.grouponly)
-     if (link1 == link2){
+     //if (link1 == link2){
         if (texts[0] === "")
 			return replay(
 				`Example:  ${prefix}gamble 100 direction(left,right,up,down)`
@@ -1938,10 +1938,10 @@ case'gamble':  case 'lottery': {
            let deduct = await eco.deduct(user, cara, texts[0]);
            replay(`*📈 You lost 💎${texts[0]}*`)
          }
-     }
-     else{
-         replay(`*Gambling is allowed only in Casino/Gamble Group,*\n\ntype ${prefix}casino to get the group link`)
-     }
+     //}
+     //else{
+         //replay(`*Gambling is allowed only in Casino/Gamble Group,*\n\ntype ${prefix}casino to get the group link`)
+     //}
 }
 break
 
