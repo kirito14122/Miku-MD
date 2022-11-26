@@ -1390,14 +1390,14 @@ function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
 
-
+/*
 for (let anju of ethanaudio){
 				if (budy.includes(anju)){
 					result = fs.readFileSync(`./Assets/audio/${anju}.mp3`)
 					Miku.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 					}
 			}
-
+*/
 
 
 let smallinput = budy.toLowerCase()
