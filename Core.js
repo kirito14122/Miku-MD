@@ -214,7 +214,7 @@ const mongoose = require("mongoose");
 
 
 
-/*
+
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
 if (!isCmd && !m.isGroup){
@@ -224,7 +224,7 @@ if (!isCmd && !m.isGroup){
     } 
 
 //////////////////////////////////////////////////////////////////////////////////////
-*/
+
 
 _sewa.expiredCheck(Miku, sewa)
 
@@ -1392,7 +1392,7 @@ return list[Math.floor(list.length * Math.random())]
 
 
 for (let anju of ethanaudio){
-				if (budy === anju){
+				if (budy.includes(anju)){
 					result = fs.readFileSync(`./Assets/audio/${anju}.mp3`)
 					Miku.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 					}
@@ -1565,13 +1565,13 @@ case 'details': case 'about': {
         return replay(`🧧 𝐒𝐞𝐧𝐭 𝐲𝐨𝐮 𝐭𝐡𝐞 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐢𝐧𝐟𝐨 𝐢𝐧 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 🧧`);   //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
     }
     break
-/*
+
 if (!isCmd && m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
-*/
+
 
 case 'rules': case 'botrule': {
           if (isBan) return replay(mess.banned)
@@ -1856,47 +1856,6 @@ break
 
 //---------------gamble--------------------
 
-/*
-case 'gamble':  case 'bet': {
-        if (isBan) return reply(mess.banned)	 			
-        if (isBanChat) return reply(mess.bangc)
-	const texts = text.trim().split(" ");
-		if (texts[0] === "")
-			return replay(
-				`Example:  ${prefix}gamble 100 direction(left,right,up,down)`
-			);
-    const opp = texts[1];// your value
-    const value = texts[0].toLowerCase();
-    if (!value) return replay("*Please, specify the amount you are gambling with!*");
-    if (!opp) return replay("*Specify the direction you are betting on!*");
-    let gg = parseInt(value)
-    if (!gg) return replay("*Check your text please, You are using the command in a wrong way*")
-    if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-    const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-    const cara = 'cara'
-    const balance = await eco.balance(user, cara); 
-    let g = (balance.wallet) > parseInt(value)
-    if(g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
-    let k = 50
-    let a = (k) > parseInt(value)
-   //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
-    if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
-                //if(balance.wallet < value) return replay('no enough money');
-    const f = ["left", "right", "up", "down"]
-    const r = f[Math.floor(Math.random () * f.length)]
-    if ( r == opp){
-    const give = await eco.give(user , cara, texts[0]);
-    replay(`*📉 You won 💎${texts[0]}*`)
-    }else{
-    const deduct = await eco.deduct(user, cara, texts[0]);
-    replay(`*📈 You lost 💎${texts[0]}*`)
-    }       
-     
-   
-}
-break
-*/
-
 
 
 case'gamble':  case 'lottery': {
@@ -1951,7 +1910,7 @@ break
 
 
 //-----------------Slot----------------------
-
+/*
 case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
@@ -2018,6 +1977,78 @@ case 'slot': case 'spin': {
     }
 }
 break
+*/
+
+
+
+case'slot': case 'spin': {
+       if (isBan) return replay(mess.banned);
+       if (isBanChat) return replay(mess.bangc)
+       if (!m.isGroup) return replay(mess.grouponly)
+       var today = new Date();
+   if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
+       if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
+       if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
+       const fruit1= ["🥥", "🍎", "🍇"]
+       const fruit2 = ["🍎", "🍇", "🥥"]  
+       const fruit3 = ["🍇", "🥥", "🍎"]         
+       const fruit4 = ["🍇", "🍎", "🥥"]
+       const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
+       const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
+       const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
+       const near = ['*Wow, you were so close to winning pineapples*\n\n_--> 🍎-🍍+🍍_', '*Hmmm, you were so close to winning Apples*\n\n_--> 🍎+🍎-🍍_']          
+       const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊 You Just hit a jackpot worth 💎1000*']
+       const user = m.sender
+       const cara = "cara"
+       const k = 100
+       const balance1  = await eco.balance(user, cara)
+       
+       if (k > balance1.wallet) return replay(`You are going to be spinning on your wallet, you need at least 💎100`);
+       const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
+       const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
+       const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
+       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
+       const mess1 = lose[Math.floor(Math.random() * lose.length)];
+       const mess2 = won[Math.floor(Math.random() * won.length)];
+       const mess3 = near[Math.floor(Math.random() * near.length)];
+       const mess4 = jack[Math.floor(Math.random() * jack.length)];
+       const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
+       
+       if ((f1 !== f2) && f2 !== f3){
+          const deduct1 = await eco.deduct(user, cara, 50);
+                 replay(`${mess1}\n\n*Big Lose -->* _💎50_`)
+       }
+       else if ((f1 == f2) && f2 == f3){
+          const give1 = await eco.give(user, cara, 100); 
+                replay(`${mess2}\n*_Big Win -->* _💎100_`)
+       }
+       else if ((f1 == f2) && f2 !== f3){
+          const give2 = await eco.give(user, cara, 20);
+                replay(`${mess3}\n*Small Win -->* _💎20_`)
+       }
+       else if ((f1 !== f2) && f1 == f3){
+          const deduct2 = await eco.deduct(user, cara, 20);
+                replay(`${mess5}\n\n*Small Lose -->* _💎20_`)
+       }
+       else if ((f1 !== f2) && f2 == f3){
+          const give4 = eco.give(user, cara, 20); 
+                replay(`${mess3}\n\n*Small Win -->* _💎20_`)
+       }
+       else if (((f1 == f2) && f2 == f3) && f3 == f4){
+          const give5 = eco.give(user, cara, 1000);
+               replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
+       }
+       else { 
+               replay(`Do you understand what you are doing?`)
+       }
+    }
+    else{
+           replay(`*You can only play this game during weekends*\n\n*🌿 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
+    }
+}
+break
+	
+
 
 
 
