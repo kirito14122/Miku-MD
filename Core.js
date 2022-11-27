@@ -1710,6 +1710,8 @@ case'capacity':  case 'bankupgrade': {
             const deduct3 = await eco.deduct(user, cara, 10000);
             const add3 = eco.giveCapacity(user, cara, 100000); 
                 await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
+          }
+            }
                 break
 
 
