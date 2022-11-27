@@ -1701,14 +1701,14 @@ case'capacity':  case 'bankupgrade': {
          case '10000':
           case '2':
           if (k > balance.wallet ) return replay(`*You need to pay 💎1000 to increase bank capacity ~ 10000 sp*`);
-            const deduct1 = await eco.deduct(user, cara, 1000);
-            const add1 = eco.giveCapacity(user, cara, 10000); 
+            const deduct2 = await eco.deduct(user, cara, 1000);
+            const add2 = eco.giveCapacity(user, cara, 10000); 
                 await replay(`*10000 💎diamond storage has been added in ${pushname} bank*`)
          case '100000':
           case '3':
           if (k > balance.wallet ) return replay(`*You need to pay 💎10000 to increase bank capacity ~ 100000 sp*`);
-            const deduct1 = await eco.deduct(user, cara, 10000);
-            const add1 = eco.giveCapacity(user, cara, 100000); 
+            const deduct3 = await eco.deduct(user, cara, 10000);
+            const add3 = eco.giveCapacity(user, cara, 100000); 
                 await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
                 break
 
