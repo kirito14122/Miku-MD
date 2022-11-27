@@ -1406,7 +1406,7 @@ let smallinput = budy.toLowerCase()
       replay(`Don't be scared, i am still active 😁`);
     } 
 
-    if (m.isGroup && quotedSender && smallinput) {
+    if (m.isGroup && quotedSender) {
       let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
       txt = `${botreply.data.cnt}`
       m.reply(txt)
@@ -1637,7 +1637,7 @@ break
 
 
 //---------------bank-increase--------------------
-
+/*
 case 'capacity':  case 'bankupgrade': {
 	//if (!isCreator) return replay(mess.botowner)
 	if (!text) return replay(`💴 *Bank-capacity* 💳\n\n1 | *1000 sp* = 💎100\n\n2 | *100000 sp* = 💎1000\n\n3 | *10000000 sp* = 💎10000000\n\nExample- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)	
@@ -1679,6 +1679,39 @@ case 'capacity':  case 'bankupgrade': {
 
 }
 break
+*/
+
+
+case'capacity':  case 'bankupgrade': {
+	//if (!isCreator) return replay(mess.botowner)
+	if (!text) return replay(`💴 *Bank-capacity* 💳\n\n1 | *1000 sp* = 💎100\n\n2 | *10000 sp* = 💎1000\n\n3 | *100000 sp* = 💎10000\n\nExample- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)	
+	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+        const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+	const cara = "cara"
+	let value = text.trim();
+	let k = parseInt(value)
+	const balance  = await eco.balance(user, cara) 
+  switch (value) {
+          case '1000':
+          case '1':
+          if (k > balance.wallet ) return replay(`*You need to pay 💎100 to increase bank capacity ~ 1000 sp*`);
+            const deduct1 = await eco.deduct(user, cara, 100);
+            const add1 = eco.giveCapacity(user, cara, 1000); 
+                await replay(`*1000 💎diamond storage has been added in ${pushname} bank*`)
+         case '10000':
+          case '2':
+          if (k > balance.wallet ) return replay(`*You need to pay 💎1000 to increase bank capacity ~ 10000 sp*`);
+            const deduct1 = await eco.deduct(user, cara, 1000);
+            const add1 = eco.giveCapacity(user, cara, 10000); 
+                await replay(`*10000 💎diamond storage has been added in ${pushname} bank*`)
+         case '100000':
+          case '3':
+          if (k > balance.wallet ) return replay(`*You need to pay 💎10000 to increase bank capacity ~ 100000 sp*`);
+            const deduct1 = await eco.deduct(user, cara, 10000);
+            const add1 = eco.giveCapacity(user, cara, 100000); 
+                await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
+                break
+
 
 
 
@@ -1918,75 +1951,6 @@ break
 
 //-----------------Slot----------------------
 /*
-case 'slot': case 'spin': {
-       if (isBan) return replay(mess.banned);
-       if (isBanChat) return replay(mess.bangc)
-       if (!m.isGroup) return replay(mess.grouponly)
-       var today = new Date();
-   if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
-       if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
-       if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-       const fruit1= ["🥥", "🍎", "🍇"]
-       const fruit2 = ["🍎", "🍇", "🥥"]  
-       const fruit3 = ["🍇", "🥥", "🍎"]         
-       const fruit4 = ["🍇", "🍇", "🍇"]
-       const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
-       const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
-       const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
-       const near = ['*Wow, you were so close to winning pineapples*\n\n_--> 🍎-🍍+🍍_', '*Hmmm, you were so close to winning Apples*\n\n_--> 🍎+🍎-🍍_']          
-       const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊 You Just hit a jackpot worth 💎1000*']
-       const user = m.sender
-       const cara = "cara"
-       const k = 100
-       const balance1  = await eco.balance(user, cara)
-       
-       if (k > balance1.wallet) return replay(`You are going to be spinning on your wallet, you need at least 💎100`);
-       const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
-       const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
-       const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
-       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
-       const mess1 = lose[Math.floor(Math.random() * lose.length)];
-       const mess2 = won[Math.floor(Math.random() * won.length)];
-       const mess3 = near[Math.floor(Math.random() * near.length)];
-       const mess4 = jack[Math.floor(Math.random() * jack.length)];
-       const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
-       
-       if ((f1 !== f2) && f2 !== f3){
-          const deduct1 = await eco.deduct(user, cara, 50);
-                 replay(`${mess1}\n\n*Big Lose -->* _💎50_`)
-       }
-       else if ((f1 == f2) && f2 == f3){
-          const give1 = await eco.give(user, cara, 100); 
-                replay(`${mess2}\n*_Big Win -->* _💎100_`)
-       }
-       else if ((f1 == f2) && f2 !== f3){
-          const give2 = await eco.give(user, cara, 20);
-                replay(`${mess3}\n*Small Win -->* _💎20_`)
-       }
-       else if ((f1 !== f2) && f1 == f3){
-          const deduct2 = await eco.deduct(user, cara, 20);
-                replay(`${mess5}\n\n*Small Lose -->* _💎20_`)
-       }
-       else if ((f1 !== f2) && f2 == f3){
-          const give4 = eco.give(user, cara, 20); 
-                replay(`${mess3}\n\n*Small Win -->* _💎20_`)
-       }
-       else if (((f1 == f2) && f2 == f3) && f3 == f4){
-          const give5 = eco.give(user, cara, 1000);
-               replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
-       }
-       else { 
-               replay(`Do you understand what you are doing?`)
-       }
-    }
-    else{
-           replay(`*You can only play this game during weekends*\n\n*🌿 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
-    }
-}
-break
-*/
-
-
 
 case'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
@@ -2054,8 +2018,74 @@ case'slot': case 'spin': {
     }
 }
 break
-	
+*/	
 
+case'slot': case 'spin': {
+       if (isBan) return replay(mess.banned);
+       if (isBanChat) return replay(mess.bangc)
+       if (!m.isGroup) return replay(mess.grouponly)
+       var today = new Date();
+   if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
+       if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
+       if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
+       const fruit1= ["🥥", "🍎", "🍇"]
+       const fruit2 = ["🍎", "🍇", "🥥"]  
+       const fruit3 = ["🍇", "🥥", "🍎"]         
+       const fruit4 = ["🍇", "🥥", "🍎"]
+       const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
+       const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
+       const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
+       const near = ['*Wow, you were so close to winning pineapples*\n\n_--> 🍎-🍍+🍍_', '*Hmmm, you were so close to winning Apples*\n\n_--> 🍎+🍎-🍍_']          
+       const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊 You Just hit a jackpot worth 💎1000*']
+       const user = m.sender
+       const cara = "cara"
+       const k = 100
+       const balance1  = await eco.balance(user, cara)
+       
+       if (k > balance1.wallet) return replay(`You are going to be spinning on your wallet, you need at least 💎100`);
+       const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
+       const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
+       const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
+       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
+       const mess1 = lose[Math.floor(Math.random() * lose.length)];
+       const mess2 = won[Math.floor(Math.random() * won.length)];
+       const mess3 = near[Math.floor(Math.random() * near.length)];
+       const mess4 = jack[Math.floor(Math.random() * jack.length)];
+       const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
+       
+       if ((f1 !== f2) && f2 !== f3){
+          const deduct1 = await eco.deduct(user, cara, 50);
+                 replay(`${mess1}\n\n*Big Lose -->* _💎50_`)
+       }
+       else if ((f1 == f2) && f2 == f3){
+          const give1 = await eco.give(user, cara, 100); 
+                replay(`${mess2}\n*_Big Win -->* _💎100_`)
+       }
+       else if ((f1 == f2) && f2 !== f3){
+          const give2 = await eco.give(user, cara, 20);
+                replay(`${mess3}\n*Small Win -->* _💎20_`)
+       }
+       else if ((f1 !== f2) && f1 == f3){
+          const deduct2 = await eco.deduct(user, cara, 20);
+                replay(`${mess5}\n\n*Small Lose -->* _💎20_`)
+       }
+       else if ((f1 !== f2) && f2 == f3){
+          const give4 = eco.give(user, cara, 20); 
+                replay(`${mess3}\n\n*Small Win -->* _💎20_`)
+       }
+       else if (((f1 == f2) && f2 == f3) && f3 == f4){
+          const give5 = eco.give(user, cara, 1000);
+               replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
+       }
+       else { 
+               replay(`Do you understand what you are doing?`)
+       }
+    }
+    else{
+           replay(`*You can only play this game during weekends*\n\n*🌿 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
+    }
+}
+break
 
 
 
