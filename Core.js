@@ -34,7 +34,8 @@ const { smsg, formatp, tanggal, GIFBufferToVideoBuffer, formatDate, getTime, isU
 const { aiovideodl } = require('./lib/scraper.js')
 const cheerio = require ("cheerio");
 const eco = require('discord-mongoose-economy')
-const ty = eco.connect('mongodb+srv://jayjay:jayjay@cluster0.39zfejm.mongodb.net/test');
+const ty = eco.connect('mongodb+srv://tuff:tuff@cluster0.fhsvdnc.mongodb.net/test');
+//const ty = eco.connect('mongodb+srv://jayjay:jayjay@cluster0.39zfejm.mongodb.net/test');
 const textpro = require('./lib/textpro')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
@@ -48,7 +49,6 @@ const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
 const { mediafireDl } = require('./lib/mediafire.js')
-
 
 const _ = require('lodash')
 const yargs = require('yargs/yargs')
