@@ -492,11 +492,11 @@ if (command) {
 await Miku.sendPresenceUpdate('composing', m.chat)
 Miku.sendReadReceipt(from, m.sender, [m.key.id])}
 }
-
+/*
   if (global.autoReadGc) {
   if (m.isGroup) { Miku.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
 }
-
+*/
 
   if (global.autoReadAll) { if (m.chat) { Miku.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
   }
@@ -1613,7 +1613,7 @@ case 'report': case 'suggest ': {
  break
 
 
-/*
+
 
 case 'getgif': case 'gify': {
      if (!text) return replay(`GIve me a search term, Baka!`);
@@ -1625,7 +1625,7 @@ case 'getgif': case 'gify': {
      await Miku.sendMessage(m.chat, { video: { url: tenorgif, caption: `${caption}` }, gifPlayback: true }, { quoted: m })
 }
 break
-*/
+
  
 
 //=============Economy===============
