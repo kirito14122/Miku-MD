@@ -1614,7 +1614,7 @@ case 'report': case 'suggest ': {
  }
  break
 
-
+/*
 case 'getgif': case 'gify' :
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
@@ -1628,7 +1628,7 @@ case 'getgif': case 'gify' :
                     return reply('error..')
                                     })
 break
-
+*/
 
 
 
