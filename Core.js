@@ -36,6 +36,8 @@ const cheerio = require ("cheerio");
 const eco = require('discord-mongoose-economy')
 const ty = eco.connect('mongodb+srv://tuff:tuff@cluster0.fhsvdnc.mongodb.net/test');
 //const ty = eco.connect('mongodb+srv://jayjay:jayjay@cluster0.39zfejm.mongodb.net/test');
+const tenorFetch = require('tenor-fetch');
+const tf = new tenorFetch('AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4');
 const textpro = require('./lib/textpro')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
@@ -1613,7 +1615,7 @@ case 'report': case 'suggest ': {
  break
 
 
-
+/*
 case 'getgif': case 'gify' :
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
@@ -1627,7 +1629,7 @@ let gjif = await GIFBufferToVideoBuffer(gift)
                     return reply('error..')
                                     })
 break
-
+*/
 
  
 
