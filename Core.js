@@ -1613,7 +1613,7 @@ case 'report': case 'suggest ': {
  break
 
 
-
+/*
 
 case 'getgif': case 'gify': {
      if (!text) return replay(`GIve me a search term, Baka!`);
@@ -1625,7 +1625,7 @@ case 'getgif': case 'gify': {
      await Miku.sendMessage(m.chat, { video: { url: tenorgif, caption: `${caption}` }, gifPlayback: true }, { quoted: m })
 }
 break
-
+*/
  
 
 //=============Economy===============
