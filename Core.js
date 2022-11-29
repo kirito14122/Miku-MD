@@ -492,11 +492,11 @@ if (command) {
 await Miku.sendPresenceUpdate('composing', m.chat)
 Miku.sendReadReceipt(from, m.sender, [m.key.id])}
 }
-/*
+
   if (global.autoReadGc) {
   if (m.isGroup) { Miku.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
 }
-*/
+
 
   if (global.autoReadAll) { if (m.chat) { Miku.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
   }
@@ -1611,6 +1611,20 @@ case 'report': case 'suggest ': {
     replay(`*✅ Your Report has been submitted Successfully to Support group & Owner*\n\n*_You will get response shortly♥️_*`); 
  }
  break
+
+
+
+
+case 'getgif': case 'gify': {
+     if (!text) return replay(`GIve me a search term, Baka!`);
+     const search = text.trim();
+     const gif = await axios.get(`https://g.tenor.com/v1/search?q=${search}&key=AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4&limit=8`) //.catch(() => null);
+     if (!gif) return replay(`Couldn't find any matching gif term.`);
+     const tenorgif = gif[Math.floor(Math.random() * gif.length)];
+     const caption = "🌟 Here you go.";
+     await Miku.sendMessage(m.chat, { video: { url: tenorgif, caption: `${caption}` }, gifPlayback: true }, { quoted: m })
+}
+break
 
  
 
