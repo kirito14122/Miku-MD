@@ -1614,17 +1614,20 @@ case 'report': case 'suggest ': {
 
 
 
-
-case 'getgif': case 'gify': {
-     if (!text) return replay(`GIve me a search term, Baka!`);
-     const search = text.trim();
-     const gif = await axios.get(`https://g.tenor.com/v1/search?q=${search}&key=AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4&limit=8`) //.catch(() => null);
-     if (!gif) return replay(`Couldn't find any matching gif term.`);
-     //const tenorgif = gif[Math.floor(Math.random() * gif.length)];
-     const caption = "🌟 Here you go.";
-     await Miku.sendMessage(m.chat, { video: { url: gif, caption: `${caption}`}, gifPlayback: true }, { quoted: m })
-}
+case 'getgif': case 'gify' :
+    if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+    if (!text) return reply(`Give me a search term baka`)
+    let search = text.trim();
+reply(mess.waiting)
+giffy = await axios.get(`https://g.tenor.com/v1/search?q=${search}&key=AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4&limit=8`)         
+  let gift = await getBuffer(giffy.data.url)
+let gjif = await GIFBufferToVideoBuffer(gift)   
+        await Miku.sendMessage(m.chat,{video: gjif, gifPlayback:true, caption: "🌟 Here you go."},{ quoted:m }).catch(err => {
+                    return reply('error..')
+                                    })
 break
+
 
  
 
