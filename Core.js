@@ -1615,21 +1615,22 @@ case 'report': case 'suggest ': {
  break
 
 
-/*
 case 'getgif': case 'gify' :
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
-    if (!text) return reply(`Give me a search term baka`)
-    let search = text.trim();
-reply(mess.waiting)
-giffy = await axios.get(`https://g.tenor.com/v1/search?q=${search}&key=AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4&limit=8`)         
-  let gift = await getBuffer(giffy.data.url)
-let gjif = await GIFBufferToVideoBuffer(gift)   
-        await Miku.sendMessage(m.chat,{video: gjif, gifPlayback:true, caption: "🌟 Here you go."},{ quoted:m }).catch(err => {
+    //if (!text) return reply(`Give me a search term baka`)
+    //let terms = text.trim();
+    let giffy = tf.search('smug anime');
+    replay(mess.waiting);        
+    //let gift = await getBuffer(giffy.data.url)
+    //let gjif = await GIFBufferToVideoBuffer(gift)   
+        await Miku.sendMessage(m.chat,{video: giffy, gifPlayback:true, caption: "🌟 Here you go."},{ quoted:m }).catch(err => {
                     return reply('error..')
                                     })
 break
-*/
+
+
+
 
  
 
