@@ -1620,9 +1620,9 @@ case 'getgif': case 'gify': {
      const search = text.trim();
      const gif = await axios.get(`https://g.tenor.com/v1/search?q=${search}&key=AIzaSyDDCEHMzk072WuyvvgYfAwsgl4Mt8zf9b4&limit=8`) //.catch(() => null);
      if (!gif) return replay(`Couldn't find any matching gif term.`);
-     const tenorgif = gif[Math.floor(Math.random() * gif.length)];
+     //const tenorgif = gif[Math.floor(Math.random() * gif.length)];
      const caption = "🌟 Here you go.";
-     await Miku.sendMessage(m.chat, { video: { url: tenorgif, caption: `${caption}` }, gifPlayback: true }, { quoted: m })
+     await Miku.sendMessage(m.chat, { video: { url: gif, caption: `${caption}`}, gifPlayback: true }, { quoted: m })
 }
 break
 
