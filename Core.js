@@ -1718,18 +1718,21 @@ case'capacity':  case 'bankupgrade': {
             const deduct1 = await eco.deduct(user, cara, 100);
             const add1 = eco.giveCapacity(user, cara, 1000); 
                 await replay(`*1000 💎diamond storage has been added in ${pushname} bank*`)
+          break
          case '10000':
           case '2':
           if (k > balance.wallet ) return replay(`*You need to pay 💎1000 to increase bank capacity ~ 10000 sp*`);
             const deduct2 = await eco.deduct(user, cara, 1000);
             const add2 = eco.giveCapacity(user, cara, 10000); 
                 await replay(`*10000 💎diamond storage has been added in ${pushname} bank*`)
+          break
          case '100000':
           case '3':
           if (k > balance.wallet ) return replay(`*You need to pay 💎10000 to increase bank capacity ~ 100000 sp*`);
             const deduct3 = await eco.deduct(user, cara, 10000);
             const add3 = eco.giveCapacity(user, cara, 100000); 
                 await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
+           break
           }
             }
                 break
@@ -1860,6 +1863,7 @@ case 'rob':  case 'attack': {
 			             ? m.quoted.sender
 			             : m.mentionedJid[0] || null;    
            if (!target || target === m.sender) return replay("what are you trying to do!")
+           if (target === isCreator) return replay(`*༎ຶ‿༎ຶ You jam rock 😂*`)
            if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
         while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
         const cara = "cara"
