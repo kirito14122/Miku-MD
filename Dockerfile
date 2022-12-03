@@ -1,3 +1,4 @@
+/*
 FROM node:lts-buster
 
 RUN apt-get update && \
@@ -15,3 +16,4 @@ RUN npm install
 COPY . .
 
 CMD ["node", "."]
+*/
