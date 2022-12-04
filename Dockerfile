@@ -18,11 +18,15 @@
 
 
 
-FROM quay.io/jayjay-ops/Miku
+#FROM quay.io/jayjay-ops/Miku
+FROM node:lts-buster
 RUN git clone https://github.com/jayjay-ops/Miku-MD /root/jayjay-ops
 WORKDIR /root/jayjay-ops/
-RUN yarn install --network-concurrency 1
+COPY package.json
+RUN npm install
+#RUN yarn install --network-concurrency 1
 EXPOSE 8000
-CMD ["npm", "start"]
+CMD ["node", "."]
+#CMD ["npm", "start"]
 
 
