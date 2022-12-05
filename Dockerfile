@@ -1,4 +1,4 @@
-FROM quay.io/sampandey001/secktor
+FROM quay.io/jayjay/miku
 RUN git clone https://github.com/jayjay-ops/Miku-MD /root/jayjay-ops
 WORKDIR /root/jayjay-ops/
 RUN npm i
