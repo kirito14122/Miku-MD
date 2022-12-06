@@ -2124,6 +2124,7 @@ break
 case 'delttt': case 'cancelttt': {
       if (!m.isGroup) return replay(mess.grouponly);
       if (!isAdmins && !isCreator) return replay('Only *Group Admin* and my *Owner* can delete an on going game.');
+      this.game = this.game ? this.game : false
       if (
         Object.values(this.game).find(
           (room) =>
@@ -2131,14 +2132,15 @@ case 'delttt': case 'cancelttt': {
         )
       ){
         delete this.game
-        return m.reply(`_Successfully Deleted running TicTacToe game._`);
+        return replay(`_Successfully Deleted running TicTacToe game._`);
         } else {
               return m.reply(`No TicTacToe game🎮 is running.`)
                     
         }
       
 }
-break
+break 
+
 
 
 
