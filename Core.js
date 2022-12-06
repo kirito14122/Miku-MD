@@ -2134,7 +2134,7 @@ case 'delttt': case 'cancelttt': {
         delete this.game
         return replay(`_Successfully Deleted running TicTacToe game._`);
         } else {
-              return m.reply(`No TicTacToe game🎮 is running.`)
+              return m.reply(`*🤹 No on going tictactoe game.*`)
                     
         }
       
@@ -2142,7 +2142,70 @@ case 'delttt': case 'cancelttt': {
 break 
 
 
+//-----------------ttt----------------------
 
+case 'ttt': case 'tictactoe': {
+	if (!m.isGroup) return replay(mess.grouponly);
+      this.game = this.game ? this.game : {};
+      if (
+        Object.values(this.game).find(
+          (room) =>
+            room.id.startsWith("tictactoe") &&
+            [room.game.playerX, room.game.playerO].includes(m.sender)
+        )
+      )
+        return replay("_A game is already going on_");
+      let room = Object.values(this.game).find(
+        (room) =>
+          room.state === "WAITING" && (text ? room.name === text : true)
+      );
+      if (room) {
+        room.o = m.chat;
+        room.game.playerO = m.sender || m.mentionedJid[0] 
+        room.state = "PLAYING";
+        let arr = room.game.render().map((v) => {
+          return {
+            X: "❌",
+            O: "⭕",
+            1: "1️⃣",
+            2: "2️⃣",
+            3: "3️⃣",
+            4: "4️⃣",
+            5: "5️⃣",
+            6: "6️⃣",
+            7: "7️⃣",
+            8: "8️⃣",
+            9: "9️⃣", 
+          }[v];
+        });
+        let str = `
+Current turn: @${room.game.currentTurn.split("@")[0]}
+Room ID: ${room.id}
+${arr.slice(0, 3).join("  ")}
+${arr.slice(3, 6).join("  ")}
+${arr.slice(6).join("  ")}
+`;
+
+        return await Miku.sendMessage(m.chat, {
+          text: str,
+          mentions: [room.game.currentTurn],
+        });
+      } else {
+        room = {
+          id: "tictactoe-" + +new Date(),
+          x: m.chat,
+          o: "",
+          game: new TicTacToe(m.sender, "o"),
+          state: "WAITING",
+        };
+        if (text) room.name = text;
+        m.reply(`_Waiting for player,use ${prefix}ttt to join this game._`);
+        this.game[room.id] = room;
+      }
+    }
+
+}
+break
 
 
 
