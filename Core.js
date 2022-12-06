@@ -2208,6 +2208,103 @@ break
 
 
 
+//-----------------ttt-extra----------------------
+
+if (room) {
+      let ok;
+      let isWin = !1;
+      let isTie = !1;
+      let isSurrender = !1;
+      if (!/^([1-9]|(me)?give_up|surr?ender|off|skip)$/i.test(m.text)) return;
+      isSurrender = !/^[1-9]$/.test(m.text);
+      if (m.sender !== room.game.currentTurn) {
+        if (!isSurrender) return !0;
+      }
+      if (
+        !isSurrender &&
+        1 >
+          (ok = room.game.turn(
+            m.sender === room.game.playerO,
+            parseInt(m.text) - 1
+          ))
+      ) {
+        m.reply(
+          {
+            "-3": "The game is over.",
+            "-2": "Invalid",
+            "-1": "_Invalid Position_",
+            0: "_Invalid Position_",
+          }[ok]
+        );
+        return !0;
+      }
+      if (m.sender === room.game.winner) isWin = true;
+      else if (room.game.board === 511) isTie = true;
+      let arr = room.game.render().map((v) => {
+        return {
+          X: "❌",
+          O: "⭕",
+          1: "1️⃣",
+          2: "2️⃣",
+          3: "3️⃣",
+          4: "4️⃣",
+          5: "5️⃣",
+          6: "6️⃣",
+          7: "7️⃣",
+          8: "8️⃣",
+          9: "9️⃣",
+        }[v];
+      });
+      if (isSurrender) {
+        room.game._currentTurn = m.sender === room.game.playerX;
+        isWin = true;
+      }
+      let winner = isSurrender ? room.game.currentTurn : room.game.winner;
+      let str = `Room ID: ${room.id}
+      
+${arr.slice(0, 3).join("  ")}
+${arr.slice(3, 6).join("  ")}
+${arr.slice(6).join("  ")}
+${
+  isWin
+    ? `*Winner @${winner.split("@")[0]}*/n/n*WON -->> 💎2000*`
+    : isTie
+    ? `*Tied for the win, well done gamers players.*`
+    : `Your Turn ${["❌", "⭕"][1 * room.game._currentTurn]} @${
+        room.game.currentTurn.split("@")[0]
+      }`
+}
+⭕:- @${room.game.playerO.split("@")[0]}
+❌:- @${room.game.playerX.split("@")[0]}`;
+
+      if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
+        room[room.game._currentTurn ^ isSurrender ? "x" : "o"] = m.chat;
+        if(isWin){
+        await eco.give(m.sender, "cara", 2000);
+        }
+      if (isWin || isTie) {
+        await Miku.sendMessage(m.chat, {
+          text: str,
+          buttons: [
+            {
+              buttonId: `${prefix}ttt`,
+              buttonText: { displayText: `Let's play` },
+            },
+          ],
+          mentions: [room.game.playerO,room.game.playerX],
+        });
+      } else {
+        await Miku.sendMessage(m.chat, {
+          text: str,
+          mentions: [room.game.playerO,room.game.playerX],
+        });
+      }
+      if (isTie || isWin) {
+        delete this.game[room.id];
+      }
+
+
+
 
 
 //=======================================
