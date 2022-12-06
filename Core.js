@@ -2201,9 +2201,8 @@ ${arr.slice(6).join("  ")}
         if (text) room.name = text;
         m.reply(`_Waiting for player,use ${prefix}ttt to join this game._`);
         this.game[room.id] = room;
-      }
-    }
 
+      }
 }
 break
 
