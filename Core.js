@@ -2210,7 +2210,19 @@ break
 
 //-----------------ttt-extra----------------------
 
-if (room) {
+if(!m.isGroup) return
+    this.game = this.game ? this.game : {};
+    let room = Object.values(this.game).find(
+      (room) =>
+        room.id &&
+        room.game &&
+        room.state &&
+        room.id.startsWith("tictactoe") &&
+        [room.game.playerX, room.game.playerO].includes(m.sender) &&
+        room.state == "PLAYING"
+    );
+
+    if (room) {
       let ok;
       let isWin = !1;
       let isTie = !1;
@@ -2267,10 +2279,10 @@ ${arr.slice(3, 6).join("  ")}
 ${arr.slice(6).join("  ")}
 ${
   isWin
-    ? `*Winner @${winner.split("@")[0]}*/n/n*WON -->> 💎2000*`
+    ? `*Winner @${winner.split("@")[0]}*/n/n*WON -->> 💎1000*`
     : isTie
     ? `*Tied for the win, well done gamers players.*`
-    : `Your Turn ${["❌", "⭕"][1 * room.game._currentTurn]} @${
+    : `Current Turn ${["❌", "⭕"][1 * room.game._currentTurn]} @${
         room.game.currentTurn.split("@")[0]
       }`
 }
@@ -2280,7 +2292,7 @@ ${
       if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
         room[room.game._currentTurn ^ isSurrender ? "x" : "o"] = m.chat;
         if(isWin){
-        await eco.give(m.sender, "cara", 2000);
+        await eco.give(m.sender, "cara", 1000);
         }
       if (isWin || isTie) {
         await Miku.sendMessage(m.chat, {
@@ -2288,7 +2300,7 @@ ${
           buttons: [
             {
               buttonId: `${prefix}ttt`,
-              buttonText: { displayText: `Let's play` },
+              buttonText: { displayText: "Restart..." },
             },
           ],
           mentions: [room.game.playerO,room.game.playerX],
@@ -2302,8 +2314,12 @@ ${
       if (isTie || isWin) {
         delete this.game[room.id];
       }
+    }
 
 
+
+
+     
 
 
 
