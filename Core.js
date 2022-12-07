@@ -2210,7 +2210,6 @@ break
 
 //-----------------ttt-extra----------------------
 
-if(!m.isGroup) return
     this.game = this.game ? this.game : {};
     let room = Object.values(this.game).find(
       (room) =>
