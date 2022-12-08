@@ -2141,7 +2141,7 @@ case 'delttt': case 'cancelttt': {
 }
 break 
 
-/*
+
 //-----------------ttt----------------------
 
 case 'ttt': case 'tictactoe': {
@@ -2209,7 +2209,7 @@ break
 
 
 //-----------------ttt-extra----------------------
-
+/*
     this.game = this.game ? this.game : {};
     let room = Object.values(this.game).find(
       (room) =>
@@ -2278,7 +2278,7 @@ ${arr.slice(3, 6).join("  ")}
 ${arr.slice(6).join("  ")}
 ${
   isWin
-    ? `*Winner @${winner.split("@")[0]}*/n/n*WON -->> 💎1000*`
+    ? `_Winner @${winner.split("@")[0]}_/n/n*WON -->> 💎1000*`
     : isTie
     ? `*Tied for the win, well done gamers players.*`
     : `Current Turn ${["❌", "⭕"][1 * room.game._currentTurn]} @${
@@ -2315,9 +2315,8 @@ ${
       }
     }
 
+
 */
-
-
      
 
 
