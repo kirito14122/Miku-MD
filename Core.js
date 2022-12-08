@@ -2141,7 +2141,7 @@ case 'delttt': case 'cancelttt': {
 }
 break 
 
-
+/*
 //-----------------ttt----------------------
 
 case 'ttt': case 'tictactoe': {
@@ -2315,7 +2315,7 @@ ${
       }
     }
 
-
+*/
 
 
      
