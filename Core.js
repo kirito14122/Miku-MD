@@ -17,7 +17,6 @@ const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const hx = require("hxz-api")
 const hxz = require('./lib/hxz-api')
-const TicTacToe = require("./lib/ttt.js")
 const bdr = require('rumus-bdr')
 const yogipw = require("tod-api")
 const { color, bgcolor } = require('./lib/color')
@@ -2146,6 +2145,7 @@ break
 
 case 'ttt': case 'tictactoe': {
 	if (!m.isGroup) return replay(mess.grouponly);
+        let TicTacToe = require("./lib/ttt.js")
       this.game = this.game ? this.game : {};
       if (
         Object.values(this.game).find(
