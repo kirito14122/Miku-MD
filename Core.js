@@ -1657,50 +1657,6 @@ break
 
 
 //---------------bank-increase--------------------
-/*
-case 'capacity':  case 'bankupgrade': {
-	//if (!isCreator) return replay(mess.botowner)
-	if (!text) return replay(`💴 *Bank-capacity* 💳\n\n1 | *1000 sp* = 💎100\n\n2 | *100000 sp* = 💎1000\n\n3 | *10000000 sp* = 💎10000000\n\nExample- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)	
-	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-        const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-	const cara = "cara"
-	let value = text.trim();
-	let k = parseInt(value)
-	const balance  = await eco.balance(user, cara) 
-  switch (value) {
-          case '1000':
-          case '1':
-          if (k > balance.wallet ) return replay(`*You need to pay 💎100 to increase bank capacity ~ 1000 sp*`);
-            const deduct1 = await eco.deduct(user, cara, 100);
-            const add1 = eco.giveCapacity(user, cara, 1000); 
-                await replay(`*1000 💎diamond storage has been added in ${pushname} bank*`)
-     
-                break
-          case '100000':
-          case '2':
-          if (k < balance.wallet) return replay(`*You need to pay 💎1000 to increase bank capacity ~ 100000 sp*`);
-            const deduct2 = await eco.deduct(user, cara, 1000);
-            const add2 = eco.giveCapacity(user, cara, 100000); 
-                await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
-     
-                break
-          case '10000000':
-          case '3':
-          if (k < balance.wallet) return replay(`You need to pay 💎10000 to increase bank capacity ~ 1000 sp`);
-             const deduct3 = await eco.deduct(user, cara, 10000);
-             const add3 = eco.giveCapacity(user, cara, 10000000); 
-                 await replay(`*10000000 💎diamond storage has been added in ${pushname} bank*`)
-     
-               break
-  default:
-   await replay('*What are you trying to do*.')
-   
-   }
-
-}
-break
-*/
-
 
 case'capacity':  case 'bankupgrade': {
 	//if (!isCreator) return replay(mess.botowner)
@@ -2207,84 +2163,6 @@ ${arr.slice(6).join("  ")}
 break
 //-----------------ttt-extra----------------------
 
-this.game = this.game ? this.game : {}
-            let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
-            if (room) {
-            let ok
-            let isWin = !1
-            let isTie = !1
-            let isSurrender = !1
-            if (!/^([1-9]|(me)?give up|surr?ender|off|skip)$/i.test(m.text)) return
-            isSurrender = !/^[1-9]$/.test(m.text)
-            if (m.sender !== room.game.currentTurn) { 
-            if (!isSurrender) return !0
-            }
-            if (!isSurrender && 1 > (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1))) {
-            reply({
-            '-3': 'Game Has Ended',
-            '-2': 'Invalid',
-            '-1': 'Invalid Position',
-            0: 'Invalid Position',
-            }[ok])
-            return !0
-            }
-            if (m.sender === room.game.winner) isWin = true
-            else if (room.game.board === 511) isTie = true
-            let arr = room.game.render().map(v => {
-            return {
-            X: '❌',
-            O: '⭕',
-            1: '1️⃣',
-            2: '2️⃣',
-            3: '3️⃣',
-            4: '4️⃣',
-            5: '5️⃣',
-            6: '6️⃣',
-            7: '7️⃣',
-            8: '8️⃣',
-            9: '9️⃣',
-            }[v]
-            })
-            if (isSurrender) {
-            room.game._currentTurn = m.sender === room.game.playerX
-            isWin = true
-            }
-            let winner = isSurrender ? room.game.currentTurn : room.game.winner
-            let str = `Room ID: ${room.id}
-    ${arr.slice(0, 3).join('')}
-    ${arr.slice(3, 6).join('')}
-    ${arr.slice(6).join('')}
-    ${isWin ? `@${winner.split('@')[0]} Won, 💎1000 diamonds` : isTie ? `Draw, well done to both players.` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
-    ❌: @${room.game.playerX.split('@')[0]}
-    ⭕: @${room.game.playerO.split('@')[0]}
-
-            if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
-               room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-               if(isWin){
-             await eco.give(m.sender, "cara", 1000);
-             }
-             if (isWin || isTie) {
-        await Miku.sendMessage(m.chat, {
-          text: str,
-          buttons: [
-            {
-              buttonId: `${prefix}ttt`,
-              buttonText: { displayText: "Play again" },
-            },
-          ],
-          mentions: [room.game.playerO,room.game.playerX],
-        });
-      }else {
-        await Miku.sendMessage(m.chat, {
-          text: str,
-          mentions: [room.game.playerO,room.game.playerX],
-        });
-      }
-      if (isTie || isWin) {
-        delete this.game[room.id]
-      }
-  }
-	     
 
 
 
