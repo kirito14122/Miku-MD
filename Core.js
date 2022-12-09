@@ -2178,7 +2178,7 @@ case 'ttt': case 'tictactoe': {
             9: "9️⃣", 
           }[v];
         });
-        let strs = `
+        let str = `
 Current turn: @${room.game.currentTurn.split("@")[0]}
 Room ID: ${room.id}
 ${arr.slice(0, 3).join("  ")}
@@ -2187,7 +2187,7 @@ ${arr.slice(6).join("  ")}
 `;
 
         return await Miku.sendMessage(m.chat, {
-          text: strs,
+          text: str,
           mentions: [room.game.currentTurn],
         });
       } else {
@@ -2203,10 +2203,12 @@ ${arr.slice(6).join("  ")}
         this.game[room.id] = room;
 
       }
+}
+break
 //-----------------ttt-extra----------------------
 
 this.game = this.game ? this.game : {}
-            //let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
+            let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
             if (room) {
             let ok
             let isWin = !1
@@ -2282,9 +2284,7 @@ this.game = this.game ? this.game : {}
         delete this.game[room.id]
       }
   }
-	
-}
-break     
+	     
 
 
 
