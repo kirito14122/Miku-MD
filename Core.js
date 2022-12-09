@@ -41,6 +41,7 @@ const ty = eco.connect('mongodb+srv://tuff:tuff@cluster0.fhsvdnc.mongodb.net/tes
 const textpro = require('./lib/textpro')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
+const TicTacToe = require("./lib/ttt.js")
 const { Gempa } = require("./lib/gempa.js");
 const ms = require('ms')
  let { covid } = require('./lib/covid.js') 
@@ -2101,7 +2102,6 @@ break
 
 case 'ttt': case 'tictactoe': {
 	if (!m.isGroup) return replay(mess.grouponly);
-        let TicTacToe = require("./lib/ttt.js")
       this.game = this.game ? this.game : {};
       if (
         Object.values(this.game).find(
@@ -2164,7 +2164,7 @@ break
 //-----------------ttt-extra----------------------
 
 
-this.game = this.game ? this.game : {}
+      this.game = this.game ? this.game : {}
             let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
             if (room) {
             let ok
@@ -2217,21 +2217,15 @@ this.game = this.game ? this.game : {}
 
             if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-            if(isWin){
-        await eco.give(m.sender, "cara", 1000);
-        }
-        else if(isWin || isTie){
-        await Miku.sendMessage(`Game has ended, To play again type ${prefix}ttt`)
-       }else {
-        await Miku.sendMessage(m.chat, {
-          text: str,
-          mentions: [room.game.playerO,room.game.playerX],
-        });
-      }
-            if (isTie || isWin) {
-            delete this.game[room.id]
-            }
-            }
+            if (isWin){
+           const give = await eco.give(m.sender, "cara", 1000);
+           replay(`Won! , 💎1000 check your wallet`)
+           }
+           if (isWin || isTie){
+           replay(`Game has ended, To play again type ${prefix}ttt`)
+           delete this.game[room.id]
+       }
+}
 
 
  
