@@ -176,7 +176,7 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-const quotedSender = m.quoted?.sender == itsMe ? true : false
+const quotedMe = m.quoted?.sender == itsMe ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -1409,7 +1409,7 @@ let smallinput = budy.toLowerCase()
       replay(`Don't be scared, i am still active 😁`);
     } 
 
-    if (m.isGroup && !isCmd) {
+    if (m.isGroup && quotedMe) {
       let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
       txt = `${botreply.data.cnt}`
       m.reply(txt)
