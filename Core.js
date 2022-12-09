@@ -1465,18 +1465,21 @@ let smallinput = budy.toLowerCase()
             }
             let winner = isSurrender ? room.game.currentTurn : room.game.winner
             let str = `Room ID: ${room.id}
+
     ${arr.slice(0, 3).join('')}
     ${arr.slice(3, 6).join('')}
     ${arr.slice(6).join('')}
+
     ${isWin ? `@${winner.split('@')[0]} Won! 💎1000` : isTie ? `Game Over` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+
     ❌: @${room.game.playerX.split('@')[0]}
     ⭕: @${room.game.playerO.split('@')[0]}
     
-    Typed *surrender* to surrender and admited defeat`
+    Type *surrender* to surrender and admited defeat`
             if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
             if(isWin){
-        const give = await eco.give(m.sender, "cara", 1000);
+        const give = await eco.give(winner, "cara", 1000);
         }
             if (room.x !== room.o) await Miku.sendText(room.x, str, m, { mentions: parseMention(str) } )
             await Miku.sendText(room.o, str, m, { mentions: parseMention(str) } )
