@@ -1420,8 +1420,7 @@ let smallinput = budy.toLowerCase()
 //-----------------ttt-extra----------------------
 
 
-	const balance1 = await eco.balance(m.sender, "cara")
-this.game = this.game ? this.game : {}
+	this.game = this.game ? this.game : {}
             let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
             if (room) {
             let ok
@@ -1444,7 +1443,7 @@ this.game = this.game ? this.game : {}
             return !0
             }
             if (m.sender === room.game.winner) isWin = true
-            else if (m.sender === room.game.loser) isWin = false
+            if (m.sender === room.game.loser) isWin = false
             else if (room.game.board === 511) isTie = true
             let arr = room.game.render().map(v => {
             return {
@@ -1487,11 +1486,8 @@ this.game = this.game ? this.game : {}
             if (isWin){
         const give = await eco.give(winner, "cara", 400);
         } 
-        else if(isSurrender){
-        const deduct = await eco.deduct(m.sender, "cara", 200)
-        }
-        else {
-        const deduct2 = await eco.deduct(loser, "cara", 200)
+        else if(!isWin){
+        const deduct = await eco.deduct(loser, "cara", 200)
         }
             if (room.x !== room.o) await Miku.sendText(room.x, str, m, { mentions: parseMention(str) } )
             await Miku.sendText(room.o, str, m, { mentions: parseMention(str) } )
@@ -1499,6 +1495,7 @@ this.game = this.game ? this.game : {}
             delete this.game[room.id]
             }
             }
+
 
 
 
