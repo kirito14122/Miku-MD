@@ -1420,7 +1420,8 @@ let smallinput = budy.toLowerCase()
 //-----------------ttt-extra----------------------
 
 
-	this.game = this.game ? this.game : {}
+	const balance1 = await eco.balance(m.sender, "cara")
+this.game = this.game ? this.game : {}
             let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
             if (room) {
             let ok
@@ -1443,6 +1444,7 @@ let smallinput = budy.toLowerCase()
             return !0
             }
             if (m.sender === room.game.winner) isWin = true
+            else if (m.sender === room.game.loser) isWin = false
             else if (room.game.board === 511) isTie = true
             let arr = room.game.render().map(v => {
             return {
@@ -1464,22 +1466,32 @@ let smallinput = budy.toLowerCase()
             isWin = true
             }
             let winner = isSurrender ? room.game.currentTurn : room.game.winner
-            let str = `Room ID: ${room.id}
+            let loser = isSurrender ? room.game.currentTurn : room.game.loser
+            let str = `*Room ID: ${room.id}*
 
     ${arr.slice(0, 3).join('')}
+    
     ${arr.slice(3, 6).join('')}
+    
     ${arr.slice(6).join('')}
 
-    ${isWin ? `@${winner.split('@')[0]} Won! 💎1000` : isTie ? `Game Over` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+    ${isWin ? `@${winner.split('@')[0]} Won! 💎400` : isTie ? `Game Over` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
 
     ❌: @${room.game.playerX.split('@')[0]}
+    
     ⭕: @${room.game.playerO.split('@')[0]}
     
-    Type *surrender* to surrender and admited defeat`
+    you can type *surrender* to surrender and admit defeat`
             if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-            if(isWin){
-        const give = await eco.give(winner, "cara", 1000);
+            if (isWin){
+        const give = await eco.give(winner, "cara", 400);
+        } 
+        else if(isSurrender){
+        const deduct = await eco.deduct(m.sender, "cara", 200)
+        }
+        else {
+        const deduct2 = await eco.deduct(loser, "cara", 200)
         }
             if (room.x !== room.o) await Miku.sendText(room.x, str, m, { mentions: parseMention(str) } )
             await Miku.sendText(room.o, str, m, { mentions: parseMention(str) } )
@@ -1487,6 +1499,9 @@ let smallinput = budy.toLowerCase()
             delete this.game[room.id]
             }
             }
+
+
+
 
 
 
@@ -2174,6 +2189,9 @@ break
 
 case 'ttt': case 'tictactoe': {
 	if (!m.isGroup) return replay(mess.grouponly);
+	const k = 200
+	const balance = await eco.balance(m.sender, "cara")
+	if (k > balance.wallet) return replay(`*You need a minimum of 💎200 to participate in tictactoe game*`)
       this.game = this.game ? this.game : {};
       if (
         Object.values(this.game).find(
@@ -2208,9 +2226,13 @@ case 'ttt': case 'tictactoe': {
         });
         let str = `
 Current turn: @${room.game.currentTurn.split("@")[0]}
+
 Room ID: ${room.id}
+
 ${arr.slice(0, 3).join("  ")}
+
 ${arr.slice(3, 6).join("  ")}
+
 ${arr.slice(6).join("  ")}
 `;
 
@@ -2233,6 +2255,10 @@ ${arr.slice(6).join("  ")}
       }
 }
 break
+
+
+
+
 
 
 //=======================================
