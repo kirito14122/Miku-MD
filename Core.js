@@ -3750,14 +3750,14 @@ case 'togif': case 'getgif':{
     }
     break
 
-case'moderators': {
+case'moderators': case 'mods': {
 	const mod= global.Moderators
 	let mo=`*🤴 Ethan-Bot Moderators 🤴´*\n`
 	for(let i=0; i<mod.length; i++){
     const um = await Miku.getName(mod[i]+'@s.whatsapp.net')
     mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
   }
-  await Miku.sendMessage(m.from,{image:{url:'https://wallpapercave.com/wp/wp10524609.jpg'},caption:mo},{quoted:m})  
+  await Miku.sendMessage(m.from,{caption:mo},{quoted:m})  
 }
 break
 
