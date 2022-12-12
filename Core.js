@@ -3745,21 +3745,22 @@ case 'togif': case 'getgif':{
  break
 
 
- case 'owner': case 'creator': case 'mod': case 'mods':{
+ case 'owner': case 'creator': case 'creators': case 'owners':{
     Miku.sendContact(m.chat, global.Owner, m)
     }
     break
 
-case 'moderator': case 'mod': case 'mods': case 'moderators': {
+case'moderators': {
 	const mod= global.Moderators
 	let mo=`*🤴 Ethan-Bot Moderators 🤴´*\n`
 	for(let i=0; i<mod.length; i++){
-    const um = await pushname(mod[i]+'@s.whatsapp.net')
-    mo+=`\nâœ¨${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
+    const um = await Miku.getName(mod[i]+'@s.whatsapp.net')
+    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
   }
   await Miku.sendMessage(m.from,{image:{url:'https://wallpapercave.com/wp/wp10524609.jpg'},caption:mo},{quoted:m})  
 }
 break
+
 
 
 case 'translate': case 'trans': {
