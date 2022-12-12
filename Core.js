@@ -3750,6 +3750,18 @@ case 'togif': case 'getgif':{
     }
     break
 
+case 'moderator': case 'mod': case 'mods': case 'moderators': {
+	const mod= global.Moderators
+	let mo=`*🤴 Ethan-Bot Moderators 🤴´*\n`
+	for(let i=0; i<mod.length; i++){
+    const um = await pushname(mod[i]+'@s.whatsapp.net')
+    mo+=`\nâœ¨${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
+  }
+  await Miku.sendMessage(m.from,{image:{url:'https://wallpapercave.com/wp/wp10524609.jpg'},caption:mo},{quoted:m})  
+}
+break
+
+
 case 'translate': case 'trans': {
     if (isBan) return reply(mess.banned)
     if (!args.join(" ")) return replay("Pls enter any text to translate")
@@ -5927,9 +5939,9 @@ case 'help': case 'h': {
 ⊶ ⛳𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : Amazon AWS
 ⊶ 📡𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
 ⊶────────────────────
-⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕𝒕𝒐 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
+⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
 ⊶ © 𝑪𝒐𝒑𝒚𝒓𝒊𝒈𝒉𝒕 miku
-⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}𝐨𝐰𝐧𝐞𝐫
+⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}report
 ⊶────────────────────
 
 ❥︎ Ⓖ︎𝗲𝗻𝗲𝗿𝗮𝗹 
@@ -6574,19 +6586,7 @@ default:
     }	 			
 */
 
- /*
-     if (isCmd) {      		    
-       await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=${q}]`)
-       .then((response) => {
-               // console.log(response);
-              const txt = `${response.data.cnt}`
-              m.reply(txt);
-          }).catch(err => {
-              m.reply(`Sorry ${pushname}, I do not understand what you are trying to do type ${prefix}help to see command list*`)
-          }
-      )
-   }
-*/
+ 
 
 
 if (budy.startsWith('=>')) {
