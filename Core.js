@@ -3752,12 +3752,13 @@ case 'togif': case 'getgif':{
 
 
 
+
 case'moderators': case 'mods': case 'moderator': case 'mod': {
-	let mod= global.Moderators
-	let mo=`*🤴 Ethan-Bot Moderators 🤴´*\n`
+	const mod = mods
+	let mo=`*🤴 Ethan-Bot Moderators 🤴*\n`
 	for(let i=0; i<mod.length; i++){
-    const um = await Miku.getName(mod[i]+'@s.whatsapp.net')
-    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
+    const um = await Miku.getName( i +'@s.whatsapp.net')
+    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${i.split("@")[0]}\n`
   }
   await Miku.sendMessage(m.from, { text: mo }, {quoted:m})  
 }
