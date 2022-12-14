@@ -1874,12 +1874,47 @@ case 'bank':  case 'levee': {
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
+            
     const user = m.sender
     const cara = "cara"
-    const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
-    await replay(`*🏦 ${pushname}'s Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`); 
-}
-break
+    var flob = await getBuffer(picak+'User Profile')
+     var bio= await Miku.fetchStatus(m.sender)
+     var bioo = bio.status
+     const adn= isAdmins? "True":"False"
+
+     
+     
+     
+    try {
+        
+        pfp=await Miku.profilePictureUrl('https://static.zerochan.net/Unidentified.full.3846306.png')
+    
+          } catch (e) {
+     
+      pfp ='https://static.zerochan.net/Unidentified.full.3846306.png'
+    }
+    const balance = await eco.balance(user, cara);
+    const profilexx = `*🏦 ${pushname}'s Bank:*\n\n💎${balance.bank}/${balance.bankCapacity}\n\n*Level* : ${levelMenu}\n*Exp* : ${xpMenu} out of ${reqXp}\n*Role* : ${role}`
+     //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+    const ronintxt = `🏦 ${pushname}'s Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`
+    
+    
+
+    let buttonspro = [
+        {buttonId: `${prefix}wallet`, buttonText: {displayText: 'wallet'}, type: 1},
+        {buttonId: `${prefix}withdraw`, buttonText: {displayText: 'withdraw'}, type: 1}
+        ]
+                let buttonMessage = {
+                    image: { url: pfp },
+                    caption: profilexx,
+                    footer: `${BotName}`,
+                    buttons: buttonspro,
+                    headerType: 4
+                }
+                Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+        }
+        
+                break
 
 
 
@@ -1898,7 +1933,8 @@ case 'rob':  case 'attack': {
         const cara = "cara"
         const user1 = m.sender
         const user2 = target
-	    const k = 250
+	    const k = 100
+        const amount = Math.floor(Math.random() * 200) + 1;
 	const balance1  = await eco.balance(user1, cara)
 	const balance2  = await eco.balance(user2, cara)
 	const typ = ['ran','rob','caught'];
@@ -1908,13 +1944,13 @@ case 'rob':  case 'attack': {
     let tpy = random
   switch (random) {
           case 'ran':
-                await replay(`*Your victim escaped, be more scaryðŸ˜¤ next time.*`)
+                await replay(`*Lets leave this poor soul alone.*`)
      
                 break
           case 'rob':
-            const deduct1 = await eco.deduct(user2, cara, balance2.wallet);
-            const add2 = eco.give(user1, cara, balance2.wallet); 
-                await replay(`*🤑 Robbery operation successfully.🗡️*`)
+            const deduct1 = await eco.deduct(user2, cara, amount);
+            const add2 = eco.give(user1, cara, amount); 
+                await replay(`*🤑 You have stolen ${amount} successfully .🗡️*`)
      
                 break
           case 'caught':
