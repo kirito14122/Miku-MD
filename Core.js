@@ -1903,6 +1903,7 @@ case 'bank':  case 'levee': {
     let buttonspro = [
         {buttonId: `${prefix}wallet`, buttonText: {displayText: 'wallet'}, type: 1},
         {buttonId: `${prefix}withdraw`, buttonText: {displayText: 'withdraw'}, type: 1}
+        {buttonId: `${prefix}withdraw ${balance.bank}`, buttonText: {displayText: 'withdraw ${balance.bank}'}, type: 1}
         ]
                 let buttonMessage = {
                     image: { url: pfp },
