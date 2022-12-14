@@ -1902,7 +1902,6 @@ case 'bank':  case 'levee': {
 
     let buttonspro = [
         {buttonId: `${prefix}wallet`, buttonText: {displayText: 'wallet'}, type: 1},
-        //{buttonId: `${prefix}withdraw`, buttonText: {displayText: 'withdraw'}, type: 1}
         {buttonId: `${prefix}withdraw ${balance.bank}`, buttonText: {displayText: `withdraw ${balance.bank}`}, type: 1}
         ]
                 let buttonMessage = {
@@ -3789,9 +3788,9 @@ case 'togif': case 'getgif':{
 
 
 
+case 'mod': case 'mods':{
 
-case'moderators': case 'mods': case 'moderator': case 'mod': {
-	Miku.decodeJid = (jid) => {
+        Miku.decodeJid = (jid) => {
             if (!jid) return jid
             if (/:\d+@/gi.test(jid)) {
                 let decode = jidDecode(jid) || {}
@@ -3824,17 +3823,21 @@ case'moderators': case 'mods': case 'moderator': case 'mod': {
                 return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
         }
 
-	
-	const mor = Moderate
-	let mo=`*🤴 Ethan-Bot Moderators 🤴*\n`
-	for(let i=0; i<mor.length; i++){
-    const um = await Miku.getName(mor[i] +'@s.whatsapp.net')
-    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mor[i].split("@")[0]}\n`
-  }
-  await Miku.sendMessage(m.from, { text: mo }, {quoted:m})  
-}
-break
+        
 
+
+        let array = OwnerNumber
+        let text = "";
+        //let username= [OwnerNumber.length];
+        for (let i = 0; i < array.length; i++) {
+            let whatsappusername = await Miku.getName(array[i] + '@s.whatsapp.net');
+            text +="Mod "+ (i+1)+": "+ whatsappusername;
+            text +="\nNumber: +"+ array[i] + "\n\n";
+            //username += await Miku.getName(array[i] + '@s.whatsapp.net');
+          }
+          reply ("Miku's Mods\n\n" + text )   
+    }
+    break
 
 
 
