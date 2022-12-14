@@ -3754,15 +3754,50 @@ case 'togif': case 'getgif':{
 
 
 case'moderators': case 'mods': case 'moderator': case 'mod': {
-	const mod = mods
+	Miku.decodeJid = (jid) => {
+            if (!jid) return jid
+            if (/:\d+@/gi.test(jid)) {
+                let decode = jidDecode(jid) || {}
+                return decode.user && decode.server && decode.user + '@' + decode.server || jid
+            } else return jid
+        }
+        
+        Miku.ev.on('contacts.update', update => {
+            for (let contact of update) {
+                let id = Miku.decodeJid(contact.id)
+                if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }
+            }
+        })
+    
+        Miku.getName = (jid, withoutContact  = false) => {
+            id = Miku.decodeJid(jid)
+            withoutContact = Miku.withoutContact || withoutContact 
+            let v
+            if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
+                v = store.contacts[id] || {}
+                if (!(v.name || v.subject)) v = Miku.groupMetadata(id) || {}
+                resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
+            })
+            else v = id === '0@s.whatsapp.net' ? {
+                id,
+                name: 'WhatsApp'
+            } : id === Miku.decodeJid(Miku.user.id) ?
+                Miku.user :
+                (store.contacts[id] || {})
+                return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
+        }
+
+	
+	const mor = Moderate
 	let mo=`*🤴 Ethan-Bot Moderators 🤴*\n`
-	for(let i=0; i<mod.length; i++){
-    const um = await Miku.getName(mod[i] +'@s.whatsapp.net')
-    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mod[i].split("@")[0]}\n`
+	for(let i=0; i<mor.length; i++){
+    const um = await Miku.getName(mor[i] +'@s.whatsapp.net')
+    mo+=`\n🌟${i+1}\n*🧧 Name:* ${um}\n*📞 Contact:* http://wa.me/+${mor[i].split("@")[0]}\n`
   }
   await Miku.sendMessage(m.from, { text: mo }, {quoted:m})  
 }
 break
+
 
 
 
