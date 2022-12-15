@@ -176,7 +176,7 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-const quotedMe = m.quoted?.sender == itsMe ? true : false
+const quotedMe = m.quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -1405,11 +1405,11 @@ for (let anju of ethanaudio){
 
 
 let smallinput = budy.toLowerCase()
-    if (smallinput.includes('hi')) {
+    if (smallinput.includes('hello')) {
       replay(`Don't be scared, i am still active 😁`);
     } 
 
-    if (m.isGroup && quotedMe) {
+    if (!isCmd && isGroup && quotedMe) {
       let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
       txt = `${botreply.data.cnt}`
       m.reply(txt)
@@ -1469,7 +1469,7 @@ this.game = this.game ? this.game : {}
     ${arr.slice(3, 6).join('')}
     ${arr.slice(6).join('')}
 
-    ${isWin ? `Congratulations you won!/n/n@${winner.split('@')[0]}` : isTie ? `Game Over, Well done guys` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+    ${isWin ? `Congratulations you won!\n\n@${winner.split('@')[0]}` : isTie ? `Game Over, Well done guys` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
 
     ❌: @${room.game.playerX.split('@')[0]}
     ⭕: @${room.game.playerO.split('@')[0]}
