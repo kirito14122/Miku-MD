@@ -1409,7 +1409,7 @@ let smallinput = budy.toLowerCase()
       replay(`Don't be scared, i am still active 😁`);
     } 
 
-    if (!isCmd && isGroup && quotedMe) {
+    if (!isCmd && m.isGroup && quotedMe) {
       let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
       txt = `${botreply.data.cnt}`
       m.reply(txt)
