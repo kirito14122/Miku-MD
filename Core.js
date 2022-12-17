@@ -3789,7 +3789,7 @@ case 'togif': case 'getgif':{
 
 
 case 'warn': case 'wn': case 'warning': {
-	if (!isGroup) return replay(mess.grouponly)
+	if (!m.isGroup) return replay(mess.grouponly)
     if (!isCreator || !groupAdmins) return replay(`*Only Admins or bot owner can give warnings*`)
 	let mention = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
 	if (!mention) return replay (`Tag/mention the person you are sending a warning!`)
