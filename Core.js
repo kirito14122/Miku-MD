@@ -3788,57 +3788,25 @@ case 'togif': case 'getgif':{
 
 
 
-case 'mod': case 'mods':{
-
-        Miku.decodeJid = (jid) => {
-            if (!jid) return jid
-            if (/:\d+@/gi.test(jid)) {
-                let decode = jidDecode(jid) || {}
-                return decode.user && decode.server && decode.user + '@' + decode.server || jid
-            } else return jid
-        }
-        
-        Miku.ev.on('contacts.update', update => {
-            for (let contact of update) {
-                let id = Miku.decodeJid(contact.id)
-                if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }
-            }
-        })
-    
-        Miku.getName = (jid, withoutContact  = false) => {
-            id = Miku.decodeJid(jid)
-            withoutContact = Miku.withoutContact || withoutContact 
-            let v
-            if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
-                v = store.contacts[id] || {}
-                if (!(v.name || v.subject)) v = Miku.groupMetadata(id) || {}
-                resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
-            })
-            else v = id === '0@s.whatsapp.net' ? {
-                id,
-                name: 'WhatsApp'
-            } : id === Miku.decodeJid(Miku.user.id) ?
-                Miku.user :
-                (store.contacts[id] || {})
-                return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
-        }
-
-        
-
-
-        let array = OwnerNumber
-        let text = "";
-        //let username= [OwnerNumber.length];
-        for (let i = 0; i < array.length; i++) {
-            let whatsappusername = await Miku.getName(array[i] + '@s.whatsapp.net');
-            text +="Mod "+ (i+1)+": "+ whatsappusername;
-            text +="\nNumber: +"+ array[i] + "\n\n";
-            //username += await Miku.getName(array[i] + '@s.whatsapp.net');
-          }
-          reply ("Miku's Mods\n\n" + text )   
+case 'warn': case 'wn': case 'warning': {
+	if (!isGroup) return replay(mess.grouponly)
+    if (!isCreator || !groupAdmins) return replay(`*Only Admins or bot owner can give warnings*`)
+	let mention = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
+	if (!mention) return replay (`Tag/mention the person you are sending a warning!`)
+    let warn = global.db.users[mention].warn
+    if (warn < 4) {
+        global.db.users[mention].warn += 1
+        m.reply(`⚠️ *WARNING +1*`)
+        m.reply('*You have received ' + (warn + 1) + '* warning from admin, you will be removed the 4th time', mention)
+    } else if (warn == 4) {
+        global.db.users[mention].warn = 0
+        m.reply('👋 Goodbye!')
+        await sleep(5000)
+        await Miku.groupParticipantsUpdate(m.chat, [mention], 'remove')
+        m.reply(`Removed from ${groupName} because warning has reached it limit (×4) `, mention)
     }
-    break
-
+}
+break
 
 
 
