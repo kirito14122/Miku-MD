@@ -225,7 +225,7 @@ Miku.sendMessage(anu.id, buttonMessage)
     
     Miku.sendContact = async (jid, kon, quoted = '', opts = {}) => {
 	let list = []
-	for (let i of kon) {
+	for (let i=0; i<kon.length; i++) {
 	    list.push({
 	    	displayName: await Miku.getName(i + '@s.whatsapp.net'),
 		vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await Miku.getName(i + '@s.whatsapp.net')}\nFN:${global.OwnerName}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${global.websitex}\nitem2.X-ABLabel:GitHub\nitem3.URL:${global.websitex}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${global.location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
