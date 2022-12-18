@@ -7,14 +7,14 @@ global.autoReadAll = false
 global.antitags = true
 
 
-global.Owner = ['2349051064375', '2348024152006']
+global.Owner = ['2349051064375']
 global.OwnerNumber = ['2349051064375']
 global.ownertag = ['2349051064375']
 global.Moderate = ['2347036920743', '2348024152006', '2348111617770']
 global.BotName = "Ethan-v2"
 global.packname = "Ethan-v2"
 global.author = "By: JayJay-Ops"
-global.OwnerName = "JayJay-Ops"
+global.OwnerName = ['JayJay-Ops']
 global.BotSourceCode = "https://github.com/jayjay-ops/Miku-MD"
 global.SupportGroupLink = "https://chat.whatsapp.com/JcBzjRIxM5UHfuJbt0KrWt"
 global.sessionName = "session"
