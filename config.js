@@ -7,7 +7,7 @@ global.autoReadAll = false
 global.antitags = true
 
 
-global.Owner = ['2349051064375']
+global.Owner = ['2349051064375', '2348024152006']
 global.OwnerNumber = ['2349051064375']
 global.ownertag = ['2349051064375']
 global.Moderate = ['2347036920743', '2348024152006', '2348111617770']
