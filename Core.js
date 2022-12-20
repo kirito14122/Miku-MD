@@ -1469,12 +1469,12 @@ this.game = this.game ? this.game : {}
     ${arr.slice(3, 6).join('')}
     ${arr.slice(6).join('')}
 
-    ${isWin ? `Congratulations you won!\n\n@${winner.split('@')[0]}` : isTie ? `Game Over, Well done guys` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+    ${isWin ? `Congratulations you won! @${winner.split('@')[0]}` : isTie ? `Game Over, Well done guys` : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
 
     ❌: @${room.game.playerX.split('@')[0]}
     ⭕: @${room.game.playerO.split('@')[0]}
     
-    Type *surrender* to surrender and admit defeat`
+`
             if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
 
@@ -2243,13 +2243,15 @@ case 'ttt': case 'tictactoe': {
           }[v];
         });
         let str = `
-*Your turn: @${room.game.currentTurn.split("@")[0]}*
-
 *Room ID: ${room.id}*
+
+*Your turn: @${room.game.currentTurn.split("@")[0]}*
 
 ${arr.slice(0, 3).join("  ")}
 ${arr.slice(3, 6).join("  ")}
 ${arr.slice(6).join("  ")}
+
+Type *surrender* to surrender and admit defeat
 `;
 
         return await Miku.sendMessage(m.chat, {
@@ -3788,18 +3790,18 @@ case 'togif': case 'getgif':{
 
 
 
-case 'warn': case 'wn': case 'warning': {
+case'warn': case 'wn': case 'warning': {
 	if (!m.isGroup) return replay(mess.grouponly)
     if (!isCreator || !groupAdmins) return replay(`*Only Admins or bot owner can give warnings*`)
 	let mention = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
 	if (!mention) return replay (`Tag/mention the person you are sending a warning!`)
-    let warn = global.db.users[mention].warn
+    let warn = global.db.data.users[mention].warn
     if (warn < 4) {
-        global.db.users[mention].warn += 1
+        global.db.data.users[mention].warn += 1
         m.reply(`⚠️ *WARNING +1*`)
         m.reply('*You have received ' + (warn + 1) + '* warning from admin, you will be removed the 4th time', mention)
     } else if (warn == 4) {
-        global.db.users[mention].warn = 0
+        global.db.data.users[mention].warn = 0
         m.reply('👋 Goodbye!')
         await sleep(5000)
         await Miku.groupParticipantsUpdate(m.chat, [mention], 'remove')
