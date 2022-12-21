@@ -1802,17 +1802,17 @@ case 'wealth': case 'ritual': {
 }
 break
 
-/*
+
 case 'clearbank': case 'bankrupt': {
         if (!isCreator) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
-        const deduct1 = eco.deduct(user, cara, texts)
-        replay(`*You have been ripped off all your blood money*`)
+        const deduct1 = eco.decCoinsInBank(user, cara, text)
+        replay(`*You have been ripped off all your blood money master*`)
 }
 break
 
-*/
+
 
 
 
@@ -3787,28 +3787,6 @@ case 'togif': case 'getgif':{
     Miku.sendContact(m.chat, global.Owner, m)
     }
     break
-
-
-
-case'warn': case 'wn': case 'warning': {
-	if (!m.isGroup) return replay(mess.grouponly)
-    if (!isCreator || !groupAdmins) return replay(`*Only Admins or bot owner can give warnings*`)
-	let mention = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
-	if (!mention) return replay (`Tag/mention the person you are sending a warning!`)
-    let warn = global.db.data.users[mention].warn
-    if (warn < 4) {
-        global.db.data.users[mention].warn += 1
-        m.reply(`⚠️ *WARNING +1*`)
-        m.reply('*You have received ' + (warn + 1) + '* warning from admin, you will be removed the 4th time', mention)
-    } else if (warn == 4) {
-        global.db.data.users[mention].warn = 0
-        m.reply('👋 Goodbye!')
-        await sleep(5000)
-        await Miku.groupParticipantsUpdate(m.chat, [mention], 'remove')
-        m.reply(`Removed from ${groupName} because warning has reached it limit (×4) `, mention)
-    }
-}
-break
 
 
 
