@@ -170,6 +170,7 @@ const args = body.trim().split(/ +/).slice(1)
 const pushname = m.pushName || "No Name"
 const botNumber = await Miku.decodeJid(Miku.user.id)
 const isCreator = [botNumber, ...global.Owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
@@ -1776,11 +1777,39 @@ break
 
 
 case 'wealth': case 'ritual': {
-        if (!isCreator) return replay(mess.botowner)
-        var user = m.sender
-        var cara = 'cara'
-        const give1 = eco.give(user, cara, 2000)
-        replay(`_You are the wealthiest my *Lord*_`)
+    if (!isPremium && !isCreator) return replay(mess.premime)
+       if (!text) return replay("Provide the amount you want to add!");
+       const texts = text.trim();
+       const user = m.sender;
+       const cara = 'cara'
+       const give = await eco.give(user, cara, texts);   
+        replay(`Successfully Deposited 💎${give.amount} to your wallet.`)
+}
+break
+
+case 'addmoney': case 'adddiamond': {
+    if (!isPremium && !isCreator) return replay(mess.premime)
+   let value = text.trim().split(" ");
+   if (value[0] === "") return replay(`Use ${prefix}transfer 100 @user`);
+   const target =
+                        m.quoted && m.mentionedJid.length === 0
+                        ? m.quoted.sender
+                        : m.mentionedJid[0] || null;    
+          if (!target || target === m.sender) return replay("what are you trying to do!")
+          if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+       while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+       const cara = "cara"
+       const user1 = m.sender
+       const user2 = target
+                  const word = value[0];
+                  const code = value[1];
+       let d = parseInt(word)
+       if (!d) return replay("check your text plz u r using the command in a wrong way")
+       
+       const balance = await eco.balance(user1, cara);
+       const give = await eco.give(user2, cara, value[0]);
+       replay(`*Successfully added 💎${give.amount} to his wallet.*`)
+
 }
 break
 
