@@ -4294,7 +4294,7 @@ case 'playlist': case 'plist': {
                         fs.unlinkSync(`./${randomName}`);
                       } catch (err) {
                            console.error(`🚨 An error occurred, could not fetch playlist.`)
-                      }
+                      })
     }
 }
 break
