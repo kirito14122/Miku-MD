@@ -4295,7 +4295,7 @@ case 'playlist': case 'plist': {
                       } catch (err) {
                            console.error(`🚨 An error occurred, could not fetch playlist.`)
                       }
-    }
+    })
 }
 break
  
