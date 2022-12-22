@@ -4284,7 +4284,7 @@ case 'playlist': case 'plist': {
                                          mediaType: 2,
                                          mediaUrl: search.all[0].thumbnail,
                                          sourceUrl: search.all[0].thumbnail
-                                    })
+                                    }
                                 }
                             }
                     Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
