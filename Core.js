@@ -48,6 +48,10 @@ const ms = require('ms')
 const { jadwaltv }= require('./lib/jadwaltv');
 const { MikuTiktok } = require('./lib/tiktokmikudl');
 const maker = require('mumaker')
+const ytdls = require('ytdl-secktor')
+const ytss = require('secktor-pack')
+var videotime = 60000 // 1000 min
+var dlsize = 250 // 250mb
 const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
@@ -2040,76 +2044,7 @@ break
 
 
 
-//-----------------Slot----------------------
-/*
-
-case'slot': case 'spin': {
-       if (isBan) return replay(mess.banned);
-       if (isBanChat) return replay(mess.bangc)
-       if (!m.isGroup) return replay(mess.grouponly)
-       var today = new Date();
-   if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
-       if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
-       if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-       const fruit1= ["🥥", "🍎", "🍇"]
-       const fruit2 = ["🍎", "🍇", "🥥"]  
-       const fruit3 = ["🍇", "🥥", "🍎"]         
-       const fruit4 = ["🍇", "🍎", "🥥"]
-       const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
-       const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
-       const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
-       const near = ['*Wow, you were so close to winning pineapples*\n\n_--> 🍎-🍍+🍍_', '*Hmmm, you were so close to winning Apples*\n\n_--> 🍎+🍎-🍍_']          
-       const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊 You Just hit a jackpot worth 💎1000*']
-       const user = m.sender
-       const cara = "cara"
-       const k = 100
-       const balance1  = await eco.balance(user, cara)
-       
-       if (k > balance1.wallet) return replay(`You are going to be spinning on your wallet, you need at least 💎100`);
-       const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
-       const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
-       const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
-       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
-       const mess1 = lose[Math.floor(Math.random() * lose.length)];
-       const mess2 = won[Math.floor(Math.random() * won.length)];
-       const mess3 = near[Math.floor(Math.random() * near.length)];
-       const mess4 = jack[Math.floor(Math.random() * jack.length)];
-       const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
-       
-       if ((f1 !== f2) && f2 !== f3){
-          const deduct1 = await eco.deduct(user, cara, 50);
-                 replay(`${mess1}\n\n*Big Lose -->* _💎50_`)
-       }
-       else if ((f1 == f2) && f2 == f3){
-          const give1 = await eco.give(user, cara, 100); 
-                replay(`${mess2}\n*_Big Win -->* _💎100_`)
-       }
-       else if ((f1 == f2) && f2 !== f3){
-          const give2 = await eco.give(user, cara, 20);
-                replay(`${mess3}\n*Small Win -->* _💎20_`)
-       }
-       else if ((f1 !== f2) && f1 == f3){
-          const deduct2 = await eco.deduct(user, cara, 20);
-                replay(`${mess5}\n\n*Small Lose -->* _💎20_`)
-       }
-       else if ((f1 !== f2) && f2 == f3){
-          const give4 = eco.give(user, cara, 20); 
-                replay(`${mess3}\n\n*Small Win -->* _💎20_`)
-       }
-       else if (((f1 == f2) && f2 == f3) && f3 == f4){
-          const give5 = eco.give(user, cara, 1000);
-               replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
-       }
-       else { 
-               replay(`Do you understand what you are doing?`)
-       }
-    }
-    else{
-           replay(`*You can only play this game during weekends*\n\n*🌿 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
-    }
-}
-break
-*/	
+//-----------------Slot----------------------	
 
 case'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
@@ -3790,8 +3725,6 @@ case 'togif': case 'getgif':{
 
 
 
-
-
 case 'translate': case 'trans': {
     if (isBan) return reply(mess.banned)
     if (!args.join(" ")) return replay("Pls enter any text to translate")
@@ -4301,6 +4234,70 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  }
  break
 
+
+
+case 'playlist': case 'plist': {
+	const getRandom = (text) => {
+                return `${Math.floor(Math.random() * 10000)}${text}`;
+            };
+            if (!text) return replay(`❌Please provide me a url`)
+            let urlYtt = text.split('=')[1]
+            console.log(urlYtt)
+            var opts = { listId: urlYtt }
+            ytss( opts, async function ( err, playlist ) {
+	        if ( err ) throw err
+               replay('This Process will take a bit time.');
+               
+            for (let i=0;i<playlist.videos.length;i++){
+            if(playlist.videos[i].videoId===undefined) continue
+            let urlYt = playlist.videos[i].videoId
+                 try {
+                        let infoYt = await ytdls.getInfo(urlYt);
+                        if (infoYt.videoDetails.lengthSeconds >= videotime) continue
+                        let titleYt = infoYt.videoDetails.title;
+                        let randomName = getRandom(".mp4");
+                        const stream = ytdl(urlYt, {filter: (info) => info.itag == 22 || info.itag == 18,}).pipe(fs.createWriteStream(`./${randomName}`));
+                        await new Promise((resolve, reject) => {
+                               stream.on("error", reject);
+                               stream.on("finish", resolve);
+                        });
+                        let stats = fs.statSync(`./${randomName}`);
+                        let fileSizeInBytes = stats.size;
+                        let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+                        if (fileSizeInMegabytes <= dlsize) {
+                        	let ytss = require("secktor-pack");
+                            let search = await ytss(text);
+                            let buttonMessage = {
+                            	video: fs.readFileSync(`./${randomName}`),
+                                jpegThumbnail: log0,
+                                mimetype: 'video/mp4',
+                                fileName: `${titleYt}.mp4`,
+                                caption: ` >> Title : ${titleYt}\n >> Size : ${fileSizeInMegabytes} MB`,
+                                headerType: 4,
+                                contextInfo: {
+                                	externalAdReply: {
+                                	     title: titleYt,
+                                         body: pushname,
+                                         thumbnail: await getBuffer(search.all[0].thumbnail),
+                                         renderLargerThumbnail: true,
+                                         mediaType: 2,
+                                         mediaUrl: search.all[0].thumbnail,
+                                         sourceUrl: search.all[0].thumbnail
+                                    }
+                                }
+                            }
+                    Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
+                        }else {
+                     replay(`❌ File size bigger than ${dlsize}mb.`);
+                        }
+                        fs.unlinkSync(`./${randomName}`);
+                      } catch (err) {
+                           console.error(`🚨 An error occurred, could not fetch playlist.`)
+                      }
+    }
+}
+break
+ 
 
 
 
