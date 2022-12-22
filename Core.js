@@ -48,10 +48,6 @@ const ms = require('ms')
 const { jadwaltv }= require('./lib/jadwaltv');
 const { MikuTiktok } = require('./lib/tiktokmikudl');
 const maker = require('mumaker')
-const ytdls = require('ytdl-secktor')
-const ytss = require('secktor-pack')
-var videotime = 60000 // 1000 min
-var dlsize = 250 // 250mb
 const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
@@ -68,11 +64,11 @@ try {
 
 const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
-const { 
-  yta, 
-  ytv, 
-  searchResult 
- } = require('./lib/ytdl')
+//const { 
+//  yta, 
+//  ytv, 
+//  searchResult 
+// } = require('./lib/ytdl')
 
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
