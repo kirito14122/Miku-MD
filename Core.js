@@ -4292,9 +4292,9 @@ case 'playlist': case 'plist': {
                      replay(`❌ File size bigger than ${dlsize}mb.`);
                         }
                         fs.unlinkSync(`./${randomName}`);
-                      } catch (err) {
+                      }) catch (err) {
                            console.error(`🚨 An error occurred, could not fetch playlist.`)
-                      })
+                      }
     }
 }
 break
