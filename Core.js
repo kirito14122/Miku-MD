@@ -4288,9 +4288,9 @@ case 'playlist': case 'plist': {
                                 }
                             }
                     Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
-                        }else {
+                        })else {
                      replay(`❌ File size bigger than ${dlsize}mb.`);
-                        })
+                        }
                         fs.unlinkSync(`./${randomName}`);
                       } catch (err) {
                            console.error(`🚨 An error occurred, could not fetch playlist.`)
