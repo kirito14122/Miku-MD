@@ -36,8 +36,6 @@ const cheerio = require ("cheerio");
 const eco = require('discord-mongoose-economy')
 const ty = eco.connect('mongodb+srv://tuff:tuff@cluster0.fhsvdnc.mongodb.net/test');
 //const ty = eco.connect('mongodb+srv://jayjay:jayjay@cluster0.39zfejm.mongodb.net/test');
-//const { TenorFetch } = require('tenor-fetch');
-//const tf = new TenorFetch('AIzaSyDUEBAJLT9RzzXfgNdcHo4pxcppNf7qiXc');
 const textpro = require('./lib/textpro')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
@@ -1687,22 +1685,6 @@ case 'report': case 'suggest ': {
  }
  break
 
-/*
-case 'getgif': case 'gify' :
-    if (isBan) return reply(mess.banned)	 			
-    if (isBanChat) return reply(mess.bangc)
-    //if (!text) return reply(`Give me a search term baka`)
-    //let terms = text.trim();
-    let giffy = tf.search('smug anime');
-    replay(mess.waiting);        
-    //let gift = await getBuffer(giffy.data.url)
-    //let gjif = await GIFBufferToVideoBuffer(gift)   
-        await Miku.sendMessage(m.chat,{video: giffy, gifPlayback:true, caption: "🌟 Here you go."},{ quoted:m }).catch(err => {
-                    return reply('error..')
-                                    })
-break
-*/
-
 
 
  
@@ -1799,16 +1781,6 @@ case 'wealth': case 'ritual': {
         var cara = 'cara'
         const give1 = eco.give(user, cara, 2000)
         replay(`_You are the wealthiest my *Lord*_`)
-}
-break
-
-
-case 'clearbank': case 'bankrupt': {
-        if (!isCreator) return replay(mess.botowner)
-        var user = m.sender
-        var cara = 'cara'
-        const deduct1 = eco.decCoinsInBank(user, cara, text)
-        replay(`*You have been ripped off all your blood money master*`)
 }
 break
 
