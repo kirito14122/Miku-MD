@@ -50,6 +50,7 @@ const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
 const { mediafireDl } = require('./lib/mediafire.js')
+const { mk } = require('./lib/database2.js')
 
 const _ = require('lodash')
 const yargs = require('yargs/yargs')
