@@ -4286,9 +4286,9 @@ case 'playlist': case 'plist': {
                                          sourceUrl: search.all[0].thumbnail
                                     }
                                 }
-                            }
+                            })
                     Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
-                        })else {
+                        }else {
                      replay(`❌ File size bigger than ${dlsize}mb.`);
                         }
                         fs.unlinkSync(`./${randomName}`);
