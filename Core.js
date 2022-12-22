@@ -4110,7 +4110,7 @@ reply(mess.error)
 break
 
 
-
+/*
 case 'music': case 'play': case 'song': case 'ytplay': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
@@ -4223,6 +4223,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  }
  break
 
+
  case 'ytvd2': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
@@ -4233,7 +4234,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  Miku.sendMessage(from, {video:{url:ytmp4play2.videoUrl}, mimetype:"video/mp4", caption:'Downloaded by *Miku MD*',}, {quoted:m})
  }
  break
-
+*/
 
 
 case 'playlist': case 'plist': {
@@ -4300,7 +4301,7 @@ break
  
 
 
-
+/*
  
  case 'ytshorts': case 'shorts': {
     if (isBan) return reply(mess.banned)	 			
@@ -4320,7 +4321,7 @@ break
                  })
              }
              break
-
+*/
 
 case 'couplepp':  case 'ppcouple': {
 if (isBan) return reply(mess.banned)
