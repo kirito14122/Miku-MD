@@ -4237,68 +4237,6 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 */
 
 
-case 'playlist': case 'plist': {
-	const getRandom = (text) => {
-                return `${Math.floor(Math.random() * 10000)}${text}`;
-            };
-            if (!text) return replay(`❌Please provide me a url`)
-            let urlYtt = text.split('=')[1]
-            console.log(urlYtt)
-            var opts = { listId: urlYtt }
-            ytss( opts, async function ( err, playlist ) {
-	        if ( err ) throw err
-               replay('This Process will take a bit time.');
-               
-            for (let i=0;i<playlist.videos.length;i++){
-            if(playlist.videos[i].videoId===undefined) continue
-            let urlYt = playlist.videos[i].videoId
-                 try {
-                        let infoYt = await ytdls.getInfo(urlYt);
-                        if (infoYt.videoDetails.lengthSeconds >= videotime) continue
-                        let titleYt = infoYt.videoDetails.title;
-                        let randomName = getRandom(".mp4");
-                        const stream = ytdl(urlYt, {filter: (info) => info.itag == 22 || info.itag == 18,}).pipe(fs.createWriteStream(`./${randomName}`));
-                        await new Promise((resolve, reject) => {
-                               stream.on("error", reject);
-                               stream.on("finish", resolve);
-                        });
-                        let stats = fs.statSync(`./${randomName}`);
-                        let fileSizeInBytes = stats.size;
-                        let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
-                        if (fileSizeInMegabytes <= dlsize) {
-                        	let ytss = require("secktor-pack");
-                            let search = await ytss(text);
-                            let buttonMessage = {
-                            	video: fs.readFileSync(`./${randomName}`),
-                                jpegThumbnail: log0,
-                                mimetype: 'video/mp4',
-                                fileName: `${titleYt}.mp4`,
-                                caption: ` >> Title : ${titleYt}\n >> Size : ${fileSizeInMegabytes} MB`,
-                                headerType: 4,
-                                contextInfo: {
-                                	externalAdReply: {
-                                	     title: titleYt,
-                                         body: pushname,
-                                         thumbnail: await getBuffer(search.all[0].thumbnail),
-                                         renderLargerThumbnail: true,
-                                         mediaType: 2,
-                                         mediaUrl: search.all[0].thumbnail,
-                                         sourceUrl: search.all[0].thumbnail
-                                    }
-                                }
-                            }
-                    Miku.sendMessage(m.chat, buttonMessage, { quoted: m })
-                        }else {
-                     replay(`❌ File size bigger than ${dlsize}mb.`);
-                        }
-                        fs.unlinkSync(`./${randomName}`);
-                      } catch (err) {
-                           console.error(`🚨 An error occurred, could not fetch playlist.`)
-                      }
-    }
-}
-break
- 
 
 
 /*
