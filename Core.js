@@ -2608,36 +2608,45 @@ await Miku.sendMessage(m.chat, { delete: key })
  break
 
 
-case'antilinkgc': {
-    if (isBan) return reply(mess.banned)	 			
- if (isBanChat) return reply(mess.bangc)
- if (!m.isGroup) return replay(mess.grouponly)
- if (!isBotAdmins) return replay(mess.botadmin)
- if (!isAdmins && !isCreator) return replay(mess.useradmin)
- if (args[0] === "on") {
- if (checkdata.antilink == "true") return replay(`*Antilink was alredy  enabled here.*`)
-    await mk.updateOne({ id: m.chat }, { antilink: "true" })
-    return replay(`*Enabled antilink in current chat.*`)
- else if(!checkdata.antilink) {await new mk({ id: m.chat, antilink: "true" }).save()
-			return replay(`*Successfully activated antilink*`)
-			}
- Miku.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
- } else if (args[0] === "off") {
- if(checkdata.antilink == "false") return replay(`*Antilink was alredy disabled here.*`)
-   await mk.updateOne({ id: m.chat }, { antilink: "false" })
-   return replay(`*Disabled antilink in current chat.*`)
- else if(!checkdata.antilink) {await new mk({ id: m.chat, antilink: "false" }).save()
-			return replay(`*Successfully deactivated antilink*`)
-			}
- } else {
-   let buttonsntilink = [
+case 'antilinkgc': {
+	if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+    if (!m.isGroup) return replay(mess.grouponly)
+    if (!isBotAdmins) return replay(mess.botadmin)
+    if (!isAdmins && !isCreator) return replay(mess.useradmin)
+    if (args[0] === "on") {
+    	if (checkdata.antilink == "true"){
+            return replay(`*Antilink was alredy  enabled here.*`)
+            await mk.updateOne({ id: m.chat }, { antilink: "true" })
+            return replay(`*Enabled antilink in current chat.*`)
+        }
+        else if (checkdata.antilink == "false") {
+            await new mk({ id: m.chat, antilink: "true" }).save()
+            return replay(`*Successfully activated antilink*`)
+        }
+      Miku.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+    }
+    else if (args[0] === "off") {
+    	if (checkdata.antilink == "false"){
+    	    return replay(`*Antilink was alredy disabled here.*`)
+            await mk.updateOne({ id: m.chat }, { antilink: "false" })
+            return replay(`*Disabled antilink in current chat.*`)
+        }
+        else if (checkdata.antilink == "true"){
+        	await new mk({ id: m.chat, antilink: "false" }).save()
+            return replay(`*Successfully deactivated antilink*`)
+        }
+    }
+    else {
+    	let buttonsntilink = [
    { buttonId: `${prefix}antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
    { buttonId: `${prefix}antilinkgc off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
    }
-   }
-   break
+
+}
+break
 
 
 
