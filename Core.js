@@ -738,7 +738,7 @@ if (!m.isGroup && !isCreator){
      }
 }
 
-let checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
+let checkdata = (await mk.findOne({id: m.chat})) || (await new mk({id: m.chat}).save());
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
@@ -2612,7 +2612,7 @@ case 'antilinkgc': {
     if (!m.isGroup) return replay(mess.grouponly)
     if (!isBotAdmins) return replay(mess.botadmin)
     if (!isAdmins && !isCreator) return replay(mess.useradmin)
-    let checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
+    let checkdata = (await mk.findOne({id: m.chat})) || (await new mk({id: m.chat}).save());
     if (args[0] === "on") {
     	if (checkdata.antilink == "true"){
             return replay(`*Antilink was alredy  enabled here.*`)
