@@ -191,8 +191,7 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
 const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
-const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
-const checkdata = await mk.findOne({ id: m.chat }) 
+const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 //const AntiLink = m.isGroup ? ntilink.includes(from) : false
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
@@ -217,7 +216,7 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 
 const mongoose = require("mongoose");
-
+const checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
 
 
 
