@@ -64,11 +64,11 @@ try {
 
 const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
-//const { 
-//  yta, 
-//  ytv, 
-//  searchResult 
-// } = require('./lib/ytdl')
+const { 
+  yta, 
+  ytv, 
+  searchResult 
+ } = require('./lib/ytdl')
 
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
@@ -757,7 +757,7 @@ if (checkdata.antilink == "true") {
     }
 */ 
 
-if (Antilink) {
+if (AntiLink) {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
     reply(`\`\`\`「  Antilink System  」\`\`\`\n\nNo action will be because you sent this group's link.`)
@@ -786,18 +786,7 @@ if (Antilink) {
   Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
   } else {
   }
-  if (antiWame)
-  if (budy.includes(`http://wa.me`)) {
-if (!isBotAdmins) return
-bvl = `\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\nLink sent by Admin so no action is taken!`
-if (isAdmins) return reply(bvl)
-if (m.key.fromMe) return reply(bvl)
-if (isCreator) return reply(bvl)
-kice = m.sender
-await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
-} else {
-}
+
 
 if (antiVirtex) {
     if (budy.length > 3500) {
@@ -2507,17 +2496,7 @@ await Miku.sendMessage(from, {text:"reply -s to this image to make sticker"}, {q
 }
 break
 
-/*
-case 'delete': case 'del': {
-    if (isBan) return reply(mess.banned)	 			
- if (isBanChat) return reply(mess.bangc)
- if (!m.quoted) return
- let { chat, fromMe, id, isBaileys } = m.quoted
- if (!isBaileys) return replay('How can i delete messages of other person?')
- Miku.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
- }
- break
-*/
+
 
  case 'deleteall': case 'delall': case 'delete': case 'del': {
     if (isBan) return reply(mess.banned)	 			
@@ -3122,6 +3101,7 @@ case 'happymod': {
  break
 
  case 'yts': case 'ytsearch': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args.join(" ")) return replay(`Example : -yts Heat waves`)
@@ -3292,27 +3272,6 @@ case'tagadmins': case 'admins': case 'admin': {
 
 
 
-
-/*
-     case 'purge':{
-        if (isBan) return reply(mess.banned)	 			
-     if (isBanChat) return reply(mess.bangc)
-     if (!m.isGroup) return replay(mess.grouponly)
-     if (!isBotAdmins) return replay(mess.botadmin)
-     if (!isAdmins && !isCreator) return replay(mess.useradmin)
-
-        const delay = time => new Promise(res=>setTimeout(res,time));
-
-        let users = (await Miku.fetchGroupMetadataFromWA(m.chat)).participants.map(u => u.jid)
-        for (let user of users){
-
-            await Miku.groupParticipantsUpdate(m.chat, [user], 'remove')
-            await delay(3000)
-        }
-    }
-     break
-
-*/
 
 case 'purge':{mess
     if (isBan) return reply(mess.banned)	 			
@@ -4172,8 +4131,9 @@ reply(mess.error)
 break
 
 
-/*
+
 case 'music': case 'play': case 'song': case 'ytplay': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4207,6 +4167,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  break
 
  case 'ytad': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
     const YT=require('./lib/ytdlcore')
@@ -4223,6 +4184,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  break
 
  case 'ytvd': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4239,6 +4201,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(mess.nolink)
@@ -4273,6 +4236,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytad2': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
     const YT=require('./lib/ytdlcore')
@@ -4287,6 +4251,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytvd2': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4296,14 +4261,15 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  Miku.sendMessage(from, {video:{url:ytmp4play2.videoUrl}, mimetype:"video/mp4", caption:'Downloaded by *Miku MD*',}, {quoted:m})
  }
  break
-*/
 
 
 
 
-/*
+
+
  
  case 'ytshorts': case 'shorts': {
+    if (!isPremium) return replay(mess.pro)
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
    if (!text) return reply(`*Use ${prefix + command} put yt shorts link*`)
@@ -4321,7 +4287,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
                  })
              }
              break
-*/
+
 
 case 'couplepp':  case 'ppcouple': {
 if (isBan) return reply(mess.banned)
@@ -5718,6 +5684,8 @@ Owner Name : ${global.OwnerName}
 ║ ${prefix}truth
 ║ ${prefix}slot money
 ║ ${prefix}dare
+║ ${prefix}ttt
+║ ${prefix}delttt
 ║
 ╚════════════╝
 
@@ -6353,6 +6321,8 @@ case 'help8': case 'h8': {
 🕹️ ${prefix}slot
 🕹️ ${prefix}slot help
 🕹️ ${prefix}slot money
+🕹️ ${prefix}ttt
+🕹️ ${prefix}delttt
 
 ──────────────`
 
