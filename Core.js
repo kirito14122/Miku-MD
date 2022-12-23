@@ -216,7 +216,6 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 
 const mongoose = require("mongoose");
-const checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
 
 
 
@@ -739,7 +738,7 @@ if (!m.isGroup && !isCreator){
      }
 }
 
-
+let checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
@@ -2613,13 +2612,14 @@ case 'antilinkgc': {
     if (!m.isGroup) return replay(mess.grouponly)
     if (!isBotAdmins) return replay(mess.botadmin)
     if (!isAdmins && !isCreator) return replay(mess.useradmin)
+    let checkdata = (await mk.findOne({id: m.chat,})) || (await new mk({id: m.chat,}).save());
     if (args[0] === "on") {
     	if (checkdata.antilink == "true"){
             return replay(`*Antilink was alredy  enabled here.*`)
             await mk.updateOne({ id: m.chat }, { antilink: "true" })
             return replay(`*Enabled antilink in current chat.*`)
         }
-        else if (checkdata.antilink == "false") {
+        else if (!checkdata) {
             await new mk({ id: m.chat, antilink: "true" }).save()
             return replay(`*Successfully activated antilink*`)
         }
@@ -2631,7 +2631,7 @@ case 'antilinkgc': {
             await mk.updateOne({ id: m.chat }, { antilink: "false" })
             return replay(`*Disabled antilink in current chat.*`)
         }
-        else if (checkdata.antilink == "true"){
+        else if (!checkdata){
         	await new mk({ id: m.chat, antilink: "false" }).save()
             return replay(`*Successfully deactivated antilink*`)
         }
@@ -2646,6 +2646,7 @@ case 'antilinkgc': {
 
 }
 break
+
 
 
 
