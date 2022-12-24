@@ -49,13 +49,11 @@ global.ntilinkall = []
 global.nticall = []
 global.ntwame = []
 global.nttoxic = []
-global.ntnsfw = []
 global.ntvirtex = []
 global.rkyt = []
 global.wlcm = []
 global.gcrevoke = []
 global.autorep = []
-global.ntilink = []
 
 
 global.mess = {
