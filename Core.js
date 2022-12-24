@@ -192,7 +192,6 @@ const isUser = pendaftar.includes(m.sender)
 const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
-//const AntiLink = m.isGroup ? ntilink.includes(from) : false
 const checkdata = await mk.findOne({ id: m.chat });
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
@@ -749,30 +748,13 @@ if (checkdata.antilink == "true") {
     if (m.key.fromMe) return reply(bvl)
     if (isCreator) return reply(bvl)
     kice = m.sender
-    await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+    await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
     await mk.updateOne({ id: m.chat }, { antilink: "true" })
     Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
     } else {
     }
     }
 
-/*
-if (AntiLink) {
-    linkgce = await Miku.groupInviteCode(from)
-    if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
-    reply(`\`\`\`「  Antilink System  」\`\`\`\n\nNo action will be because you sent this group's link.`)
-    } else if (isUrl(m.text)) {
-    bvl = `\`\`\`「  *Antilink System*  」\`\`\`\n\nAdmin has sent a link so no action is taken.`
-    if (isAdmins) return reply(bvl)
-    if (m.key.fromMe) return reply(bvl)
-    if (isCreator) return reply(bvl)
-    kice = m.sender
-    await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-    Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
-    } else {
-    }
-    }
-*/
 
     if (antiWame)
     if (budy.includes(`wa.me`)) {
@@ -797,24 +779,6 @@ if (antiVirtex) {
     }
     }
 
-/*
-    if (AntiLink) {
-        if (!isBotAdmins) return
-        linkgce = await Miku.groupInviteCode(from)
-        if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
-        reply(`\`\`\`「  Antilink System  」\`\`\`\n\nNo action will be taken because you sent this group's link!`)
-        } else if (isUrl(m.text)) {
-        bvl = `\`\`\`「  Antilink System  」\`\`\`\n\nAdmin has sent a group link so no action will be taken!`
-        if (isAdmins) return reply(bvl)
-        if (m.key.fromMe) return reply(bvl)
-        if (isCreator) return reply(bvl)
-        kice = m.sender
-        await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
-        } else {
-        }
-        }
-*/
         
         if (AntiLinkYoutubeVid)
         if (budy.includes("https://youtu.be/")){
@@ -2620,13 +2584,13 @@ case 'antilinkgc': {
     	if (!checkdata){
     	    await new mk({ id: m.chat, antilink: "true" }).save()
                         return replay(`*Successfully activated antilink*`)
+        Miku.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
         }
         else {
         	if (checkdata.antilink == "true") return replay(`*Already activated.*`)
                 await mk.updateOne({ id: m.chat }, { antilink: "true" })
                        return replay(`*Antilink is enabled in this group*`)
         }
-        Miku.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
     }
     else if (args[0] === "off") {
     	if (!checkdata) {
@@ -2649,41 +2613,6 @@ case 'antilinkgc': {
 }
 break    
     
-
-
-/*
-case'antilinkgc': {
-    if (isBan) return reply(mess.banned)	 			
- if (isBanChat) return reply(mess.bangc)
- if (!m.isGroup) return replay(mess.grouponly)
- if (!isBotAdmins) return replay(mess.botadmin)
- if (!isAdmins && !isCreator) return replay(mess.useradmin)
- if (args[0] === "on") {
- if (AntiLink) return replay('Already activated')
- ntilink.push(from)
- replay('Activated _Antilink_ in this group.')
- var groupe = await Miku.groupMetadata(from)
- var members = groupe['participants']
- var mems = []
- members.map(async adm => {
- mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
- })
- Miku.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
- } else if (args[0] === "off") {
- if (!AntiLink) return replay('Already deactivated!')
- let off = ntilink.indexOf(from)
- ntilink.splice(off, 1)
- replay('Deactivated _Antilink_ in this group!')
- } else {
-   let buttonsntilink = [
-   { buttonId: `${prefix}antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `${prefix}antilinkgc off`, buttonText: { displayText: 'Off' }, type: 1 }
-   ]
-   await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
-   }
-   }
-   break
-*/
 
 
    case 'antilinkyoutubevideo': case 'antilinkyoutubevid': case 'antilinkytvid': {
