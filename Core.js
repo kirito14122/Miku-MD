@@ -797,7 +797,7 @@ if (antiVirtex) {
     }
     }
 
-
+/*
     if (AntiLink) {
         if (!isBotAdmins) return
         linkgce = await Miku.groupInviteCode(from)
@@ -814,7 +814,7 @@ if (antiVirtex) {
         } else {
         }
         }
-
+*/
         
         if (AntiLinkYoutubeVid)
         if (budy.includes("https://youtu.be/")){
