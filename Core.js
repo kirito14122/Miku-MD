@@ -50,7 +50,7 @@ const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
 const { mediafireDl } = require('./lib/mediafire.js')
-//const { mk } = require('./lib/dataschema')
+const { mk } = require('./lib/dataschema')
 
 
 const _ = require('lodash')
@@ -192,7 +192,7 @@ const isUser = pendaftar.includes(m.sender)
 const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
-const AntiLink = m.isGroup ? ntilink.includes(from) : false
+//const AntiLink = m.isGroup ? ntilink.includes(from) : false
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -216,7 +216,7 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 
 const mongoose = require("mongoose");
-
+const checkdata = (await mk.findOne({id: m.chat})) || (await new mk({id: m.chat}).save());
 
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
@@ -737,8 +737,8 @@ if (!m.isGroup && !isCreator){
           await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
      }
 }
-/*
-let checkdata = (await mk.findOne({id: m.chat})) || (await new mk({id: m.chat}).save());
+
+
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
@@ -755,8 +755,8 @@ if (checkdata.antilink == "true") {
     } else {
     }
     }
-*/ 
 
+/*
 if (AntiLink) {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
@@ -772,7 +772,7 @@ if (AntiLink) {
     } else {
     }
     }
-
+*/
 
     if (antiWame)
     if (budy.includes(`wa.me`)) {
@@ -2602,14 +2602,13 @@ await Miku.sendMessage(m.chat, { delete: key })
  } 
  break
 
-/*
+
 case 'antilinkgc': {
 	if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (!isBotAdmins) return replay(mess.botadmin)
     if (!isAdmins && !isCreator) return replay(mess.useradmin)
-    let checkdata = (await mk.findOne({id: m.chat})) || (await new mk({id: m.chat}).save());
     if (args[0] === "on") {
     	if (checkdata.antilink == "true"){
             return replay(`*Antilink was alredy  enabled here.*`)
@@ -2643,9 +2642,9 @@ case 'antilinkgc': {
 
 }
 break
-*/
 
 
+/*
 case'antilinkgc': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
@@ -2677,7 +2676,7 @@ case'antilinkgc': {
    }
    }
    break
-
+*/
 
 
    case 'antilinkyoutubevideo': case 'antilinkyoutubevid': case 'antilinkytvid': {
