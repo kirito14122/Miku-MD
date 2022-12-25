@@ -176,7 +176,7 @@ const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') 
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
-const users = m.mentionedJid ? m.mentionedJid[0] : m.quoted.sender || false;
+let users = m.mentionedJid ? m.mentionedJid[0] : m.quoted.sender || false;
 const quoted = m.quoted ? m.quoted : m
 const quotedMe = quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
@@ -1564,6 +1564,7 @@ case 'ban': {
                  await mku.updateOne({ id: users }, { ban: "true" })
                  return replay(`${pname} has not been unban from using ${global.BotName}`)
          }
+   })
 }
 break
 
@@ -1583,8 +1584,11 @@ case 'unban': {
                  await mku.updateOne({ id: users }, { ban: "false" })
                  return replay(`${pname} has not been unban from using ${global.BotName}`)
          }
+    })
 }
 break
+
+
 
 
 
