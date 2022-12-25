@@ -50,7 +50,7 @@ const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
 const { mediafireDl } = require('./lib/mediafire.js')
-const { mk } = require('./lib/dataschema')
+const { mk, mku } = require('./lib/dataschema')
 
 
 const _ = require('lodash')
@@ -177,7 +177,8 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-const quotedMe = m.quoted == botNumber ? true : false
+const quotedMe = quoted == botNumber ? true : false
+const usr = m.quoted && m.mentionedJid.length === 0 ? m.quoted.sender : m.mentionedJid[0] || false;
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -193,6 +194,7 @@ const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
+//const checkuser = await mku.findOne({ id: usr });
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -1379,13 +1381,13 @@ let smallinput = budy.toLowerCase()
     if (smallinput.includes('hello')) {
       replay(`Don't be scared, i am still active 😁`);
     } 
-
+/*
     if (!isCmd && m.isGroup && quotedMe) {
       let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
       txt = `${botreply.data.cnt}`
       m.reply(txt)
     }
-
+*/
 
 
 //-----------------ttt-extra----------------------
