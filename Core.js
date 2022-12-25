@@ -714,11 +714,12 @@ user.afkTime = -1
 user.afkReason = ''
 }
 
-
+/*
 if (isCmd){
    if (checkuser.ban == "true")
       return reply(mess.banned)
 }
+*/
 
 if (!m.isGroup && !isCreator){
     if (m.mtype === 'groupInviteMessage'){
@@ -1486,7 +1487,8 @@ switch(command) {
     break
 
 
-case 'me': case 'profile': case 'p':	 			
+case 'me': case 'profile': case 'p':
+    if (checkuser.ban == "true") return replay(mess.banned)			
     if (isBanChat) return reply(mess.bangc)
   if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
   if (!isInventory){ addInventori(m.sender) }
