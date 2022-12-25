@@ -189,7 +189,7 @@ const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
-const isBan = usr.ban == "true"
+const isBan = users.ban == "true"
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
