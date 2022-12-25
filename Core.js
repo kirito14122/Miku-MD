@@ -178,7 +178,7 @@ const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
 const quotedMe = quoted == botNumber ? true : false
-const usr = m.quoted && m.mentionedJid.length === 0 ? m.quoted.sender : m.mentionedJid[0] || false;
+const usr = m.quoted.sender
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -714,12 +714,12 @@ user.afkTime = -1
 user.afkReason = ''
 }
 
-/*
+
 if (isCmd){
    if (checkuser.ban == "true")
-      return reply(mess.banned)
+      return replay(mess.banned)
 }
-*/
+
 
 if (!m.isGroup && !isCreator){
     if (m.mtype === 'groupInviteMessage'){
