@@ -206,14 +206,13 @@ const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false
 const antiWame = m.isGroup ? ntwame.includes(from) : false
 const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
 const isLeveling = m.isGroup ? _leveling.includes(from) : false
-const isBan = checkuser.ban ? true
 autoreadsw = true
 const content = JSON.stringify(m.message)
 const q = args.join(' ')
 
 const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
 const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
-
+const isBan = checkuser.ban == true;
 
 
 
