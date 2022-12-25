@@ -1552,17 +1552,17 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 
 case 'ban': {
 	if (!isCreator) return replay(mess.botowner)
-	let pname = await Miku.getName(users);
+	//let pname = await Miku.getName(users);
 	if (!users) return replay(`*Mention/Tag the person you want to ban, My Lord!*`)
 	mku.findOne({ id: users }).then(async(usr) => {
          if (!usr) {
              await new mku({ id: users, ban: "true" }).save()
-             return replay(`Successfully ban ${pname} from using ${global.BotName}.`)
+             return replay(`Successfully ban user from using ${global.BotName}.`)
          }
          else {
-         	if (usr.ban == "true") return replay(`${pname} is already Banned from Using ${global.BotName}`)
+         	if (usr.ban == "true") return replay(`User is already Banned from Using ${global.BotName}`)
                  await mku.updateOne({ id: users }, { ban: "true" })
-                 return replay(`${pname} has not been unban from using ${global.BotName}`)
+                 return replay(`User has not been unban from using ${global.BotName}`)
          }
    })
 }
@@ -1572,17 +1572,17 @@ break
 
 case 'unban': {
 	if (!isCreator) return replay(mess.botowner)
-	let pname = await Miku.getName(users);
+	//let pname = await Miku.getName(users);
 	if (!users) return replay(`*Mention/Tag the person you want to unban, My Lord!*`)
 	mku.findOne({ id: users }).then(async(usr) => {
          if (!usr) {
              await new mku({ id: users, ban: "false" }).save()
-             return replay(`Successfully unban ${pname} from using ${global.BotName}.`)
+             return replay(`Successfully unban user from using ${global.BotName}.`)
          }
          else {
-         	if (usr.ban == "false") return replay(`${pname} is already Unbanned from Using ${global.BotName}`)
+         	if (usr.ban == "false") return replay(`User is already Unbanned from Using ${global.BotName}`)
                  await mku.updateOne({ id: users }, { ban: "false" })
-                 return replay(`${pname} has not been unban from using ${global.BotName}`)
+                 return replay(`User has not been unban from using ${global.BotName}`)
          }
     })
 }
