@@ -212,7 +212,7 @@ const q = args.join(' ')
 
 const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
 const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
-const isBan = checkuser.ban == true;
+const isBan = checkuser.ban == "true";
 
 
 
