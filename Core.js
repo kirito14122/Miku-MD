@@ -70,7 +70,7 @@ const {
   searchResult 
  } = require('./lib/ytdl')
 
-//let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
+let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
 let ethanaudio = JSON.parse(fs.readFileSync('./Media-Database/audio.json'));
  let _limit = JSON.parse(fs.readFileSync('./storage/user/limit.json'));
@@ -190,7 +190,7 @@ const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
-//const isBan = banUser.includes(m.sender)
+const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
@@ -212,7 +212,7 @@ const q = args.join(' ')
 
 const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
 const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
-const isBan = checkuser.ban == "true";
+
 
 
 
@@ -715,16 +715,13 @@ user.afkReason = ''
 }
 
 
-/*
-if (m.mtype === 'groupInviteMessage') {
-teks = `I can't join the group untill my *Owner* ask me to join. Type *-owner* to get owner number and ask him.`
-sendOrder(m.chat, teks, "5123658817728409", fs.readFileSync('./Assets/pic10.jpg'), `${watermark}`, `${BotName}`, "916909137213@s.whatsapp.net", "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+if (isCmd){
+   if (checkuser.ban == "true")
+      return reply(mess.banned)
 }
-*/
 
 if (!m.isGroup && !isCreator){
     if (m.mtype === 'groupInviteMessage'){
-    //await Miku.sendMessage(m.chat, {text: `Sorry i can't join anymore groups as i have reached my limit\n\nFor further info you can ask my *Owner* by typing *${prefix}owner*`}, { quoted: m })
     await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
   }
 }
@@ -1381,13 +1378,7 @@ let smallinput = budy.toLowerCase()
     if (smallinput.includes('hello')) {
       replay(`Don't be scared, i am still active 😁`);
     } 
-/*
-    if (!isCmd && m.isGroup && quotedMe) {
-      let botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${smallinput}]`)
-      txt = `${botreply.data.cnt}`
-      m.reply(txt)
-    }
-*/
+
 
 
 //-----------------ttt-extra----------------------
@@ -1467,8 +1458,7 @@ this.game = this.game ? this.game : {}
 
 switch(command) {
 	
-    case 'sc': case 'script': case 'sourcecode': {
-        if (isBan) return reply(mess.banned)	 			
+    case 'sc': case 'script': case 'sourcecode': {	 			
     if (isBanChat) return reply(mess.bangc)
     teks = `*${global.BotName}'s Script*\n\n*GitHub*: ${global.BotSourceCode}\n\nDont forget to follow me on *GitHub* and give a ⭐️ to my projects. `
     let buttons = [
@@ -1496,8 +1486,7 @@ switch(command) {
     break
 
 
-case 'me': case 'profile': case 'p':
-    if (isBan) return reply(mess.banned)	 			
+case 'me': case 'profile': case 'p':	 			
     if (isBanChat) return reply(mess.bangc)
   if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
   if (!isInventory){ addInventori(m.sender) }
@@ -1537,8 +1526,7 @@ let buttonspro = [
             break
 
 
-case 'banchat': case 'bangroup':{
-if (isBan) return reply(mess.banned)	 			
+case 'banchat': case 'bangroup':{	 			
 if (!isCreator) return replay(mess.botowner)
 if (args[0] === "on") {
 if (isBanChat) return replay('This Group is Already Banned from using me!')
@@ -2967,7 +2955,7 @@ case 'ban': {
         return replay(`Successfully Ban ${pname} from using ${global.BotName}.`)
     }
     else {
-    	if (isBan) return replay(`*${pname} is already banned.*`)
+    	if (checkuser.ban == "true") return replay(`*${pname} is already banned.*`)
         await mku.updateOne({ id: usr }, { ban: "true" })
         return replay(`*${pname} is still banned from using ${global.BotName}*`)
     }
@@ -2984,7 +2972,7 @@ case 'unban': {
         return replay(`Successfully Unban ${pname} from using ${global.BotName}.`)
     }
     else {
-    	if (!isBan) return replay(`*${pname} is already Unban.*`)
+    	if (checkuser.ban == "true") return replay(`*${pname} is already Unban.*`)
         await mku.updateOne({ id: usr }, { ban: "false" })
         return replay(`*${pname} was never Banned from using ${global.BotName}*`)
     }
@@ -2993,7 +2981,7 @@ break
 
 
 case 'listonline': case 'listaktif': case 'here':{
-    if (isBan) return reply(mess.banned)	 			
+    if (checkuser.ban == "true") return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!m.isGroup) return replay(mess.grouponly)
  let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
@@ -3006,7 +2994,7 @@ case 'listonline': case 'listaktif': case 'here':{
 
 
 case 'happymod': {
-    if (isBan) return reply(mess.banned)	 			
+    if (checkuser.ban == "true") return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args.join(" ")) return replay(`Example : ${prefix + command} Kinemaster`)
  yogipw.happymod(args.join(" ")).then(async(res) => {
