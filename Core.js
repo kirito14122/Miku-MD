@@ -178,7 +178,6 @@ const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
 const quotedMe = quoted == botNumber ? true : false
-const usr = m.quoted.sender
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
@@ -194,7 +193,7 @@ const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
-const checkuser = await mku.findOne({ id: usr });
+const checkuser = await mku.findOne({ id: m.quoted });
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -712,12 +711,6 @@ During ${clockString(new Date - user.afkTime)}*
 `.trim())
 user.afkTime = -1
 user.afkReason = ''
-}
-
-
-if (isCmd){
-   if (checkuser.ban == "true")
-      return replay(mess.banned)
 }
 
 
@@ -2950,15 +2943,15 @@ break
 
 case 'ban': {
 	if (!isCreator) return replay(mess.botowner)
-	let pname = await Miku.getName(usr);
-	if (!usr) return replay(`Mention/Tag the person you want to ban, My Lord!`)
+	let pname = await Miku.getName(m.quoted);
+	if (!m.quoted) return replay(`Mention/Tag the person you want to ban, My Lord!`)
 	if (!checkuser) {
-		await new mku({ id: usr, ban: "true" }).save()
+		await new mku({ id: m.quoted, ban: "true" }).save()
         return replay(`Successfully Ban ${pname} from using ${global.BotName}.`)
     }
     else {
     	if (checkuser.ban == "true") return replay(`*${pname} is already banned.*`)
-        await mku.updateOne({ id: usr }, { ban: "true" })
+        await mku.updateOne({ id: m.quoted }, { ban: "true" })
         return replay(`*${pname} is still banned from using ${global.BotName}*`)
     }
 }
@@ -2967,19 +2960,20 @@ break
 
 case 'unban': {
 	if (!isCreator) return replay(mess.botowner)
-	let pname = await Miku.getName(usr);
-	if (!usr) return replay(`Mention/Tag the person you want to unban, My Lord!`)
+	let pname = await Miku.getName(m.quoted);
+	if (!m.quoted) return replay(`Mention/Tag the person you want to unban, My Lord!`)
 	if (!checkuser) {
-		await new mku({ id: usr, ban: "false" }).save()
+		await new mku({ id: m.quoted, ban: "false" }).save()
         return replay(`Successfully Unban ${pname} from using ${global.BotName}.`)
     }
     else {
-    	if (checkuser.ban == "true") return replay(`*${pname} is already Unban.*`)
-        await mku.updateOne({ id: usr }, { ban: "false" })
+    	if (checkuser.ban == "false") return replay(`*${pname} is already Unban.*`)
+        await mku.updateOne({ id: m.quoted }, { ban: "false" })
         return replay(`*${pname} was never Banned from using ${global.BotName}*`)
     }
 }
 break
+
 
 
 case 'listonline': case 'listaktif': case 'here':{
