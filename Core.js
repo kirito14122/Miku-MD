@@ -189,10 +189,11 @@ const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
-const isBan = users.ban == "true"
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
+const checkuser = await mku.findOne({ id: users });
+const isBan = checkuser.ban ? "true"
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -1552,17 +1553,15 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 case 'ban': {
 	if (!isCreator) return replay(mess.botowner)
 	if (!users) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
-	mku.findOne({ id: users }).then(async(usr) => {
-         if (!usr) {
+         if (!checkuser) {
              await new mku({ id: users, ban: "true" }).save()
              return replay(`_Successfully *Banned* user from using ${global.BotName}._`)
          }
          else {
-         	if (usr.ban == "true") return replay(`_User is already *Banned* from Using ${global.BotName}_`)
+         	if (checkuser.ban == "true") return replay(`_User is already *Banned* from Using ${global.BotName}_`)
                  await mku.updateOne({ id: users }, { ban: "true" })
                  return replay(`_User has been *Banned* from using ${global.BotName}_`)
          }
-   })
 }
 break
 
@@ -1571,20 +1570,17 @@ break
 case 'unban': {
 	if (!isCreator) return replay(mess.botowner)
 	if (!users) return replay(`_Mention/Tag the person you want to *Unban*, My Lord!_`)
-	mku.findOne({ id: users }).then(async(usr) => {
-         if (!usr) {
+         if (!checkuser) {
              await new mku({ id: users, ban: "false" }).save()
              return replay(`_Successfully *Unban* user from using ${global.BotName}._`)
          }
          else {
-         	if (usr.ban == "false") return replay(`_User is already *Unban* from Using ${global.BotName}_`)
+         	if (checkuser.ban == "false") return replay(`_User is already *Unban* from Using ${global.BotName}_`)
                  await mku.updateOne({ id: users }, { ban: "false" })
                  return replay(`_User has been *Unban* from using ${global.BotName}_`)
          }
-    })
 }
 break
-
 
 
 
