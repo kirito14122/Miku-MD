@@ -193,7 +193,6 @@ const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
 const checkuser = await mku.findOne({ id: users });
-const isBan = checkuser.ban == "true";
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -718,6 +717,12 @@ if (!m.isGroup && !isCreator){
     if (m.mtype === 'groupInviteMessage'){
     await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
   }
+}
+
+if (command){
+    if (checkuser.ban == "true"){
+        return replay(mess.banned)
+    }
 }
 
 
@@ -1480,8 +1485,7 @@ switch(command) {
     break
 
 
-case 'me': case 'profile': case 'p':
-    if (checkuser.ban == "true") return replay(mess.banned)			
+case 'me': case 'profile': case 'p': 			
     if (isBanChat) return reply(mess.bangc)
   if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
   if (!isInventory){ addInventori(m.sender) }
