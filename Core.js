@@ -70,7 +70,6 @@ const {
   searchResult 
  } = require('./lib/ytdl')
 
-let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
 let ethanaudio = JSON.parse(fs.readFileSync('./Media-Database/audio.json'));
  let _limit = JSON.parse(fs.readFileSync('./storage/user/limit.json'));
@@ -190,7 +189,7 @@ const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
-const isBan = banUser.includes(m.sender)
+const isBan = usr.ban == "true"
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
@@ -1552,17 +1551,16 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 
 case 'ban': {
 	if (!isCreator) return replay(mess.botowner)
-	//let pname = await Miku.getName(users);
-	if (!users) return replay(`*Mention/Tag the person you want to ban, My Lord!*`)
+	if (!users) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
 	mku.findOne({ id: users }).then(async(usr) => {
          if (!usr) {
              await new mku({ id: users, ban: "true" }).save()
-             return replay(`Successfully ban user from using ${global.BotName}.`)
+             return replay(`_Successfully *Banned* user from using ${global.BotName}._`)
          }
          else {
-         	if (usr.ban == "true") return replay(`User is already Banned from Using ${global.BotName}`)
+         	if (usr.ban == "true") return replay(`_User is already *Banned* from Using ${global.BotName}_`)
                  await mku.updateOne({ id: users }, { ban: "true" })
-                 return replay(`User has not been unban from using ${global.BotName}`)
+                 return replay(`_User has been *Banned* from using ${global.BotName}_`)
          }
    })
 }
@@ -1572,17 +1570,16 @@ break
 
 case 'unban': {
 	if (!isCreator) return replay(mess.botowner)
-	//let pname = await Miku.getName(users);
-	if (!users) return replay(`*Mention/Tag the person you want to unban, My Lord!*`)
+	if (!users) return replay(`_Mention/Tag the person you want to *Unban*, My Lord!_`)
 	mku.findOne({ id: users }).then(async(usr) => {
          if (!usr) {
              await new mku({ id: users, ban: "false" }).save()
-             return replay(`Successfully unban user from using ${global.BotName}.`)
+             return replay(`_Successfully *Unban* user from using ${global.BotName}._`)
          }
          else {
-         	if (usr.ban == "false") return replay(`User is already Unbanned from Using ${global.BotName}`)
+         	if (usr.ban == "false") return replay(`_User is already *Unban* from Using ${global.BotName}_`)
                  await mku.updateOne({ id: users }, { ban: "false" })
-                 return replay(`User has not been unban from using ${global.BotName}`)
+                 return replay(`_User has been *Unban* from using ${global.BotName}_`)
          }
     })
 }
