@@ -70,7 +70,7 @@ const {
   searchResult 
  } = require('./lib/ytdl')
 
-let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
+//let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
 let ethanaudio = JSON.parse(fs.readFileSync('./Media-Database/audio.json'));
  let _limit = JSON.parse(fs.readFileSync('./storage/user/limit.json'));
@@ -190,7 +190,7 @@ const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
-const isBan = banUser.includes(m.sender)
+//const isBan = banUser.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
 const checkdata = await mk.findOne({ id: m.chat });
@@ -206,6 +206,7 @@ const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false
 const antiWame = m.isGroup ? ntwame.includes(from) : false
 const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
 const isLeveling = m.isGroup ? _leveling.includes(from) : false
+const isBan = checkuser.ban == "true";
 autoreadsw = true
 const content = JSON.stringify(m.message)
 const q = args.join(' ')
@@ -2958,29 +2959,36 @@ case 'nsfw': {
 break    
 
 
-   case 'ban': {
-    if (isBan) return reply(mess.banned)	 			
-if (isBanChat) return reply(mess.bangc)
-if (!isCreator) return replay(mess.botowner)
-if (!args[0]) return replay(`Select add or del (add to ban, del to unban), For Example: Reply *${prefix}ban add* to the user you want to ban.`)
-if (args[1]) {
-orgnye = args[1] + "@s.whatsapp.net"
-} else if (m.quoted) {
-orgnye = m.quoted.sender
+case 'ban': {
+	if (!isCreator) return replay(mess.botowner)
+	let pname = await Miku.getName(usr);
+	if (!usr) return replay(`Mention/Tag the person you want to ban, My Lord!`)
+	if (!checkuser) {
+		await new mku({ id: usr, ban: "true" }).save()
+        return replay(`Successfully Ban ${pname} from using ${global.BotName}.`)
+    }
+    else {
+    	if (isBan) return replay(`*${pname} is already banned.*`)
+        await mku.updateOne({ id: usr }, { ban: "true" })
+        return replay(`*${pname} is still banned from using ${global.BotName}*`)
+    }
 }
-const isBane = banUser.includes(orgnye)
-if (args[0] === "add") {
-if (isBane) return ads('User is already banned.')
-banUser.push(orgnye)
-replay(`Successfully Banned the user.`)
-} else if (args[0] === "del") {
-if (!isBane) return ads('User is already unbanned.')
-let delbans = banUser.indexOf(orgnye)
-banUser.splice(delbans, 1)
-replay(`Successfully Unbanned the user.`)
-} else {
-replay("Error")
-}
+break
+
+
+case 'unban': {
+	if (!isCreator) return replay(mess.botowner)
+	let pname = await Miku.getName(usr);
+	if (!usr) return replay(`Mention/Tag the person you want to unban, My Lord!`)
+	if (!checkuser) {
+		await new mku({ id: usr, ban: "false" }).save()
+        return replay(`Successfully Unban ${pname} from using ${global.BotName}.`)
+    }
+    else {
+    	if (!isBan) return replay(`*${pname} is already Unban.*`)
+        await mku.updateOne({ id: usr }, { ban: "false" })
+        return replay(`*${pname} was never Banned from using ${global.BotName}*`)
+    }
 }
 break
 
@@ -2996,31 +3004,6 @@ case 'listonline': case 'listaktif': case 'here':{
  }
  break
 
- case 'ban': {
-    if (isBan) return reply(mess.banned)	 			
-if (isBanChat) return reply(mess.bangc)
-if (!isCreator) return replay(mess.botowner)
-if (!args[0]) return replay(`Select add or del (add to ban, del to unban), For Example: Reply *${prefix}ban add* to the user you want to ban.`)
-if (args[1]) {
-orgnye = args[1] + "@s.whatsapp.net"
-} else if (m.quoted) {
-orgnye = m.quoted.sender
-}
-const isBane = banUser.includes(orgnye)
-if (args[0] === "add") {
-if (isBane) return ads('User was already banned.')
-banUser.push(orgnye)
-replay(`Successfully banned the user`)
-} else if (args[0] === "del") {
-if (!isBane) return ads('User was already unbanned.')
-let delbans = banUser.indexOf(orgnye)
-banUser.splice(delbans, 1)
-replay(`Successfully unbanned the user.`)
-} else {
-replay("Error")
-}
-}
-break
 
 
 case 'happymod': {
