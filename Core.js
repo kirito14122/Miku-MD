@@ -176,7 +176,7 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-const users = m.mentionedJid ? m.mentionedJid[0] :  m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net' || false 
+let users = m.mentionedJid ? m.mentionedJid[0] : m.quoted ? m.quoted.sender;
 const quotedMe = quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
