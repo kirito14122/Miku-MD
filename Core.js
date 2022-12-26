@@ -50,7 +50,7 @@ const xfarrapi = require('xfarr-api')
 const { hentai } = require('./lib/scraper2.js')
 let { msgFilter } = require('./lib/antispam')
 const { mediafireDl } = require('./lib/mediafire.js')
-const { mk, mku } = require('./lib/dataschema')
+const { mk, mku } = require('../lib')
 
 
 const _ = require('lodash')
@@ -176,7 +176,7 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-const users = quoted
+const users = m.mentionedJid ? m.mentionedJid[0] :  m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net' || false 
 const quotedMe = quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
