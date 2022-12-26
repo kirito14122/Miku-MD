@@ -130,7 +130,7 @@ let vote = db.others.vote = []
 let pendaftar = JSON.parse(fs.readFileSync('./storage/user/user.json'))
 let balance = JSON.parse(fs.readFileSync('./database/balance.json'))
 let ssewa = JSON.parse(fs.readFileSync('./database/sewa.json'))
-let ban = JSON.parse(fs.readFileSync('./database/ban.json'))
+//let ban = JSON.parse(fs.readFileSync('./database/ban.json'))
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'))
 const _autostick = JSON.parse(fs.readFileSync('./database/autostickpc.json'))
 let _leveling = JSON.parse(fs.readFileSync('./database/leveling.json'))
@@ -175,7 +175,7 @@ const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') 
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
-const users = m.mentionedJid ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+const users = m.quoted.sender
 const quoted = m.quoted ? m.quoted : m
 const quotedMe = quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
