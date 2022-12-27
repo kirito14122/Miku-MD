@@ -729,14 +729,6 @@ if (!m.isGroup && !isCreator){
 }
 
 
-/*
-if (command){
-	if (checkuser.ban == "true"){
-            return replay(mess.banned)
-    }
-}
-*/
-
 
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
@@ -3646,7 +3638,7 @@ case 'togif': case 'getgif':{
 
 
  case 'tourl': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
  reply(mess.wait)
  let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
@@ -3671,7 +3663,7 @@ case 'togif': case 'getgif':{
 
 
 case 'translate': case 'trans': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!args.join(" ")) return replay("Pls enter any text to translate")
     tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
     Infoo = tes.info
@@ -3682,7 +3674,7 @@ case 'translate': case 'trans': {
 
 
 case 'gimage': case 'gig': case 'googleimage':{
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)
 if (!args[0]) return reply("Enter a search term to get Google Image!")
 let gis = require('g-i-s')
@@ -3710,7 +3702,7 @@ break
 
 
 case 'google': case 'search': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(`Example: ${prefix + command} <query>\nUses : ${prefix + command} apa arti cinta`)
  let google = require('google-it')
@@ -3727,7 +3719,7 @@ case 'google': case 'search': {
  break
 
  case 'igdl': case 'instagram': case 'instagramreels': case 'igreels': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(`Example :\n${prefix + command} https://www.instagram.com/p/CcvJGuxh9VI/?igshid=YmMyMTA2M2Y=`)
  try {
@@ -3765,7 +3757,7 @@ case 'google': case 'search': {
  break
 
  case 'ig': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
 if (isBanChat) return reply(mess.bangc)
 if (args[0] === "mp4") {
 Miku.sendMessage(from, {video:{url:args[1]}, caption:'Here it is...', mimetype:'video/mp4'}, {quoted:m})
@@ -3778,7 +3770,7 @@ reply("Error! ")
 break
 
 case 'mp4' : {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
 if (isBanChat) return reply(mess.bangc)
 if (!args[0]) return reply(`Pls provide link!`)
 try {
@@ -3797,7 +3789,7 @@ reply("Link error!")
 break
 
 case 'jpeg': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
 if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(`Please provide link!`)
  try {
@@ -3809,7 +3801,7 @@ if (isBanChat) return reply(mess.bangc)
  break
 
  case 'igtv': {	            
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
                  if (!text) return reply(`Please provide link!`)
                  const { instagramdl, instagramdlv2, instagramdlv3 } = require('@bochilteam/scraper')
@@ -3824,7 +3816,7 @@ if (isBanChat) return reply(mess.bangc)
              break
              
 case 'twitter': case 'td': case 'twitterdl': {     
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)	             
              if (!text) return reply(`Please provide link!`)
                 if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return reply(`*Invalid link!*`)
@@ -3849,7 +3841,7 @@ if (isBanChat) return reply(mess.bangc)
             break
 
 case 'twittermp3': case 'twitteraudio': { 
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)	             
              if (!text) return reply(`Please provide link!`)
                 if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return reply(`*Invalid link!*`)
@@ -3862,7 +3854,7 @@ if (isBanChat) return reply(mess.bangc)
             break
 
 case 'twitterxx': case 'twdlxx': case 'twmp4xx': {
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)
 if (!args[0]) return reply(`Example :\n${prefix + command} https://twitter.com/cinema21/status/1517754155644821504?t=rUnbyqwh4vAE1QXMXlsVeQ&s=19`)
 try {
@@ -3893,7 +3885,7 @@ reply("Link Error!")
 break
 
 case 'twddlxx': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
  let buttons = [
  {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
@@ -3911,7 +3903,7 @@ case 'twddlxx': {
  break
 
  case 'fbdl': case 'fb': case 'facebook': case 'fbmp4': {     	    
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
               if (!text) return reply(`Please provide the link!\n\nExample: ${prefix}facebook https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
                  if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
@@ -3934,7 +3926,7 @@ case 'twddlxx': {
              break
 
 case 'fbmp3': case 'facebookmp3': case 'facebookaudio': {
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)
                   if (!text) return reply(`Please provide the link!\n\nExample: ${prefix + command} https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
                   if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
@@ -3949,7 +3941,7 @@ if (isBanChat) return reply(mess.bangc)
 
 
 case 'facebookxx': case 'fbdlxxx': case 'fbmp4xxx': case 'fbxxx': {
-   if (checkuser.ban == "true") return replay(mess.banned)	 			
+   	 			
 if (isBanChat) return reply(mess.bangc)
 if (!args[0]) return reply(`Example :\n${prefix + command} https://fb.watch/cAX2dep-BZ/`)
 try {
@@ -3978,7 +3970,7 @@ reply("Link invalid!")
 break
 
 case 'fbddlxx': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
  if (isBanChat) return reply(mess.bangc)
  let buttons = [
  {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
@@ -3996,7 +3988,7 @@ case 'fbddlxx': {
  break
 
  case 'tiktok':{
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
   if (isBanChat) return reply(mess.bangc)
 if (!q) return reply('Please provide the link !')
 reply(mess.wait)
@@ -4024,7 +4016,7 @@ Miku.sendMessage(from, buttonMessage, {quoted:m})
 break
 
 case 'tiktoknowm': case 'ttnowm':{
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
   if (isBanChat) return reply(mess.bangc)
 if (!q) return reply('Please provide the link !')
 reply(mess.wait)
@@ -4041,7 +4033,7 @@ break
 case 'tiktokaudio':
 case 'tiktokmusic':
 case 'ttaud':{
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 if (!q) return reply('Where is the audio?')
 if (!q.includes('tiktok')) return reply(`That's not a tiktok link!`)
@@ -4057,7 +4049,7 @@ break
 
 
 case 'music': case 'play': case 'song': case 'ytplay': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4091,7 +4083,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  break
 
  case 'ytad': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
     if (isBanChat) return reply(mess.bangc)
     const YT=require('./lib/ytdlcore')
@@ -4108,7 +4100,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  break
 
  case 'ytvd': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4125,7 +4117,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytmp3': case 'ytmusic':  case 'ytmp4': case 'ytvideo': case 'ytdl':{
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!args[0]) return reply(mess.nolink)
@@ -4160,7 +4152,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytad2': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
     if (isBanChat) return reply(mess.bangc)
     const YT=require('./lib/ytdlcore')
@@ -4175,7 +4167,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
  case 'ytvd2': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
  if (isBanChat) return reply(mess.bangc)
  const YT=require('./lib/ytdlcore')
@@ -4189,7 +4181,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
  
  case 'ytshorts': case 'shorts': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (!isPremium) return replay(mess.pro)	 			
  if (isBanChat) return reply(mess.bangc)
    if (!text) return reply(`*Use ${prefix + command} put yt shorts link*`)
@@ -4210,7 +4202,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 
 
 case 'couplepp':  case 'ppcouple': {
-if (checkuser.ban == "true") return replay(mess.banned)
+
 if (isBanChat) return reply(mess.bangc)
          reply(mess.waiting)
          let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
@@ -4223,7 +4215,7 @@ if (isBanChat) return reply(mess.bangc)
 
 
 case 'pinterest': case 'pin': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
  if (!args.join(" ")) return reply("Pls providea search term!")
  try {
@@ -4251,7 +4243,7 @@ case 'pinterest': case 'pin': {
 
 
 case 'swm': case 'take': case 'stickerwm': case 'steal':{
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 if (!args.join(" ")) return reply(`Use command: -steal Miku|By: Fantox`)
 const swn = args.join(" ")
@@ -4279,7 +4271,7 @@ break
 
 
 case 'smeme': case 'stickermeme': case 'stickmeme': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 let { TelegraPh } = require('./lib/uploader')
 if (!text) return reply(`Send/Reply Photo With Caption ${prefix + command} *text*`)
@@ -4296,7 +4288,7 @@ break
 
 
 case 'sgif': case 'sticker': case 's': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
     const user = m.sender
 	const cara = "cara" 
@@ -4324,7 +4316,7 @@ case 'sgif': case 'sticker': case 's': {
 
 
 case 'wiki':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 if (args.length < 1) return reply('What Are You Looking For?? ')
 const res2 = await wikiSearch(q).catch(e => {
@@ -4335,7 +4327,7 @@ Miku.sendMessage(from, { image : { url : res2[0].thumb }, caption : result2})
 break
 
 case 'earthquake':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 const tres = await Gempa()
 var { Waktu, Lintang, Bujur, Magnitude, Kedalaman, Wilayah, Map } = tres.result
@@ -4346,7 +4338,7 @@ break
 
 case 'covidinfo':
 case 'covid':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 const c = await covid()
 var { kasus, kematian, sembuh } = c[0]
@@ -4355,7 +4347,7 @@ break
 
 
 case 'couple': case 'ship': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 if (!m.isGroup) return replay(`${mess.grouponly}`)
 let member = participants.map(u => u.id)
@@ -4372,7 +4364,7 @@ await Miku.sendButtonText(m.chat, buttons, jawab, Miku.user.name, m, {mentions: 
 break
 
 case 'soulmate': {
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 if (!m.isGroup) return replay(`${mess.grouponly}`)
 let member = participants.map(u => u.id)
@@ -4389,7 +4381,7 @@ await Miku.sendButtonText(m.chat, buttons, jawab, Miku.user.name, m, {mentions: 
 break
 
 case 'handsomecheck':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @Fantox`)
 					const gan = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
@@ -4397,7 +4389,7 @@ case 'handsomecheck':
 Miku.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
 					break
 case 'beautifulcheck':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @Fantox`)
 					const can = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
@@ -4414,7 +4406,7 @@ case 'awesomecheck':
                  case 'prettycheck':
                     case 'lovelycheck':
                       case 'uglycheck':
-                        if (checkuser.ban == "true") return replay(mess.banned)
+                        
                         if (isBanChat) return reply(mess.bangc)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @Fantox`)
 					const sangeh = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
@@ -4424,7 +4416,7 @@ Miku.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}%
 
 
 case 'charactercheck':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 					if (!text) return replay(`Tag Someone, Example : ${prefix + command} @Fantox`)
 					const Mikutttt =['Compassionate','Generous','Grumpy','Forgiving','Obedient','Good','Simp','Kind-Hearted','patient','UwU','top, anyway','Helpful']
@@ -4433,7 +4425,7 @@ case 'charactercheck':
 				     break
                    
  case 'dare':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
                    const dare =[
          "eat 2 tablespoons of rice without any side dishes, if it's dragging you can drink",
@@ -4525,7 +4517,7 @@ case 'charactercheck':
                        
 
 case 'truth':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
                            const truth =[
                  "Have you ever liked anyone? How long?",
@@ -4626,7 +4618,7 @@ case 'truth':
 
 
 case 'nsfwmiku':
-    if (checkuser.ban == "true") return replay(mess.banned)
+    
     if (isBanChat) return reply(mess.bangc)
 reply(mess.wait)
 nye = `http://api.lolhuman.xyz/api/gimage?apikey=${lolkey}&query=${command}`
@@ -4634,7 +4626,7 @@ Miku.sendMessage(from, {image:{url:nye}, caption:"Master..."}, {quoted:m})
 break
 
 case 'mediafire': case 'mediafiredl': {
-	if (checkuser.ban == "true") return replay(mess.banned)
+	
     if (isBanChat) return reply(mess.bangc)
 if (!text) return reply(mess.linkm)
 if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return reply(`The link you provided is invalid`)
@@ -4654,7 +4646,7 @@ break
 case 'masturbation': case 'jahy': case 'hentai': case 'glasses': case 'gangbang': case 'foot': 
 case 'femdom': case 'cum': case 'ero': case 'cuckold': case 'blowjob': case 'bdsm': 
 case 'ahegao': case 'ass': case 'orgy': case 'panties': case 'pussy': case 'thighs': case 'yuri': case 'tentacles':
-if (checkuser.ban == "true") return replay(mess.banned)	 			
+ 			
 if (isBanChat) return reply(mess.bangc)
 if (!m.isGroup) return replay(mess.grouponly)
 if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4667,7 +4659,7 @@ Miku.sendMessage(from, {image:YesHorny},{quoted:m})
 break
 
 case 'spank':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4681,7 +4673,7 @@ let spgif = await GIFBufferToVideoBuffer(spbuff)
 break
 
 case 'blowjobgif': case 'bj' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4695,7 +4687,7 @@ let bjif = await GIFBufferToVideoBuffer(bjf)
 break
 
 case 'hentaivid': case 'hentaivideo': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4707,7 +4699,7 @@ Miku.sendMessage(m.chat, { video: { url: result912.video_1 }, caption: `Title : 
 break
 
 case 'trap' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4729,7 +4721,7 @@ break
 
 case 'hentai-neko' :
 case 'hneko' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4751,7 +4743,7 @@ break
 
 case 'hentai-waifu' :
 case 'hwaifu' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4772,7 +4764,7 @@ reply(mess.waiting)
 break
 
 case 'gasm':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     if (checkdata.nsfw == "false") return reply(mess.nonsfw)
@@ -4795,7 +4787,7 @@ break
 
 
 case 'smug2':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
 reply(mess.waiting)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/smug`)
@@ -4815,7 +4807,7 @@ reply(mess.waiting)
 break
 
 case 'foxgirl':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+     			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
@@ -4836,7 +4828,7 @@ reply(mess.waiting)
 break   
 
 case 'animenom' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)
@@ -4856,7 +4848,7 @@ reply(mess.waiting)
 break
 
 case 'waifu3':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)						
@@ -4879,7 +4871,7 @@ break
 
 
 case 'crossplay': case 'crosplay': case 'cosplay':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
                 const buttons = [
@@ -4903,7 +4895,7 @@ case 'crossplay': case 'crosplay': case 'cosplay':
 
 
 case 'neko2':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+     			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
@@ -4928,7 +4920,7 @@ reply(mess.waiting)
 case 'feed':
 case 'meow':
 case 'tickle':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
@@ -4953,8 +4945,7 @@ break
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 case 'cry':  case 'handhold':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -4990,8 +4981,7 @@ console.log(musers)
 break
 
 case 'nom':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -5027,8 +5017,7 @@ console.log(musers)
 break
 
 case 'hug':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -5065,8 +5054,7 @@ break
 
 
 case 'dance':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+ 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -5105,8 +5093,7 @@ case 'kill': case 'pat': case 'lick': case 'kiss': case 'bite':
 case 'bully': case 'bonk': case 'poke': case 'slap':
 case 'happy':
 case 'cuddle': case 'kick':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -5147,8 +5134,7 @@ case 'yeet':
 case 'wink': case 'smile':
 case 'wave': case 'blush': case 'smug': case 'glomp':
 case 'cringe': case 'highfive':{
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)	
 	var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
@@ -5193,8 +5179,7 @@ case 'cry': case 'kill': case 'hug': case 'pat': case 'lick': case 'kiss': case 
 case 'bully': case 'bonk': case 'wink': case 'poke': case 'nom': case 'slap': case 'smile':
 case 'wave': case 'blush': case 'smug': case 'glomp': case 'happy': case 'dance':
 case 'cringe': case 'cuddle': case 'highfive': case 'handhold': case 'kick':
-
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)						
 resggh = await axios.get(`https://nekos.life/api/v2/img/${command}`)         
@@ -5211,7 +5196,7 @@ break
 
 
 case 'megumin':
-if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
 if (isBanChat) return reply(mess.bangc)
 if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
@@ -5232,7 +5217,7 @@ await Miku.sendMessage(m.chat,buttonzMessage, { quoted:m }).catch(err => {
 break     
 
 case 'awoo':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     reply(mess.waiting)						
@@ -5254,7 +5239,7 @@ break
 
 
 case 'animewall2': case 'animewallpaper2':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
     reply(mess.waiting)						
@@ -5284,7 +5269,7 @@ break
 
 
 case 'anime':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 	    if(!q) return reply(`Please proide a search term!\n\n*Example:* ${prefix}anime naruto`)
@@ -5331,7 +5316,7 @@ Miku.sendMessage(m.chat,{image:{url:result.images.jpg.large_image_url},caption:d
 break
 
 case 'manga':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
@@ -5368,7 +5353,7 @@ break
 
 
 case 'waifu' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)	
@@ -5389,7 +5374,7 @@ reply(mess.waiting)
 break
 
 case 'neko' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)	
@@ -5411,7 +5396,7 @@ break
 
 
 case 'loli' :
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)	
@@ -5433,7 +5418,7 @@ break
 
 
 case 'lyrics': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 if (!text) return reply(`Comand usage: ${prefix}lyrics Thunder`)
@@ -5453,7 +5438,7 @@ break
 
 
 case "quotes": case "quote":{
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 var res = await Quotes()
@@ -5466,7 +5451,7 @@ replay(teks)
 break
 
 case "darkjoke":
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
 var res = await Darkjokes()
@@ -5475,7 +5460,7 @@ Miku.sendMessage(m.chat, { image : { url : res }, caption: teks }, { quoted : m 
 break
 
 case 'leavegc': case 'leavegroup': case 'bye': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
         reply(mess.waiting)
@@ -5487,7 +5472,7 @@ case 'leavegc': case 'leavegroup': case 'bye': {
 
 
 case 'bc': case 'broadcast': case 'bcall': {
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
 if (!isCreator) return replay(mess.botowner)
 if (!args.join(" ")) return replay(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
@@ -5519,7 +5504,7 @@ break
 //-----------------------------------------
 
 case 'menu': case 'allmenu': case 'listmenu':{
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)     
  const helpmenu = `❣️ Hello Stranger *${pushname}*, have we met?
 
@@ -5844,7 +5829,7 @@ break
  
 
 case 'help': case 'h': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+				
     if (isBanChat) return reply(mess.banChat)
     const helper = `\n
     
@@ -5930,7 +5915,7 @@ break
 
 
 case 'help1': case 'h1': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
     const helper1 = `-Ⓖ︎Ⓔ︎Ⓝ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓛ︎ 🎐
 ──────────────
@@ -6003,7 +5988,7 @@ break
 
 
 case 'help2': case 'h2': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
     const helper2 = `-Ⓐ︎Ⓝ︎Ⓘ︎Ⓜ︎Ⓔ︎Ⓢ︎ 🎐
 ──────────────
@@ -6043,7 +6028,7 @@ break
 
 
 case 'help3': case 'h3': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.banChat)
     const helper3 = `-ⒺⒸⓄⓃⓄⓂⓎ 🎐
 ──────────────
@@ -6075,7 +6060,7 @@ break
 
 
 case 'help4': case 'h4': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.banChat)
     const helper4 = `-Ⓜ︎Ⓔ︎Ⓓ︎Ⓘ︎Ⓐ︎ 🎐
 ──────────────
@@ -6125,7 +6110,7 @@ let buttonhelper4 = [
 break
 
 case 'help5': case 'h5': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.banChat)
     const helper5 = `-Ⓜ︎Ⓞ︎Ⓓ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓣ︎Ⓘ︎Ⓞ︎Ⓝ︎ 🎐
 ──────────────
@@ -6162,7 +6147,7 @@ break
 
 
 case 'help6': case 'h6': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+				
     if (isBanChat) return reply(mess.banChat)
     const helper6 = `-ⒶⓃⓉⒾⓁⒾⓃⓀ 🎐
 ──────────────
@@ -6195,7 +6180,7 @@ break
 
 
 case 'help7': case 'h7': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
     const helper7 = `-Ⓓ︎Ⓔ︎Ⓥ︎Ⓔ︎Ⓛ︎Ⓞ︎Ⓟ︎Ⓔ︎Ⓡ︎ 🎐
 ──────────────
@@ -6231,7 +6216,7 @@ break
 
 
 case 'help8': case 'h8': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+	 			
     if (isBanChat) return reply(mess.banChat)
     const helper8 =  `-Ⓖⓐⓜⓔⓢ  🎐
 ──────────────
@@ -6264,7 +6249,7 @@ break
 
 
 case 'help9': case 'h9': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
     const helper9 = `-ⒻⓊⓃ-ⓇⒺⒶⒸⓉⒾⓄⓃ 🎐
 ──────────────
@@ -6329,7 +6314,7 @@ break
 
 
 case 'help10': case 'h10': {
-	if (checkuser.ban == "true") return replay(mess.banned)	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
     const helper10 =  `-ⓅⓄⓇⓃⓄ 🎐
 ──────────────
@@ -6379,7 +6364,7 @@ break
 
 case '':
     if(isCmd){
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
 
       mikupic ='https://wallpapercave.com/wp/wp10524580.jpg'
@@ -6404,7 +6389,7 @@ break
 
 
 case 'ethan':
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
 
 const txt = `Do you love ${global.BotName}? Then we are the same.`
@@ -6452,7 +6437,7 @@ break
 
 
  case "tts":  case "texttospeech":  case "say": case "speak":{
-    if (checkuser.ban == "true") return replay(mess.banned)	 			
+    	 			
     if (isBanChat) return reply(mess.bangc)
 
     if (!args[0]) return reply("Please give me a text so that i can speak it!")
@@ -6470,7 +6455,7 @@ break
 
 
     case 'qr': case 'qrcode':
-        if (checkuser.ban == "true") return replay(mess.banned)	 			
+         			
         if (isBanChat) return reply(mess.bangc)
         if (!isCreator) return reply(mess.botowner)
         if (!m.isGroup) return replay(mess.grouponly)
@@ -6495,14 +6480,11 @@ break
 
 default:
 
-/*
-    if(isCmd){
-        if (isBan) return reply(mess.banned)	 			
-        if (isBanChat) return reply(mess.bangc)
-        reply (`No such command programmed *${pushname}* senpai! Type *${prefix}help* to get my full command list!`)
 
+    if (isCmd){
+        if (checkuser.ban == "true") return reply(mess.banned)	 			
     }	 			
-*/
+
 
  
 
