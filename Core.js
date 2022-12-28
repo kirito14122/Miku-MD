@@ -729,6 +729,10 @@ if (!m.isGroup && !isCreator){
 }
 
 
+if (command){
+	if (checkuser.ban == "true") return replay(mess.banned)
+}
+
 
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
@@ -6480,12 +6484,12 @@ break
 
 default:
 
-
+/*
     if (isCmd){
         if (checkuser.ban == "true") return reply(mess.banned)	 			
     }	 			
 
-
+*/
  
 
 
