@@ -729,8 +729,9 @@ if (!m.isGroup && !isCreator){
 }
 
 
-if (command){
-	if (checkuser.ban == "true") return replay(mess.banned)
+if (checkuser.ban == "true"){
+	if (command) return replay(mess.banned)
+	await mku.updateOne({ id: users }, { ban: "true" })
 }
 
 
