@@ -746,13 +746,13 @@ if (checkdata.antilink == "true") {
     }
     }
 
-if (isCmd || command){
+if (isCmd){
 	if (checkuser.ban == "true"){
 		await mku.updateOne({ id: users }, { ban: "true" })
 		
     }return replay(mess.banned)
 }
-return replay(mess.banned)
+//return replay(mess.banned)
 
     if (antiWame)
     if (budy.includes(`wa.me`)) {
