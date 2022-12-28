@@ -1587,8 +1587,8 @@ break
 if (isCmd){
 	if (checkuser.ban == "true"){
 		await mku.updateOne({ id: users }, { ban: "true" })
-		
-    }return replay(mess.banned)
+		return replay(mess.banned)
+    }
 }
 
 
