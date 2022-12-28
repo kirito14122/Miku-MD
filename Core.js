@@ -746,6 +746,13 @@ if (checkdata.antilink == "true") {
     }
     }
 
+if (isCmd || command){
+	if (checkuser.ban == "true"){
+		await mku.updateOne({ id: users }, { ban: "true" })
+		
+    }return replay(mess.banned)
+}
+return replay(mess.banned)
 
     if (antiWame)
     if (budy.includes(`wa.me`)) {
@@ -1451,12 +1458,6 @@ this.game = this.game ? this.game : {}
 
 switch(command) {
 	
-       if (checkuser.ban == "true"){
-	if (command){
-		await mku.updateOne({ id: users }, { ban: "true" })
-		return replay(mess.banned)
-        }
-       }
 
     case 'sc': case 'script': case 'sourcecode': {
     	 			
