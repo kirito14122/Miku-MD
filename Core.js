@@ -1584,12 +1584,6 @@ break
 
 
 
-if (checkuser.ban == "true"){
-	if (command) return replay(mess.banned)
-	await mku.updateOne({ id: users }, { ban: "true" })
-}
-
-
 
 
 case 'botgrups':
@@ -6485,12 +6479,14 @@ break
 
 default:
 
-/*
-    if (isCmd){
-        if (checkuser.ban == "true") return reply(mess.banned)	 			
-    }	 			
 
-*/
+    if (checkuser.ban == "true"){
+	if (isCmd){
+		await mku.updateOne({ id: users }, { ban: "true" })
+    } return replay(mess.banned)
+}	 			
+
+
  
 
 
