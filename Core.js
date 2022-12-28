@@ -1451,6 +1451,13 @@ this.game = this.game ? this.game : {}
 
 switch(command) {
 	
+       if (checkuser.ban == "true"){
+	if (command){
+		await mku.updateOne({ id: users }, { ban: "true" })
+		return replay(mess.banned)
+        }
+       }
+
     case 'sc': case 'script': case 'sourcecode': {
     	 			
     if (isBanChat) return reply(mess.bangc)
@@ -6479,16 +6486,16 @@ break
 
 default:
 
-
+/*
     if (checkuser.ban == "true"){
 	if (isCmd){
 		await mku.updateOne({ id: users }, { ban: "true" })
     } return replay(mess.banned)
-}	 			
-
+}
+	 			
+*/
 
  
-
 
 if (budy.startsWith('=>')) {
 if (!isCreator) return reply(mess.botowner)
