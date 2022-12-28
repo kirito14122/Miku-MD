@@ -729,12 +729,6 @@ if (!m.isGroup && !isCreator){
 }
 
 
-if (checkuser.ban == "true"){
-	if (command) return replay(mess.banned)
-	await mku.updateOne({ id: users }, { ban: "true" })
-}
-
-
 if (checkdata.antilink == "true") {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
@@ -1588,6 +1582,12 @@ case 'unban': {
 }
 break
 
+
+
+if (checkuser.ban == "true"){
+	if (command) return replay(mess.banned)
+	await mku.updateOne({ id: users }, { ban: "true" })
+}
 
 
 
