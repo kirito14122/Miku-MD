@@ -1584,12 +1584,9 @@ case 'unban': {
 break
 
 
-if (isCmd){
-	if (checkuser.ban == "true"){
-		await mku.updateOne({ id: users }, { ban: "true" })
-		return replay(mess.banned)
-    }
-}
+if (isCmd && checkuser.ban !== "false") return replay(mess.banned)
+		//await mku.updateOne({ id: users }, { ban: "true" })
+		
 
 
 case 'botgrups':
