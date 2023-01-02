@@ -728,7 +728,7 @@ if (!m.isGroup && !isCreator){
      }
 }
 
-
+/*
 if (checkdata){
 	let mongoschema = checkdata.antilink || "false"
 	if (m.isGroup && mongoschema == "true") {
@@ -748,7 +748,7 @@ if (checkdata){
     }
     }
 }
-
+*/
 
 
     if (antiWame)
