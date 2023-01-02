@@ -729,7 +729,9 @@ if (!m.isGroup && !isCreator){
 }
 
 
-if (checkdata.antilink == "true") {
+if (checkdata){
+	let mongoschema = checkdata.antilink || "false"
+	if (m.isGroup && mongoschema == "true") {
     linkgce = await Miku.groupInviteCode(from)
     if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
     reply(`\`\`\`「  Antilink System  」\`\`\`\n\nNo action will be because you sent this group's link.`)
@@ -745,6 +747,8 @@ if (checkdata.antilink == "true") {
     } else {
     }
     }
+}
+
 
 
     if (antiWame)
