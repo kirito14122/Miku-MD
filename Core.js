@@ -218,7 +218,7 @@ const mongoose = require("mongoose");
 let checkuser = await mku.findOne({ id: users })
 if (isCmd && checkuser.ban !== "false"){
     await mku.updateOne({ id: users }, { ban: "true" })
-    return replay(mess.banned)
+    return m.reply(mess.banned)
    }
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
