@@ -191,6 +191,7 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
+let checkuser = await mku.findOne({ id: users })
 //let checkdata = await mk.findOne({ id: m.chat })
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
@@ -215,9 +216,9 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 const mongoose = require("mongoose");
 
-let checkuser = await mku.findOne({ id: users })
-if (isCmd && checkuser.ban !== "false"){
-    await mku.updateOne({ id: users }, { ban: "true" })
+let checkban = await mku.findOne({ id: m.sender })
+if (isCmd && checkban.ban !== "false"){
+    await mku.updateOne({ id: m.sender }, { ban: "true" })
     return m.reply(mess.banned)
    }
 
