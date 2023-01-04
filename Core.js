@@ -216,11 +216,20 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 const mongoose = require("mongoose");
 
+/*
 let checkban = await mku.findOne({ id: m.sender })
 if (isCmd && checkban.ban !== "false"){
     await mku.updateOne({ id: m.sender }, { ban: "true" })
     return m.reply(mess.banned)
    }
+*/
+
+let checkban = await mku.findOne({ id: m.sender }, { ban: "true" })
+if (isCmd && checkban){
+    await mku.updateOne({ id: m.sender }, { ban: "true" })
+    return m.reply(mess.banned)
+   }
+
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
