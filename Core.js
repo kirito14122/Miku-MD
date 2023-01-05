@@ -1589,6 +1589,7 @@ case 'ban': {
             } catch (e) {
                 console.log(e)
                 return m.reply("Please mention any user.❌ ")
+              }
 }
 break
 
@@ -1613,6 +1614,7 @@ case 'unban': {
             } catch (e) {
                 console.log(e)
                 return m.reply("Please mention any user.❌ ")
+              }
 }
 break
 
