@@ -191,8 +191,6 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isUser = pendaftar.includes(m.sender)
 const isBanChat = m.isGroup ? banchat.includes(from) : false
 const isRakyat = isCreator || global.rkyt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false 
-//let checkuser = await mku.findOne({ id: users })
-//let checkdata = await mk.findOne({ id: m.chat })
 const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
 const AntiLinkYoutubeChannel = m.isGroup ? ntilinkytch.includes(from) : false
 const AntiLinkInstagram = m.isGroup ? ntilinkig.includes(from) : false
@@ -222,13 +220,6 @@ if (!isCreator){
 }
 
 
-/*
-let checkban = await mku.findOne({ id: m.sender }, { ban: "true" })
-if (isCmd && checkban){
-    await mku.updateOne({ id: m.sender }, { ban: "true" })
-    return m.reply(mess.banned)
-   }
-*/
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
@@ -1578,11 +1569,11 @@ case 'ban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "true" }).save()
-           return m.reply(`_Banned ${usr.name} from Using Commands._`)
+           return m.reply(`_${usr.name} has been *Banned* from using ${global.BotName}._`)
         }else{
-               if (usr.ban == "true") return m.reply(`${pushnamer} is already Banned from Using Commands`)
+               if (usr.ban == "true") return m.reply(`_${usr.name} is already *Banned* from Using ${global.BotName}._`)
                   await mku.updateOne({ id: users }, { ban: "true" })
-                  return m.reply(`_Successfully Banned ${usr.name} from Using Commands._`)
+                  return m.reply(`_Successfully *Banned* ${usr.name} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
@@ -1591,7 +1582,6 @@ case 'ban': {
               }
 }
 break
-
 
 
 case 'unban': {
@@ -1603,11 +1593,11 @@ case 'unban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "false" }).save()
-           return m.reply(`_*UnBan* ${usr.name} from Using Commands._`)
+           return m.reply(`_${usr.name} has been *Unban* from using ${global.BotName}_`)
         }else{
-               if (usr.ban == "false") return m.reply(`${pushnamer} is already *UnBan* from Using Commands`)
+               if (usr.ban == "false") return m.reply(`_${usr.name} is already *Unban* from Using ${global.BotName}_`)
                   await mku.updateOne({ id: users }, { ban: "false" })
-                  return m.reply(`_Successfully UnBan ${usr.name} from Using Commands._`)
+                  return m.reply(`_Successfully *Unban* ${usr.name} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
@@ -1616,6 +1606,8 @@ case 'unban': {
               }
 }
 break
+
+
 
 
 	
