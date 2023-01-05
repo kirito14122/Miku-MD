@@ -216,20 +216,19 @@ const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('aud
 
 const mongoose = require("mongoose");
 
-/*
-let checkban = await mku.findOne({ id: m.sender })
-if (isCmd && checkban.ban !== "false"){
-    await mku.updateOne({ id: m.sender }, { ban: "true" })
-    return m.reply(mess.banned)
-   }
-*/
+if (!isCreator){
+     let checkban = await mku.findOne({ id: m.sender }) || await new mku({ id: m.sender, name: m.pushName }).save();
+     if (isCmd && checkban.ban !== 'false') return m.reply(mess.banned)
+}
 
+
+/*
 let checkban = await mku.findOne({ id: m.sender }, { ban: "true" })
 if (isCmd && checkban){
     await mku.updateOne({ id: m.sender }, { ban: "true" })
     return m.reply(mess.banned)
    }
-
+*/
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
@@ -1608,7 +1607,7 @@ case 'unban': {
         }else{
                if (usr.ban == "false") return m.reply(`${pushnamer} is already *UnBan* from Using Commands`)
                   await mku.updateOne({ id: users }, { ban: "false" })
-                  return m.reply(`_Successfully Banned ${usr.name} from Using Commands._`)
+                  return m.reply(`_Successfully UnBan ${usr.name} from Using Commands._`)
         }
      })
             } catch (e) {
