@@ -11,10 +11,10 @@ global.Owner = ['2349051064375','923045204414']
 global.OwnerNumber = ['2349051064375','923045204414']
 global.ownertag = ['2349051064375','923045204414']
 global.premium = ['923045204414','2348123175248']
-global.BotName = "Ethan-v2"
-global.packname = "Ethan-v2"
-global.author = "By: JayJay-Ops"
-global.OwnerName = ['JayJay-Ops']
+global.BotName = "A&J INC"
+global.packname = "Undeniable Truths"
+global.author = "By: A&J"
+global.OwnerName = ['JayJay&Ahmii']
 global.BotSourceCode = "https://github.com/jayjay-ops/Miku-MD"
 global.SupportGroupLink = "https://chat.whatsapp.com/JcBzjRIxM5UHfuJbt0KrWt"
 global.sessionName = "session"
@@ -25,8 +25,8 @@ global.prefa = ['!']
 
 
 global.location = "Edo State, Nigeria"
-global.reactmoji = "🌹"
-global.themeemoji = "🤴"
+global.reactmoji = "✅"
+global.themeemoji = "🐧"
 global.vidmenu = { url: 'https://c.tenor.com/YGuLegQWubwAAAPo/miku-nakano-gotoubun-no-hanayome.mp4' }
 global.websitex = "https://github.com/jayjay-ops"
 global.lolhuman = "is this play 😂"
