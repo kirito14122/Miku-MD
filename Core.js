@@ -232,6 +232,16 @@ if (!m.isGroup){
     }
 }
 
+if(isCreator){
+    Miku.sendMessage(from, { react: { text: `${global.themeemoji}`, key: m.key }})
+    }	
+    
+        
+    if(isCmd){
+        Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+        }
+
+
 
 /*
 if (!isCmd && !m.isGroup){
@@ -1385,10 +1395,115 @@ for (let anju of ethanaudio){
 
 
 
-let smallinput = budy.toLowerCase()
-    if (smallinput.includes('hello')) {
-      replay(`Don't be scared, i am still active 😁`);
-    } 
+            let smallinput = budy.toLowerCase()
+            if (smallinput.includes('hello')) {
+              reply (`Hello *${pushname}*, I am *${BotName}*. How can i help you?`);
+            } 
+        
+            if( smallinput.includes('konichiwa') || smallinput.includes('konochiwa') || smallinput.includes('konichiba') || smallinput.includes('salute')){
+              reply (`Konichiwa *${pushname}*, I am *${BotName}*. How can i help you?`);
+            }
+           
+            if (smallinput=='bot') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              
+              reply (`Hello *${pushname}*, I am *${BotName}*, a WhatsApp bot made by *Fantox* and currently being hosted by *${OwnerName}*.  type  *${prefix}help* to get my full command list.`);
+            }
+            
+            if (smallinput=='lol') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                reply (`*XD*`)
+            }
+            
+            if (smallinput=='op') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                reply (`Hehe`)
+            }
+             
+            if (smallinput=='lmao') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                reply (`*XD*`)
+            }
+                    
+            if (smallinput.includes('good morning') || smallinput.includes('ohayo')) {
+              reply (`Good morning to you too *${pushname}* ☺️. Have a great day 😇.`);
+            }
+        
+            if (smallinput.includes('good night')) {
+              reply (`Good night to you too *${pushname}* 😇. Sleep well and sweet dreams.`);
+            }
+            if (smallinput=='test') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`Everything is working fine, I guess`);
+            }	
+        
+            if (smallinput=='thanks') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`Mention not *${pushname}* 😇. I am a bot afterall.`);
+            }
+            if (smallinput=='thank you') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`Mention not *${pushname}* 😇. I am a bot afterall.`);
+            }
+            if (smallinput=='arigato') {
+              reply (`Mention not *${pushname}* 😇. I am a bot afterall.`);
+            }
+            if (smallinput=='thanks 02') {
+              reply (`Mention not *${pushname}* 😇. I am a bot afterall.`);
+            }	
+            
+            if (smallinput=='02') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`Yes *${pushname}* 😇. How can i help you?.`);
+            }
+            
+            if (smallinput.includes('marry me')|| smallinput.includes('will you marry me') || smallinput.includes('marry me 02')) {
+              reply (`*${pushname}* Only If You Bend`);
+            }
+           if (smallinput=='fuck') {
+		   Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`*${pushname}* says the guy with no pp`);
+            }
+            if (smallinput=='fuck u') {
+		    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+              reply (`*${pushname}* says the guy with no pp`);
+            }
+            
+            if (smallinput=='fuck you') {
+              reply (`*${pushname}* The last time I saw a face like yours I fed it a banana.`);
+            }
+            if (smallinput=='fuck off') {
+              reply (`*${pushname}* I get so emotional when you're not around. That emotion is happiness.`);
+            }
+            if (smallinput=='stfu') {
+              reply (`*${pushname}* You look like something I'd draw with my left hand.`);
+            }	
+            
+            if (smallinput=='fuck you 02') {
+              reply (`*${pushname}* If you have something to say, raise your hand and place it over your mouth.`);
+            }
+            if (smallinput=='bsdk') {
+              reply (`*${pushname}* The last time I saw a face like yours I fed it a banana.`);
+            }
+            if (smallinput=='gandu') {
+              reply (`*${pushname}* Calling you an idiot would be an insult to all the stupid people.`);
+            }	
+            
+            if (smallinput=='fuck u 02') {
+              reply (`*${pushname}* says the guy with no pp`);
+            }
+            if (smallinput.includes('suck')) {
+              reply (`*${pushname}* Useless piece of Shit,I would if u had a dick`);
+            }	
+          
+             if (smallinput.includes('ahmii')) {
+		     Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                reply (`*My Boss is lost in another Multiverse, I lost contact with him...*`)
+            }	
+            
+            if (smallinput=='anya') {
+              reply (`*${pushname}* type !anya to see anya`);
+            } 
 
 
 
@@ -1679,7 +1794,7 @@ https://chat.whatsapp.com/LS1Xx3fSqg7FpSYSjKWhL5
 https://chat.whatsapp.com/EcycNbJFCVT5ZsG9xIGkqd`)
 break
 case 'getsxvdxcmd': {
-if (isBan) return reply(mess.ban)	 			
+	 			
 if (isBanChat) return reply(mess.banChat)
 Miku.sendMessage(from, {sticker:{url:"https://ZackMiku.github.io/media/menu.webp"}}, {quoted:m})
 Miku.sendMessage(from, {sticker:{url:"https://ZackMiku.github.io/media/groupopen.webp"}}, {quoted:m})
@@ -1701,7 +1816,7 @@ case 'support': case 'casino': {
 
 case 'repo': case 'botrepo':
      
-    reply(`*❛ Source Code of top bot ❜* \n\n\n_Miku ➻ https://github.com/FantoX001/Miku-MD_\n\n_Secktor ➻ https://github.com/SamPandey001/Secktor-Md_\n\n_Ethan-v2 ➻ https://github.com/jayjay-ops/Miku-MD_\n\n\n*Hosting Tutorial ~ https://youtu.be/fZdM7Ahb4JE*`)
+    reply(`*Contact MY OWNERS*`)
     break
 
 case 'details': case 'about': {
@@ -1923,15 +2038,24 @@ break
 //--------------bank/wallet---------------------
 
 case 'wallet':  case 'purse': {
-         	 			
-        if (isBanChat) return reply(mess.bangc)
-	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+    	 			
+    if (isBanChat) return reply(mess.banChat)
+    let member = participants.map(u => u.id)
     const user = m.sender
-    const cara = "cara"
-    const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
-    await replay(`*👛 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
-}
-break
+        const cara = "cara"
+        const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+                let me = m.sender
+                let jodoh = member[Math.floor(Math.random() * member.length)]
+                let jawab = (`*👛 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
+                let ments = [me, jodoh]
+                let buttons = [
+                            { buttonId: `${prefix}bank`, buttonText: { displayText: 'Bank' }, type: 1 },
+                            { buttonId: `${prefix}deposit ${balance.wallet}`, buttonText: {displayText: `deposit ${balance.wallet}`}, type: 1}
+                            
+                        ]
+                        await Miku.sendButtonText(m.chat, buttons, jawab, BotName, m, {mentions: ments})
+                }
+                break
 			
 	
 case 'bank':  case 'levee': {
@@ -1980,6 +2104,75 @@ case 'bank':  case 'levee': {
         
                 break
 
+                case 'b-check':  case 'burse': {
+                    	 			
+                    if (isBanChat) return reply(mess.bangc)
+                    if (!isCreator && !isModerator) return replay(mess.modi)
+                    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                    const target =
+                                         m.quoted && m.mentionedJid.length === 0
+                                         ? m.quoted.sender
+                                         : m.mentionedJid[0] || null; 
+                if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+                const user = m.sender
+                const cara = "cara"
+                const user2 = target
+                const balance = await eco.balance(user2, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+                await replay(`*🏦 user's Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`);
+                }
+                break
+                
+                
+                 case 'w-check':  case 'durse': {
+                    	 			
+                    if (isBanChat) return reply(mess.bangc)
+                    if (!isCreator && !isModerator) return replay(mess.modi)
+                     Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                    const target =
+                                         m.quoted && m.mentionedJid.length === 0
+                                         ? m.quoted.sender
+                                         : m.mentionedJid[0] || null; 
+                if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+                const user = m.sender
+                const cara = "cara"
+                const user2 = target
+                const balance = await eco.balance(user2, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+                await replay(`*👛 user's Purse:*\n\n_💎${balance.wallet}_`);
+                }
+                break
+
+                case 'punish':  case 'gsds': {
+ 	 			
+                    if (isBanChat) return reply(mess.bangc)
+                    if (!isCreator && !isModerator) return replay(mess.modi)
+                    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+                let value = text.trim().split(" ");
+                if (value[0] === "") return replay(`Use ${prefix}punish 100 @user`);
+                const target =
+                                     m.quoted && m.mentionedJid.length === 0
+                                     ? m.quoted.sender
+                                     : m.mentionedJid[0] || null;    
+                       if (!target || target === m.sender) return replay("what are you trying to do!")
+                       if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+                    while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+                    const cara = "cara"
+                    const user1 = m.sender
+                    const user2 = target
+                               const word = value[0];
+                               const code = value[1];
+                    let d = parseInt(word)
+                    if (!d) return replay("check your text plz u r using the command in a wrong way")
+                    
+                    const balance = await eco.balance(user1, cara); 
+                    let a = (balance.wallet) < parseInt(word)
+                    //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
+                    
+                    
+                    const withdraw = await eco.withdraw(user2, cara, value[0]);
+                    const deduct1 = await eco.deduct(user1, cara, value[0]);
+                    replay(`*_punishment of 💎${withdraw.amount} has been justified._*`)
+                }
+                break
 
 
 //--------------rob---------------------
@@ -2279,6 +2472,118 @@ break
 
 //=======================================
 
+case 'tagme': {	 			
+if (isBanChat) return reply(mess.banChat)
+	Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+if (!isPremium && !isCreator && !isModerator) return replay(mess.premime)	
+let member = participants.map(u => u.id)
+            let me = m.sender
+            let jodoh = member[Math.floor(Math.random() * member.length)]
+            let jawab = `Why would i tag you @${m.sender.split('@')[0]}`
+            let ments = [me, jodoh]
+            let buttons = [
+                        { buttonId: `${prefix}02`, buttonText: { displayText: 'Baka!' }, type: 1 }
+                    ]
+                    await Miku.sendButtonText(m.chat, buttons, jawab, BotName, m, {mentions: ments})
+            }
+            break
+
+            case 'stupid':
+                case 'foolish':
+                case 'smart':
+                case 'idiot':
+                case 'gay':
+                case 'lesbi':
+                case 'bastard':
+                case 'stubble':
+                case 'dog':
+                case 'fuck':
+                case 'ape':
+                case 'noob':
+                case 'great':
+                case 'horny':
+                case 'wibu':
+                case 'asshole':
+                case 'handsome':
+                case 'beautiful':
+                case 'cute':
+                case 'kind':
+                case 'ugly':
+                case 'pretty':
+                case 'lesbian':
+                case 'randi':
+                case 'gandu':
+                case 'madarchod':
+                case 'kala':
+                case 'gora':
+                case 'chutiya':
+                case 'nibba':
+                case 'nibbi':
+                case 'bhosdiwala':
+                case 'chutmarika':
+                case 'bokachoda':
+                case 'suarerbaccha':
+                case 'bolochoda':
+                case 'muthal':
+                case 'muthbaaz':
+                case 'randibaaz':
+                case 'topibaaz':
+                case 'cunt':
+                case 'nerd':
+                case 'behenchod':
+                case 'behnchoda':
+                case 'bhosdika':
+                case 'nerd':
+                case 'mc':
+                case 'bsdk':
+                case 'bhosdk':
+                case 'nigger':
+                case 'loda':
+                case 'laund':
+                case 'nigga':
+                case 'noobra':
+                case 'tharki':
+                case 'nibba':
+                case 'nibbi':
+                case 'mumu':
+                case 'rascal':
+                case 'scumbag':
+                case 'nuts':
+                case 'comrade':
+                case 'fagot':
+                case 'scoundrel':
+                case 'ditch':
+                case 'dope':
+                case 'gucci':
+                case 'lit':
+                case 'dumbass':
+                case 'sexy':
+                case 'crackhead':
+                case 'mf':
+                case 'motherfucker':
+                case 'dogla':
+                case 'bewda':
+                case 'boka':
+                case 'khanki':
+                case 'bal':
+                case 'sucker':
+                case 'fuckboy':
+                case 'playboy':
+                case 'fuckgirl':
+                case 'playgirl':
+                case 'hot': {
+                      if (!m.isGroup) return m.reply(`${mess.group}`)
+                      let member = participants.map(u => u.id)
+                      let me = m.sender
+                      let jodoh = member[Math.floor(Math.random() * member.length)]
+                      let jawab = `The Most *${command}* Here Is @${jodoh.split('@')[0]}`
+                      let ments = [me, jodoh]
+                      let buttons = [
+                                  { buttonId: '👀', buttonText: { displayText: '👀😂' }, type: 1 }
+                              ]
+                              await Miku.sendButtonText(m.chat, buttons, jawab, BotName, m, {mentions: ments})
+                      }
+                      break
 
 
 case 'nsfwmenu':
@@ -2570,6 +2875,7 @@ await Miku.sendMessage(m.chat, { delete: key })
  case 'listpc': {
      	 			
  if (isBanChat) return reply(mess.bangc)
+ if (!isCreator) return replay(mess.botowner)
  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
  let teks = ` 「  Miku's pm user list  」\n\nTotal ${anu.length} users are using Miku in personal chat.`
  for (let i of anu) {
@@ -2582,6 +2888,7 @@ await Miku.sendMessage(m.chat, { delete: key })
  case 'listgc': {
      	 			
  if (isBanChat) return reply(mess.bangc)
+ if (!isCreator) return replay(mess.botowner)
  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
  let teks = ` 「  Miku's group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
  for (let i of anu) {
@@ -4777,7 +5084,7 @@ break
                              }
                              break
                              case'glitch3':
-
+                             if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4789,6 +5096,7 @@ break
                                 break
                              
                              case '3dbox':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
@@ -4798,6 +5106,7 @@ break
                              break
                              
                              case 'waterdrop':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                               maker.textpro("https://textpro.me/dropwater-text-effect-872.html", [
@@ -4807,6 +5116,7 @@ break
                                   break
                              
                              case 'lion2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                                m.reply(mess.wait)
                                maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
@@ -4816,6 +5126,7 @@ break
                                   break
                              
                              case 'papercut':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                                    m.reply(mess.wait)
                                    maker.textpro("https://textpro.me/create-art-paper-cut-text-effect-online-1022.html", [
@@ -4825,6 +5136,7 @@ break
                                       break
                              
                              case 'transformer':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                                    m.reply(mess.wait)
                                    maker.textpro("https://textpro.me/create-a-transformer-text-effect-online-1035.html", [
@@ -4834,6 +5146,7 @@ break
                              break
                                 
                              case 'harrypot':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text|text`)
                                     m.reply(mess.wait)
                                     teks1 = q.split("|")[0]
@@ -4845,6 +5158,7 @@ break
                               break
                              
                              case 'neondevil':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                                    m.reply(mess.wait)
                                    maker.textpro("https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html", [
@@ -4854,6 +5168,7 @@ break
                                       break
                              
                              case '3dstone':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-stone-cracked-cool-text-effect-1029.html", [
@@ -4863,6 +5178,7 @@ break
                                 break
                              
                              case '3davengers':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
@@ -4872,6 +5188,7 @@ break
                                 break
                              
                              case 'thunder':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/online-thunder-text-effect-generator-1031.html", [
@@ -4881,6 +5198,7 @@ break
                                 break
                                 
                              case 'window':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
@@ -4890,6 +5208,7 @@ break
                                 break
                              
                                 case 'blackpinkneon':
+                                    if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-neon-light-blackpink-logo-text-effect-online-1081.html", [
@@ -4900,6 +5219,7 @@ break
                              
                              case 'graffiti':
                                 case 'grafiti':
+                                    if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4911,6 +5231,7 @@ break
                                 break
                              
                              case 'pornhub2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4922,6 +5243,7 @@ break
                                 break
                              
                              case 'blackpink2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
@@ -4931,6 +5253,7 @@ break
                                 break
                              
                              case 'glitch':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-impressive-glitch-text-effects-online-1027.html", [
@@ -4940,6 +5263,7 @@ break
                                 break
                              
                              case 'glitch2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4951,6 +5275,7 @@ break
                                 break
                              
                              case 'glitch3':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4962,6 +5287,7 @@ break
                                 break
                              
                              case '3dspace':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4973,6 +5299,7 @@ break
                                 break
                              
                              case 'lion':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text|text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -4984,6 +5311,7 @@ break
                                 break
                              
                              case '3dneon':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-3d-neon-light-text-effect-online-1028.html", [
@@ -4993,6 +5321,7 @@ break
                                 break
                              
                              case 'neon':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/neon-text-effect-online-879.html", [
@@ -5002,6 +5331,7 @@ break
                                 break
                              
                              case 'greenneon':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/green-neon-text-effect-874.html", [
@@ -5011,6 +5341,7 @@ break
                                 break
                                  
                              case 'bokeh':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
@@ -5022,6 +5353,7 @@ break
                                 
                              
                              case 'holographic':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
@@ -5033,7 +5365,8 @@ break
                              
                              
                              case 'bear':
-                             
+                            
+                             if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -5045,7 +5378,7 @@ break
                                 break
                              
                              case 'wolf':
-                             
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              reply(mess.wait)
                              teks1 = q.split("|")[0]
@@ -5057,6 +5390,7 @@ break
                                 break
                              
                              case 'joker':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-logo-joker-online-934.html", [
@@ -5066,6 +5400,7 @@ break
                                 break
                              
                              case 'dropwater2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/dropwater-text-effect-872.html", [
@@ -5075,6 +5410,7 @@ break
                                 break
                                 
                                 case 'summertime':
+                                    if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-summer-neon-light-text-effect-online-1076.html", [
@@ -5084,6 +5420,7 @@ break
                                 break
                              
                              case 'neonlight2':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/neon-light-text-effect-with-galaxy-style-981.html", [
@@ -5093,6 +5430,7 @@ break
                                 break
                              
                              case 'thewall':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
@@ -5102,6 +5440,7 @@ break
                                 break
                                 
                              case 'natural':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
@@ -5111,6 +5450,7 @@ break
                                 break 
                              
                              case 'carbon':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/carbon-text-effect-833.html", [
@@ -5120,6 +5460,7 @@ break
                                 break
                              
                              case 'pencil':
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                 if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
@@ -5129,7 +5470,7 @@ break
                                 break
                              
                              case 'textmaker': {
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (args.length < 1) return reply`Example :\n${prefix + command} <name>`
                              if (args[0] === 'glitch') {
                              if (args.length < 2) return reply`Example :\n${prefix + command + ' ' + args[0]} ${global.ownername}`
@@ -5146,7 +5487,7 @@ break
                              break
                              //logo maker
                              case 'hoorror':{
-                             
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                                   let link = `https://textpro.me/horror-blood-text-effect-online-883.html`
                                   let anui = await textpro(link, q)
                                   m.reply(`Wait a moment while making the logo about 1 minute`) 
@@ -5155,7 +5496,7 @@ break
                              }
                                 break
                              case 'whitebear':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
@@ -5164,7 +5505,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'thunder2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-thunder-text-effect-online-881.html", [
@@ -5174,7 +5515,7 @@ break
                                 break
                                 break
                              case 'blackpink':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
@@ -5183,7 +5524,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'neon':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/neon-light-text-effect-online-882.html", [
@@ -5192,7 +5533,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'matrix2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
@@ -5201,7 +5542,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'sky':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-cloud-text-effect-on-the-sky-online-1004.html", [
@@ -5210,7 +5551,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'magma':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-magma-hot-text-effect-online-1030.html", [
@@ -5219,7 +5560,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'sand':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
@@ -5228,7 +5569,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'pencil':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
@@ -5237,7 +5578,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'graffiti':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html", [
@@ -5246,7 +5587,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'metallic':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
@@ -5255,7 +5596,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'steel':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
@@ -5264,7 +5605,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'harrpotter':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-harry-potter-text-effect-online-1025.html", [
@@ -5273,7 +5614,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'underwater':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-underwater-text-effect-generator-online-1013.html", [
@@ -5282,7 +5623,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'luxury':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-luxury-gold-text-effect-online-1003.html", [
@@ -5291,7 +5632,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'glue2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html", [
@@ -5300,7 +5641,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'fabric':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
@@ -5309,7 +5650,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'neonlight':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/neon-light-glitch-text-generator-online-1063.html", [
@@ -5318,7 +5659,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'lava':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/lava-text-effect-online-914.html", [
@@ -5327,7 +5668,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'toxic':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/toxic-text-effect-online-901.html", [
@@ -5336,7 +5677,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'ancient':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
@@ -5345,7 +5686,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'christmas2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/sparkles-merry-christmas-text-effect-1054.html", [
@@ -5354,7 +5695,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'sci_fi':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-3d-sci-fi-text-effect-online-1050.html", [
@@ -5363,7 +5704,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'rainbow':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/3d-rainbow-color-calligraphy-text-effect-1049.html", [
@@ -5372,7 +5713,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'classic':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [
@@ -5381,7 +5722,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'watercolor2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-free-online-watercolor-text-effect-1017.html", [
@@ -5390,7 +5731,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'halloweem2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime) 
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-spooky-halloween-text-effect-online-1046.html", [
@@ -5399,7 +5740,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'halloweenfire':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/halloween-fire-text-effect-940.html", [
@@ -5408,7 +5749,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'writing':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
@@ -5417,7 +5758,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'foggy':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
@@ -5426,7 +5767,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'marvel':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
@@ -5435,7 +5776,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'skeleton2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-halloween-skeleton-text-effect-online-1047.html", [
@@ -5444,7 +5785,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'sketch':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
@@ -5453,7 +5794,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'wonderful':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html", [
@@ -5462,7 +5803,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'cool':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html", [
@@ -5471,7 +5812,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'collwall':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/create-cool-wall-graffiti-text-effect-online-1009.html", [
@@ -5480,7 +5821,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'multicolor2':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)  
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/online-multicolor-3d-paper-cut-text-effect-1016.html", [
@@ -5489,7 +5830,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'batman':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
@@ -5498,7 +5839,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'juice':
-                                
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Use ${prefix + command} text`)
                              m.reply(mess.wait)
                              maker.textpro("https://textpro.me/fruit-juice-text-effect-861.html", [
@@ -5507,7 +5848,7 @@ break
                                .catch((err) => console.log(err));
                                 break
                              case 'pornhub':{
-                                 
+                                if (!isPremium && !isCreator) return replay(mess.premime)   
                              if (!text) return reply(`Example: ${prefix + command} ajg | ea`)
                              m.reply(mess.wait)
                                inilogo4 = args.join(" ")
@@ -5520,6 +5861,7 @@ break
                              }
                              break
                              case 'retro':{
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Example: ${prefix + command} ajg | ea`)
                              m.reply(mess.wait)
                                inilogo4 = args.join(" ")
@@ -5532,6 +5874,7 @@ break
                              }
                              break
                              case 'horror':{
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Example: ${prefix + command} ajg | ea`)
                              m.reply(mess.wait)
                                inilogo4 = args.join(" ")
@@ -5544,6 +5887,7 @@ break
                              }
                              break
                              case '8bit':{
+                                if (!isPremium && !isCreator) return replay(mess.premime)
                              if (!text) return reply(`Example: ${prefix + command} ajg | ea`)
                              m.reply(mess.wait)
                                inilogo4 = args.join(" ")
@@ -6430,6 +6774,155 @@ replay('Broadcast Sent !')
 break  
 
 
+case 'help': case 'h': {
+    const sections = [{
+             "title": "🔖１． ＢＯＴ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help1`,
+                     "description": "Displays The List Of Bot Commands.",
+                     "rowId": `${prefix}help1`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖２． ＵＳＥＲ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help2`,
+                     "description": "Displays The List Of User Commands.",
+                     "rowId": `${prefix}help2`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖３． ＭＥＤＩＡ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help3`,
+                     "description": "Displays The List Of Media Commands.",
+                     "rowId": `${prefix}help3`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖４． ＰＲＯ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help4`,
+                     "description": "Displays The List Of Premium(paid) Commands.",
+                     "rowId": `${prefix}help4`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖５． ＡＤＭＩＮ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help5`,
+                     "description": "Displays The List Of Admin Commands.",
+                     "rowId": `${prefix}help5`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖６． ＡＮＩＭＥ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help6`,
+                     "description": "Displays The List Of Anime Commands.",
+                     "rowId": `${prefix}help6`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖７． ＧＡＭＥＳ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help7`,
+                     "description": "Displays The List Of Game Commands.",
+                     "rowId": `${prefix}help7`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖８． ＢＯＴ ＡＤＭＩＮ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help8`,
+                     "description": "Displays The List Of Moderators Commands.",
+                     "rowId": `${prefix}help8`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖９． ＦＵＮ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help9`,
+                     "description": "Displays The List Of Fun Commands.",
+                     "rowId": `${prefix}help9`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖１０．  ＥＣＯＮＯＭＹ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help10`,
+                     "description": "Displays The List Of Economy Commands.",
+                     "rowId": `${prefix}help10`
+                 }
+                ]
+            },
+                 {
+                    "title": "🔖１１．  ＡＵＤＩＯ ＳＩＤＥ",
+             "rows": [
+                 {
+                     "title": `${prefix}help11`,
+                     "description": "Displays The List Of Audio Commands.",
+                     "rowId": `${prefix}help11`
+                 }
+                ]
+            },
+                 {                         
+             "title": "Credit ©️",
+             "rows": [
+                 {
+                     "title": "Thanks To ❤️",
+                     "description": "Displays The List Of Credit Of The Bot !!",
+                     "rowId": `${prefix}tqto`
+                 }
+             ]
+         }
+     ]
+let con = `
+Hello, ${pushname} 
+
+♠︎ *𝙽𝚊𝚖𝚎*      :  ${pushname}
+♠︎ *𝙿𝚛𝚎𝚖𝚒𝚞𝚖*   :  ${isPremium ? '✅' : `❌`}
+
+♠︎ *Speed* : ${latensie.toFixed(4)} miliseconds
+♠︎ *Up Time* : ${runtime(process.uptime())}
+♠︎ *Bot Name* : ${global.BotName}
+♠︎ *𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺* : Amazon AWS
+♠︎ *𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿* : ${Object.keys(global.db.users).length}
+♠︎ *𝚄𝚙𝚝𝚒𝚖𝚎* : ${runtime(process.uptime())}
+♠︎ *𝚃𝚒𝚖𝚎* :  ${moment.tz('Asia/Karachi').format('HH')}H: ${moment.tz('Asia/Karachi').format('mm')}M: ${moment.tz('Asia/Karachi').format('ss')} S
+`
+let fot = `Powered BY LOVE
+`
+const listMessage = {
+     footer: fot,
+     text: 'Made By A&J INC',
+     title: con,
+     buttonText: `Menu ⎙`, 
+     sections
+     }
+     const sendMsg = await Miku.sendMessage(m.chat, listMessage,{ quoted:m })
+     }
+     break
+
 
 
 //-----------------------------------------
@@ -6915,8 +7408,7 @@ Owner Name : ${global.OwnerName}
 break
  
 
-case 'help': case 'h': {
-				
+case 'hdf': case 'hsdf': {	 			
     if (isBanChat) return reply(mess.banChat)
     const helper = `\n
     
@@ -6927,9 +7419,9 @@ case 'help': case 'h': {
 ⊶ ⛳𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : Amazon AWS
 ⊶ 📡𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
 ⊶────────────────────
-⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
+⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕𝒕𝒐 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
 ⊶ © 𝑪𝒐𝒑𝒚𝒓𝒊𝒈𝒉𝒕 miku
-⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}report
+⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}𝐨𝐰𝐧𝐞𝐫
 ⊶────────────────────
 
 ❥︎ Ⓖ︎𝗲𝗻𝗲𝗿𝗮𝗹 
@@ -6959,22 +7451,15 @@ case 'help': case 'h': {
 ❥︎ Ⓕ𝘂𝗻-Ⓡ𝗲𝗮𝘁𝗶𝗼𝗻𝘀
 🎐 ${prefix}𝙷𝚎𝚕𝚙9
 
-❥︎ Ⓟ︎𝗼𝗿𝗻𝗼 
+❥︎ ⓃⓈⒻⓌ 
 🎐 ${prefix}𝙷𝚎𝚕𝚙9
 
 
 ─────────────────────
 
-╔════⧫🐾𝑵𝑺𝑭𝑾 🐾
-║
-║ Type *${prefix}nsfw* then enable NSFW (Admin only!) 
-║
-║ Then type *${prefix}nsfwmenu* to get NSFW commands.
-╚════════════╝
-
 
  『  *${global.BotName}*  』
- Powered by: *Fantox*
+ Powered by: *Ahmii*
 
 🎐 To use any of these commands type 
   *"${prefix}<Command name>".*
@@ -7004,55 +7489,18 @@ break
 case 'help1': case 'h1': {
 		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper1 = `-Ⓖ︎Ⓔ︎Ⓝ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓛ︎ 🎐
+    const helper1 = `*B̴O̴T̴ ̴S̴I̴D̴E̴* 
 ──────────────
-⛲ ${prefix}hi/hello
-⛲ ${prefix}profile
-⛲ ${prefix}listgc
-⛲ ${prefix}listpc
-⛲ ${prefix}support
-⛲ ${prefix}casino
-⛲ ${prefix}repo
-⛲ ${prefix}script
-⛲ ${prefix}ethan
-⛲ ${prefix}report
-⛲ ${prefix}about
-⛲ ${prefix}rules
-⛲ ${prefix}lyrics
-⛲ ${prefix}animequote 
-⛲ ${prefix}quote
-⛲ ${prefix}covid
-⛲ ${prefix}earthquake
-⛲ ${prefix}translate
-⛲ ${prefix}fliptext
-⛲ ${prefix}toletter
-⛲ ${prefix}bot
-⛲ ${prefix}wiki
-⛲ ${prefix}searchgc
-⛲ ${prefix}sticker
-⛲ ${prefix}toimg
-⛲ ${prefix}tovideo
-⛲ ${prefix}togif
-⛲ ${prefix}steal
-⛲ ${prefix}stickermeme
-⛲ ${prefix}emojimix
-⛲ ${prefix}tourl
-⛲ ${prefix}tomp3
-⛲ ${prefix}toaudio
-⛲ ${prefix}tts
-⛲ ${prefix}bass
-⛲ ${prefix}tempo
-⛲ ${prefix}stalk
-⛲ ${prefix}blown
-⛲ ${prefix}deep
-⛲ ${prefix}earrape
-⛲ ${prefix}fast
-⛲ ${prefix}fat
-⛲ ${prefix}nightcore
-⛲ ${prefix}reverse
-⛲ ${prefix}robot
-⛲ ${prefix}squirrel
-⛲ ${prefix}slow
+╔════⧫🎀B̴O̴T̴ ̴S̴I̴D̴E̴🎀
+║ ${prefix}help
+║ ${prefix}rules
+║ ${prefix}02
+║ ${prefix}report
+║ ${prefix}afk
+║ ${prefix}about
+║ ${prefix}support
+║ ${prefix}casino
+╚════════════╝
 
 ──────────────`
 
@@ -7077,25 +7525,17 @@ break
 case 'help2': case 'h2': {
 		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper2 = `-Ⓐ︎Ⓝ︎Ⓘ︎Ⓜ︎Ⓔ︎Ⓢ︎ 🎐
+    const helper2 = `*🆄🆂🅴🆁 🆂🅸🅳🅴* 
 ──────────────
-🐼 ${prefix}waifu
-🐼 ${prefix}loli
-🐼 ${prefix}ppcouple
-🐼 ${prefix}neko
-🐼 ${prefix}meow
-🐼 ${prefix}feed
-🐼 ${prefix}foxgirl
-🐼 ${prefix}tickle
-🐼 ${prefix}animewallpaper2
-🐼 ${prefix}coffee
-🐼 ${prefix}animenom
-🐼 ${prefix}waifu3
-🐼 ${prefix}neko2
-🐼 ${prefix}migumin
-🐼 ${prefix}awoo
-🐼 ${prefix}anime
-🐼 ${prefix}manga
+⛲ ${prefix}profile
+⛲ ${prefix}translate
+⛲ ${prefix}sticker
+⛲ ${prefix}wiki
+⛲ ${prefix}stickermeme
+⛲ ${prefix}emojimix
+⛲ ${prefix}toaudio
+⛲ ${prefix}animequote 
+⛲ ${prefix}coffee
 ──────────────`
 
 let buttonhelper2 = [
@@ -7115,18 +7555,26 @@ break
 
 
 case 'help3': case 'h3': {
-	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper3 = `-ⒺⒸⓄⓃⓄⓂⓎ 🎐
+    const helper3 = `*🅼🅴🅳🅸🅰 🆂🅸🅳🅴*
 ──────────────
-🦋 ${prefix}daily
-🦋 ${prefix}capacity
-🦋 ${prefix}deposit
-🦋 ${prefix}wallet
-🦋 ${prefix}transfer
-🦋 ${prefix}bank
-🦋 ${prefix}rob
-🦋 ${prefix}withdraw
+🐼 ${prefix}toimg
+🐼 ${prefix}tovideo
+🐼 ${prefix}tomp3
+🐼 ${prefix}google
+🐼 ${prefix}gimage
+🐼 ${prefix}ytsearch
+🐼 ${prefix}happymod
+🐼 ${prefix}pintrest
+🐼 ${prefix}movie
+🐼 ${prefix}twitter
+🐼 ${prefix}facebook
+🐼 ${prefix}tiktok
+🐼 ${prefix}tiktoknowm
+🐼 ${prefix}igtv
+🐼 ${prefix}instagram
+🐼 ${prefix}wikimedia
 ──────────────`
 
 let buttonhelper3 = [
@@ -7147,38 +7595,129 @@ break
 
 
 case 'help4': case 'h4': {
-	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper4 = `-Ⓜ︎Ⓔ︎Ⓓ︎Ⓘ︎Ⓐ︎ 🎐
+    if (!isPremium && !isCreator && !isModerator) return replay(mess.premime)
+    const helper4 = `*🅿🆁🅾 🆂🅸🅳🅴*
 ──────────────
-🐝 ${prefix}play
-🐝 ${prefix}yts
-🐝 ${prefix}happymod
-🐝 ${prefix}google
-🐝 ${prefix}playstore
-🐝 ${prefix}gimage
-🐝 ${prefix}pinterest
-🐝 ${prefix}image
-🐝 ${prefix}movie
-🐝 ${prefix}wallpaper
-🐝 ${prefix}wikimedia
-🐝 ${prefix}ringtone
-🐝 ${prefix}anime
-🐝 ${prefix}animestory
-🐝 ${prefix}manga
-🐝 ${prefix}ytmp3
-🐝 ${prefix}ytmp4
-🐝 ${prefix}ytvideo
-🐝 ${prefix}instagram
-🐝 ${prefix}mediafire
-🐝 ${prefix}igtv
-🐝 ${prefix}facebook
-🐝 ${prefix}fbmp3
-🐝 ${prefix}twitter
-🐝 ${prefix}twittermp3
-🐝 ${prefix}tiktok
-🐝 ${prefix}tiktokaudio
-🐝 ${prefix}tiktoknowm
+👑 ${prefix}take/steal
+👑 ${prefix}promote
+👑 ${prefix}demote
+👑 ${prefix}tagme
+👑 ${prefix}play
+👑 ${prefix}song
+👑 ${prefix}add
+👑 ${prefix}yts
+👑 ${prefix}lyrics
+👑 ${prefix}add
+👑 ${prefix}buttonmaker
+👑 ${prefix}styletext 
+──────────────
+🆃🅴🆇🆃 🅼🅰🅺🅴🆁
+──────────────
+👑 ${prefix}candy
+👑 ${prefix}blackpinkneon
+👑 ${prefix}deepsea
+👑 ${prefix}scifi
+👑 ${prefix}fiction
+👑 ${prefix}berry
+👑 ${prefix}fruitjuice
+👑 ${prefix}biscuit
+👑 ${prefix}wood
+👑 ${prefix}chocolate
+👑 ${prefix}matrix
+👑 ${prefix}blood
+👑 ${prefix}halloween
+👑 ${prefix}wicker
+👑 ${prefix}darkgold
+👑 ${prefix}firework
+👑 ${prefix}skeleton
+👑 ${prefix}sand
+👑 ${prefix}glue
+👑 ${prefix}leaves
+👑 ${prefix}magma
+👑 ${prefix}lava
+👑 ${prefix}rock
+👑 ${prefix}bloodglas
+👑 ${prefix}underwater
+👑 ${prefix}textmaker
+👑 ${prefix}honey
+👑 ${prefix}ice
+👑 ${prefix}watercolor
+👑 ${prefix}multicolor
+👑 ${prefix}snow
+👑 ${prefix}harrypot
+👑 ${prefix}harrypotter
+👑 ${prefix}brokenglass
+👑 ${prefix}waterpipe
+👑 ${prefix}spooky
+👑 ${prefix}circuit
+👑 ${prefix}metallic
+👑 ${prefix}demon
+👑 ${prefix}sparklechristmas
+👑 ${prefix}christmas
+👑 ${prefix}3dchristmas
+👑 ${prefix}3dbox
+👑 ${prefix}waterdrop
+👑 ${prefix}lion2
+👑 ${prefix}papercut
+👑 ${prefix}transformer
+👑 ${prefix}neondevil
+👑 ${prefix}3davengers
+👑 ${prefix}3dstone
+👑 ${prefix}3dstone2
+👑 ${prefix}summertime
+👑 ${prefix}thunder
+👑 ${prefix}window
+👑 ${prefix}graffiti
+👑 ${prefix}graffitibike
+👑 ${prefix}pornhub
+👑 ${prefix}glitch
+👑 ${prefix}blackpink
+👑 ${prefix}glitch2
+👑 ${prefix}glitch3
+👑 ${prefix}3dspace
+👑 ${prefix}lion
+👑 ${prefix}3dneon
+👑 ${prefix}greenneon
+👑 ${prefix}bokeh
+👑 ${prefix}holographic
+👑 ${prefix}bear
+👑 ${prefix}wolf
+👑 ${prefix}joker
+👑 ${prefix}dropwater
+👑 ${prefix}dropwater2
+👑 ${prefix}thewall
+👑 ${prefix}neonlight
+👑 ${prefix}natural
+👑 ${prefix}carbon
+👑 ${prefix}pencil
+👑 ${prefix}blackpink2
+👑 ${prefix}neon
+👑 ${prefix}neonlight2
+👑 ${prefix}toxic
+👑 ${prefix}strawberry
+👑 ${prefix}discovery
+👑 ${prefix}1917
+👑 ${prefix}sci_fi
+👑 ${prefix}ancient
+👑 ${prefix}fabric
+👑 ${prefix}hoorror
+👑 ${prefix}whitebear
+👑 ${prefix}juice
+👑 ${prefix}batman
+👑 ${prefix}multicolor
+👑 ${prefix}collwall
+👑 ${prefix}wonderful
+👑 ${prefix}cool
+👑 ${prefix}sketch
+👑 ${prefix}marvel
+👑 ${prefix}foggy
+👑 ${prefix}writing
+👑 ${prefix}halloweenfire
+👑 ${prefix}halloween
+👑 ${prefix}watercolor
+👑 ${prefix}classic
 ──────────────`
 
 let buttonhelper4 = [
@@ -7197,24 +7736,17 @@ let buttonhelper4 = [
 break
 
 case 'help5': case 'h5': {
-	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper5 = `-Ⓜ︎Ⓞ︎Ⓓ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓣ︎Ⓘ︎Ⓞ︎Ⓝ︎ 🎐
+    const helper5 = `🅰🅳🅼🅸🅽 🆂🅸🅳🅴
 ──────────────
-🧸 ${prefix}promote
-🧸 ${prefix}demote
-🧸 ${prefix}revoke
-🧸 ${prefix}groupsetting
-🧸 ${prefix}add
-🧸 ${prefix}remove
-🧸 ${prefix}tagall
-🧸 ${prefix}hidetag
-🧸 ${prefix}setgcpp
-🧸 ${prefix}grouplink
-🧸 ${prefix}setgcname
-🧸 ${prefix}setdesc
-🧸 ${prefix}nsfw
-🧸 ${prefix}group
+${prefix}groupsetting
+${prefix}antilink
+${prefix}tagall 
+${prefix}hidetag
+${prefix}setgcname
+${prefix}grouplink
+${prefix}remove
 ──────────────`
 
 let buttonhelper5 = [
@@ -7234,20 +7766,24 @@ break
 
 
 case 'help6': case 'h6': {
-				
+		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper6 = `-ⒶⓃⓉⒾⓁⒾⓃⓀ 🎐
+    const helper6 = `🅰🅽🅸🅼🅴 🆂🅸🅳🅴
 ──────────────
-⚕️ ${prefix}antilinkgc
-⚕️ ${prefix}antilinktg
-⚕️ ${prefix}antilinktt
-⚕️ ${prefix}antilinkytch
-⚕️ ${prefix}antilinkytvid
-⚕️ ${prefix}antilinkig
-⚕️ ${prefix}antilinkfb
-⚕️ ${prefix}antilinktwit
-⚕️ ${prefix}antilinkall
-⚕️ ${prefix}antilinkwame
+⚕️ ${prefix}manga
+⚕️ ${prefix}anime
+⚕️ ${prefix}animestory
+⚕️ ${prefix}waifu
+⚕️ ${prefix}neko
+⚕️ ${prefix}waifu2
+⚕️ ${prefix}loli
+⚕️ ${prefix}feed
+⚕️ ${prefix}meow
+⚕️ ${prefix}waifu3
+⚕️ ${prefix}tickle
+⚕️ ${prefix}awoo
+⚕️ ${prefix}foxgirl
+⚕️ ${prefix}ppcouple
 ──────────────`
 
 let buttonhelper6 = [
@@ -7269,21 +7805,16 @@ break
 case 'help7': case 'h7': {
 		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper7 = `-Ⓓ︎Ⓔ︎Ⓥ︎Ⓔ︎Ⓛ︎Ⓞ︎Ⓟ︎Ⓔ︎Ⓡ︎ 🎐
+    const helper7 = `🅶🅰🅼🅴🆂 🆂🅸🅳🅴
 ──────────────
-🎗️ ${prefix}self
-🎗️ ${prefix}public
-🎗️ ${prefix}ban
-🎗️ ${prefix}bangroup
-🎗️ ${prefix}bye
-🎗️ ${prefix}join
-🎗️ ${prefix}qr
-🎗️ ${prefix}getcase
-🎗️ ${prefix}block
-🎗️ ${prefix}unblock
-🎗️ ${prefix}broadcast
-🎗️ ${prefix}setbotpp
-🎗️ ${prefix}eval
+🕹️ ${prefix}slot
+🕹️ ${prefix}gamble
+🕹️ ${prefix}slot help
+🕹️ ${prefix}truth
+🕹️ ${prefix}slot money
+🕹️ ${prefix}dare
+🕹️ ${prefix}ttt
+🕹️ ${prefix}delttt
 ──────────────`
 
 let buttonhelper7 = [
@@ -7303,18 +7834,22 @@ break
 
 
 case 'help8': case 'h8': {
-	 			
+		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper8 =  `-Ⓖⓐⓜⓔⓢ  🎐
+    if (!isCreator && !isModerator) return replay(mess.modi)
+    const helper8 =  `🅼🅾🅳🅴🆁🅰🆃🅾🆁🆂
 ──────────────
-🕹️ ${prefix}truth
-🕹️ ${prefix}gamble
-🕹️ ${prefix}dare
-🕹️ ${prefix}slot
-🕹️ ${prefix}slot help
-🕹️ ${prefix}slot money
-🕹️ ${prefix}ttt
-🕹️ ${prefix}delttt
+🎗️ ${prefix}punish
+🎗️ ${prefix}set-money
+🎗️ ${prefix}b-check
+🎗️ ${prefix}w-check
+🎗️ ${prefix}wealth
+🎗️ ${prefix}setgcname
+🎗️ ${prefix}setdesc
+🎗️ ${prefix}set-limit
+🎗️ ${prefix}wealth
+🎗️ ${prefix}listpc
+🎗️ ${prefix}listgc
 
 ──────────────`
 
@@ -7338,7 +7873,7 @@ break
 case 'help9': case 'h9': {
 		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper9 = `-ⒻⓊⓃ-ⓇⒺⒶⒸⓉⒾⓄⓃ 🎐
+    const helper9 = `🅵🆄🅽 🆁🅴🅰🅲🆃🅸🅾🅽
 ──────────────
 🍹 ${prefix}couple
 🍹 ${prefix}soulmate
@@ -7380,6 +7915,52 @@ case 'help9': case 'h9': {
 🍹 ${prefix}poke
 🍹 ${prefix}dance
 🍹 ${prefix}cringe
+🍹 ${prefix}couple
+🍹 ${prefix}mysoulmate
+🍹 ${prefix}hot
+🍹 ${prefix}sexy
+🍹 ${prefix}kind
+🍹 ${prefix}idiot
+🍹 ${prefix}handsome
+🍹 ${prefix}beautiful
+🍹 ${prefix}cute
+🍹 ${prefix}pretty
+🍹 ${prefix}lesbian
+🍹 ${prefix}noob
+🍹 ${prefix}bastard
+🍹 ${prefix}foolish
+🍹 ${prefix}nerd
+🍹 ${prefix}asshole
+🍹 ${prefix}gay
+🍹 ${prefix}smart
+🍹 ${prefix}stubble
+🍹 ${prefix}dog
+🍹 ${prefix}horny
+🍹 ${prefix}cunt
+🍹 ${prefix}wibu
+🍹 ${prefix}noobra
+🍹 ${prefix}nibba
+🍹 ${prefix}nibbi
+🍹 ${prefix}comrade
+🍹 ${prefix}mumu
+🍹 ${prefix}rascal
+🍹 ${prefix}scumbag
+🍹 ${prefix}nuts
+🍹 ${prefix}fagot
+🍹 ${prefix}scoundrel
+🍹 ${prefix}ditch
+🍹 ${prefix}dope
+🍹 ${prefix}gucci
+🍹 ${prefix}lit
+🍹 ${prefix}dumbass
+🍹 ${prefix}crackhead
+🍹 ${prefix}mf
+🍹 ${prefix}motherfucker
+🍹 ${prefix}sucker
+🍹 ${prefix}fuckboy
+🍹 ${prefix}playboy
+🍹 ${prefix}fuckgirl
+🍹 ${prefix}playgirl
 ──────────────`
 
 let buttonhelper9 = [
@@ -7403,37 +7984,20 @@ break
 case 'help10': case 'h10': {
 		 			
     if (isBanChat) return reply(mess.banChat)
-    const helper10 =  `-ⓅⓄⓇⓃⓄ 🎐
+    const helper10 =  `🅴🅲🅾🅽🅾🅼🆈 🆂🅸🅳🅴
 ──────────────
-🍑 ${prefix}hentaivideo
-🍑 ${prefix}blowjobgif
-🍑 ${prefix}hneko
-🍑 ${prefix}masturbation
-🍑 ${prefix}thighs
-🍑 ${prefix}pussy
-🍑 ${prefix}panties
-🍑 ${prefix}orgy
-🍑 ${prefix}ahegao
-🍑 ${prefix}ass
-🍑 ${prefix}bdsm
-🍑 ${prefix}blowjob 
-🍑 ${prefix}cuckold
-🍑 ${prefix}ero
-🍑 ${prefix}gasm
-🍑 ${prefix}cum
-🍑 ${prefix}femdom
-🍑 ${prefix}foot
-🍑 ${prefix}gangbang
-🍑 ${prefix}glasses
-🍑 ${prefix}jahy
-🍑 ${prefix}trap
-🍑 ${prefix}spank
-🍑 ${prefix}hwaifu
-
+💳 ${prefix}daily
+💳 ${prefix}capacity
+💳 ${prefix}deposit
+💳 ${prefix}transfer
+💳 ${prefix}wallet
+💳 ${prefix}bank
+💳 ${prefix}rob
+💳 ${prefix}withdraw
 ──────────────`
 
 let buttonhelper10 = [
-                {buttonId: `${prefix}about`, buttonText: {displayText: '❄️About❄️'}, type: 1},
+                {buttonId: `${prefix}help11`, buttonText: {displayText: '❄️help11❄️'}, type: 1},
                 {buttonId: `${prefix}rule`, buttonText: {displayText: '🧧Rule🧧'}, type: 1}
                 ]
                 let buttonMessage = {
@@ -7441,6 +8005,40 @@ let buttonhelper10 = [
                     caption: helper10,
                     footer: `${BotName}`,
                     buttons: buttonhelper10,
+                    headerType: 1
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+case 'help11': case 'h11': {
+		 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper11 = `🅰🆄🅳🅸🅾 🆂🅸🅳🅴
+──────────────
+🔉 ${prefix}bass
+🔉 ${prefix}tempo
+🔉 ${prefix}blown
+🔉 ${prefix}deep
+🔉 ${prefix}earrape
+🔉 ${prefix}fast
+🔉 ${prefix}fat
+🔉 ${prefix}nightcore
+🔉 ${prefix}reverse
+🔉 ${prefix}robot
+🔉 ${prefix}slow
+🔉 ${prefix}squirrel
+🔉 ${prefix}tts
+──────────────`
+
+let buttonhelper11 = [     
+                {buttonId: `${prefix}profile`, buttonText: {displayText: '🎋Profile🎋'}, type: 1}
+                ]
+                let buttonMessage = {
+                    video: fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,
+                    caption: helper11,
+                    footer: `${BotName}`,
+                    buttons: buttonhelper11,
                     headerType: 1
                 }
             Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
