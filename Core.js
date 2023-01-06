@@ -223,12 +223,23 @@ if (!isCreator){
 
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
+if (!m.isGroup){
+   let checkai = await mbot.findOne({ id: 'mbot' })
+   if (!isCmd && checkai.worktype == 'true'){
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
+    txt = `${botreply.data.cnt}`
+    m.reply(txt)
+    }
+}
+
+
+/*
 if (!isCmd && !m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
     m.reply(txt)
     } 
-
+*/
 //////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1608,6 +1619,43 @@ case 'unban': {
 break
 
 
+
+case 'chatbot': {
+	if (!isCreator) return replay(mess.botowner)
+	if (!text) return replay(`*Use On/Off to switch the command*`)
+	let checkbot = await mbot.findOne({ id: 'mbot' })
+	let checkon = checkbot.worktype
+	if (args[0] === "on"){
+		if (!checkon){
+			await new mbot({ id: 'mbot', worktype: "true" }).save()
+                   return replay(`*Successfully Enabled Chatbot*`)
+        }
+        else {
+        	if (checkon == 'true') return replay(`*AI Chatbot is already activated*`)
+               await mbot.updateOne({ id: 'mbot' }, { worktype: "true" })
+                      return replay(`*AI chatbot is enabled*`)
+        }
+    }
+    else if (args[0] === "off"){
+    	if (!checkon){
+			await new mbot({ id: 'mbot', worktype: "false" }).save()
+                   return replay(`*Successfully disabled Chatbot*`)
+        }
+        else {
+        	if (checkon == 'false') return replay(`*AI Chatbot is already deactivated*`)
+               await mbot.updateOne({ id: 'mbot' }, { worktype: "false" })
+                      return replay(`*AI chatbot is disabled*`)
+        }
+    }
+    else {
+    	let buttonsntilink = [
+             { buttonId: `${prefix}chatbot on`, buttonText: { displayText: 'On' }, type: 1 },
+             { buttonId: `${prefix}chatbot off`, buttonText: { displayText: 'Off' }, type: 1 }
+        ]
+        await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
+    }
+}
+break
 
 
 	
