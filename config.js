@@ -7,9 +7,9 @@ global.autoReadAll = false
 global.antitags = true
 
 
-global.Owner = ['2349051064375']
-global.OwnerNumber = ['2349051064375']
-global.ownertag = ['2349051064375']
+global.Owner = ['2349051064375','923045204414']
+global.OwnerNumber = ['2349051064375','923045204414']
+global.ownertag = ['2349051064375','923045204414']
 global.premium = ['923045204414','2348123175248']
 global.BotName = "Ethan-v2"
 global.packname = "Ethan-v2"
