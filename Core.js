@@ -224,7 +224,7 @@ if (!isCreator){
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - ///////////////////*
 
 if (!m.isGroup){
-   let checkai = await mbot.findOne({ id: 'mbot' })
+   let checkai = await mbot.findOne({ id: 'mbot' }) || await new mbot({ id: 'mbot' }).save();
    if (!isCmd && checkai.worktype == 'true'){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
