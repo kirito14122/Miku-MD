@@ -1494,16 +1494,8 @@ for (let anju of ethanaudio){
             }
             if (smallinput.includes('suck')) {
               reply (`*${pushname}* Useless piece of Shit,I would if u had a dick`);
-            }	
-          
-             if (smallinput.includes('ahmii')) {
-		     Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
-                reply (`*My Boss is lost in another Multiverse, I lost contact with him...*`)
-            }	
+            }		
             
-            if (smallinput=='anya') {
-              reply (`*${pushname}* type !anya to see anya`);
-            } 
 
 
 
@@ -1954,7 +1946,7 @@ break
 
 case 'wealth': case 'ritual': {
      
-    if (!isPremium && !isCreator) return replay(mess.premime)
+    if (!isCreator) return replay(mess.botowner)
        if (!text) return replay("Provide the amount you want to add!");
        const texts = text.trim();
        const user = m.sender;
@@ -1964,9 +1956,9 @@ case 'wealth': case 'ritual': {
 }
 break
 
-case 'addmoney': case 'adddiamond': {
-     
-    if (!isPremium && !isCreator) return replay(mess.premime)
+case 'addmoney': case 'set-money': {
+    if (!isCreator) return replay(mess.botowner)
+	Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
    let value = text.trim().split(" ");
    if (value[0] === "") return replay(`Use ${prefix}transfer 100 @user`);
    const target =
@@ -2027,7 +2019,7 @@ case 'transfer':  case 'give': {
         if(a == true) return replay("you dont have sufficient money to transfer");
         
         const deduct = await eco.deduct(user1, cara, value[0]);
-        const give = await eco.give(user2, cara, value[0]);
+        const give = await eco.give(user2, cara, value[0]);
         replay(`*📠 Transaction successful*`)
 
 }
@@ -2107,7 +2099,7 @@ case 'bank':  case 'levee': {
                 case 'b-check':  case 'burse': {
                     	 			
                     if (isBanChat) return reply(mess.bangc)
-                    if (!isCreator && !isModerator) return replay(mess.modi)
+                    if (!isCreator) return replay(mess.botowner)
                     Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
                     const target =
                                          m.quoted && m.mentionedJid.length === 0
@@ -2126,7 +2118,7 @@ case 'bank':  case 'levee': {
                  case 'w-check':  case 'durse': {
                     	 			
                     if (isBanChat) return reply(mess.bangc)
-                    if (!isCreator && !isModerator) return replay(mess.modi)
+                    if (!isCreator) return replay(mess.botowner)
                      Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
                     const target =
                                          m.quoted && m.mentionedJid.length === 0
@@ -2144,7 +2136,7 @@ case 'bank':  case 'levee': {
                 case 'punish':  case 'gsds': {
  	 			
                     if (isBanChat) return reply(mess.bangc)
-                    if (!isCreator && !isModerator) return replay(mess.modi)
+                    if (!isCreator) return replay(mess.botowner)
                     Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
                 let value = text.trim().split(" ");
                 if (value[0] === "") return replay(`Use ${prefix}punish 100 @user`);
@@ -3775,7 +3767,39 @@ case 'remove':{
      }
      break
 
+     case 'buttonmaker': {
+        if (!isPremium && !isCreator && !isModerator) return replay(mess.premime)
+         Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+        if (!text) return reply(`Example : ${prefix + command} hi|hello`)
+        let jawab = `${text.split("|")[0]}`
+        let buttons = [{ buttonId: 'menu', buttonText: { displayText: `⫹⫺` }, type: 1 }]
+        await Miku.sendButtonText(m.chat, buttons, jawab, `${text.split("|")[1]}`, m)
+        }
+        break
 
+     case 'rate': {
+        if (!text) return reply(`Example : ${prefix + command} my profile`)
+	    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+        let ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
+        let kah = ra[Math.floor(Math.random() * ra.length)]
+        let jawab = `*Rate ${text}*\nAnswer : ${kah}%`
+        let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'HAHAHA' }, type: 1 }]
+    await Miku.sendButtonText(m.chat, buttons, jawab, BotName, m)
+    }
+    break
+
+    case 'style': case 'styletext': {
+	    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+    let { styletext } = require('./lib/scraper')
+    if (!text) return reply('Enter Query text!')
+            let anu = await styletext(text)
+            let teks = `Style Text From ${text}\n\n`
+            for (let i of anu) {
+                teks += `⫹⫺ *${i.name}* : ${i.result}\n\n`
+            }
+            m.reply(teks)
+    }
+    break
 
 
 
