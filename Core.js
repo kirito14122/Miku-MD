@@ -6768,7 +6768,11 @@ case 'leavegc': case 'leavegroup': case 'bye': {
                 }
                 break
 
-
+case 'tqto': 
+                const {  thanks } = require('./lib/thanks')
+     return reply(thanks)
+     
+     break
 
 case 'bc': case 'broadcast': case 'bcall': {
     	 			
