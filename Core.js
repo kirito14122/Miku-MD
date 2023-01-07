@@ -3773,7 +3773,7 @@ case 'remove':{
         if (!text) return reply(`Example : ${prefix + command} hi|hello`)
         let jawab = `${text.split("|")[0]}`
         let buttons = [{ buttonId: 'menu', buttonText: { displayText: `⫹⫺` }, type: 1 }]
-        await Miku.sendButtonText(m.chat, buttons, jawab, `${text.split("|")[1]}`, m)
+        await Miku.sendButtonText(m.chat, buttons, jawab, BotName, `${text.split("|")[1]}`, m)
         }
         break
 
