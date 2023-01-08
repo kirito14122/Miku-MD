@@ -1677,8 +1677,7 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 
 
 
-
-case 'ban': {
+case'ban': {
 	if (!isCreator) return replay(mess.botowner)
 	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 	if (!users) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
@@ -1687,11 +1686,11 @@ case 'ban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "true" }).save()
-           return m.reply(`_${usr.name} has been *Banned* from using ${global.BotName}._`)
+           return m.reply(`_${pushnamer} has been *Banned* from using ${global.BotName}._`)
         }else{
-               if (usr.ban == "true") return m.reply(`_${usr.name} is already *Banned* from Using ${global.BotName}._`)
+               if (usr.ban == "true") return m.reply(`_${pushnamer} is already *Banned* from Using ${global.BotName}._`)
                   await mku.updateOne({ id: users }, { ban: "true" })
-                  return m.reply(`_Successfully *Banned* ${usr.name} from using ${global.BotName}._`)
+                  return m.reply(`_Successfully *Banned* ${pushnamer} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
@@ -1702,7 +1701,8 @@ case 'ban': {
 break
 
 
-case 'unban': {
+
+case'unban': {
 	if (!isCreator) return replay(mess.botowner)
 	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 	if (!users) return replay(`_Mention/Tag the person you want to *UnBan*, My Lord!_`)
@@ -1711,11 +1711,11 @@ case 'unban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "false" }).save()
-           return m.reply(`_${usr.name} has been *Unban* from using ${global.BotName}_`)
+           return m.reply(`_${pushnamer} has been *Unban* from using ${global.BotName}_`)
         }else{
-               if (usr.ban == "false") return m.reply(`_${usr.name} is already *Unban* from Using ${global.BotName}_`)
+               if (usr.ban == "false") return m.reply(`_${pushnamer} is already *Unban* from Using ${global.BotName}_`)
                   await mku.updateOne({ id: users }, { ban: "false" })
-                  return m.reply(`_Successfully *Unban* ${usr.name} from using ${global.BotName}._`)
+                  return m.reply(`_Successfully *Unban* ${pushnamer} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
