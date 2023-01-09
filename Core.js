@@ -749,7 +749,7 @@ if (!m.isGroup && !isCreator){
     let urls = 'https://chat.whatsapp.com/'
      if (budy.includes(urls)){
           //await Miku.sendMessage(m.chat, {text: `Sorry i can't join anymore groups as i have reached my limit\n\nFor further info you can ask my *Owner* by typing *${prefix}owner*`}, { quoted: m })
-          await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
+          await Miku.sendMessage(m.chat, {text: `*Your request of joining will be processed within few working hours*.`},  { quoted: m })
      }
 }
 
