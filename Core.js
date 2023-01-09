@@ -740,7 +740,7 @@ user.afkReason = ''
 
 if (!m.isGroup && !isCreator){
     if (m.mtype === 'groupInviteMessage'){
-    await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
+    await Miku.sendMessage(m.chat, {text: `*Your request of joining will be processed within few working hours*.`},  { quoted: m })
   }
 }
 
@@ -1677,8 +1677,7 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 
 
 
-
-case 'ban': {
+case'ban': {
 	if (!isCreator) return replay(mess.botowner)
 	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 	if (!users) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
@@ -1687,11 +1686,11 @@ case 'ban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "true" }).save()
-           return m.reply(`_${usr.name} has been *Banned* from using ${global.BotName}._`)
+           return m.reply(`_${pushnamer} has been *Banned* from using ${global.BotName}._`)
         }else{
-               if (usr.ban == "true") return m.reply(`_${usr.name} is already *Banned* from Using ${global.BotName}._`)
+               if (usr.ban == "true") return m.reply(`_${pushnamer} is already *Banned* from Using ${global.BotName}._`)
                   await mku.updateOne({ id: users }, { ban: "true" })
-                  return m.reply(`_Successfully *Banned* ${usr.name} from using ${global.BotName}._`)
+                  return m.reply(`_Successfully *Banned* ${pushnamer} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
@@ -1702,7 +1701,8 @@ case 'ban': {
 break
 
 
-case 'unban': {
+
+case'unban': {
 	if (!isCreator) return replay(mess.botowner)
 	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 	if (!users) return replay(`_Mention/Tag the person you want to *UnBan*, My Lord!_`)
@@ -1711,11 +1711,11 @@ case 'unban': {
 	mku.findOne({ id: users }).then(async(usr) => {
 		if (!usr) {
            await new mku({ id: users, ban: "false" }).save()
-           return m.reply(`_${usr.name} has been *Unban* from using ${global.BotName}_`)
+           return m.reply(`_${pushnamer} has been *Unban* from using ${global.BotName}_`)
         }else{
-               if (usr.ban == "false") return m.reply(`_${usr.name} is already *Unban* from Using ${global.BotName}_`)
+               if (usr.ban == "false") return m.reply(`_${pushnamer} is already *Unban* from Using ${global.BotName}_`)
                   await mku.updateOne({ id: users }, { ban: "false" })
-                  return m.reply(`_Successfully *Unban* ${usr.name} from using ${global.BotName}._`)
+                  return m.reply(`_Successfully *Unban* ${pushnamer} from using ${global.BotName}._`)
         }
      })
             } catch (e) {
@@ -1799,7 +1799,7 @@ case 'support': case 'casino': {
       
      if (!m.isGroup) return reply(mess.grouponly)
      await Miku.sendMessage(`${m.sender}`, 
-            {text: `*🛑 CASINO GC*\n\n *📮【About Group】:* This is a suggestion/gamble group for Ethan-v2( New Commands/Bugs)\n\n*🧮【Link】:* https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl\n`},
+            {text: `*🛑 CASINO GC*\n\n *📮【About Group】:* This is a suggestion/gamble group for Ethan-v2( New Commands/Bugs)\n\n*🧮【Link】:* https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl\n\n*🧮【Link】:* https://chat.whatsapp.com/B6SPzvvdZQf5VCahG4xGqn\n`},
             { quoted: m }
         )
         return replay(`*🃏I s𝐞𝐧𝐭 gamble group link in DM 🀄*`) //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
@@ -3773,7 +3773,7 @@ case 'remove':{
         if (!text) return reply(`Example : ${prefix + command} hi|hello`)
         let jawab = `${text.split("|")[0]}`
         let buttons = [{ buttonId: 'menu', buttonText: { displayText: `⫹⫺` }, type: 1 }]
-        await Miku.sendButtonText(m.chat, buttons, jawab, `${text.split("|")[1]}`, m)
+        await Miku.sendButtonText(m.chat, buttons, jawab, BotName, `${text.split("|")[1]}`, m)
         }
         break
 
@@ -6768,7 +6768,11 @@ case 'leavegc': case 'leavegroup': case 'bye': {
                 }
                 break
 
-
+case 'tqto': 
+                const {  thanks } = require('./lib/thanks')
+     return reply(thanks)
+     
+     break
 
 case 'bc': case 'broadcast': case 'bcall': {
     	 			
