@@ -775,6 +775,42 @@ if (checkdata){
     }
 }
 
+	if (body === `${prefix}activate`) {
+    if (!isCreator) return m.reply(`${mess.owner}`)
+    if (!checkdata){
+        await new mk({ id: m.chat, bangroup: "true" }).save()
+                    return replay(`*${global.BotName} BOT IS ACTIVATED*`)
+    }
+    else {
+        if (checkdata.bangroup == "true") return replay(`*Bot IS ALREADY ACTIVATED.*`)
+            await mk.updateOne({ id: m.chat }, { bangroup: "true" })
+                   return replay(`*${global.BotName} BOT IS ACTIVATED ON ${groupName}*`)
+    }
+    
+}
+else if (body === `${prefix}deactivate`) {
+    if (!isCreator) return m.reply(`${mess.owner}`)
+    if (!checkdata) {
+        await new mk({ id: m.chat, bangroup: "false" }).save()
+                    return replay(`*DEACTIVATED ${global.BotName} BOT ON ${groupName}*`)
+    }
+    else {
+        if (checkdata.bangroup == "false") return replay(`ALREADY DEACTIVATED BOT.`)
+            await mk.updateOne({ id: m.chat }, { bangroup: "false" })
+                   return replay(`*DEACTIVATED ${global.BotName} BOT ON ${groupName}*`)
+    }
+}
+
+
+if(m.isGroup && isCmd){
+    if (!checkdata) {
+        await new mk({ id: m.chat, bangroup: "false" }).save()
+                    return replay(`*${global.BotName} BOT IS NOT REGISTERED ON ${groupName}*`)
+    }
+    else {
+        if (checkdata.bangroup == "false") return replay(`*${global.BotName} BOTS IS NOT ACTIVATED ON ${groupName}*`)
+    }     
+}
 
     if (antiWame)
     if (budy.includes(`wa.me`)) {
