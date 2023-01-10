@@ -176,7 +176,8 @@ const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
 const quoted = m.quoted ? m.quoted : m
-//let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+const checkuser = mku.findOne({ id: users }) || await new mku({ id: users }).save()
 const quotedMe = quoted == botNumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
@@ -1679,24 +1680,16 @@ replay('This Group has been *unbanned* from using ${global.BotName}!')
 
 case'ban': {
 	if (!isCreator) return replay(mess.botowner)
-	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-	if (!users) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
-	try {
+	if (!m.quoted) return replay(`_Mention/Tag the person you want to *Ban*, My Lord!_`)
 	let pushnamer = Miku.getName(users);
-	mku.findOne({ id: users }).then(async(usr) => {
-		if (!usr) {
+		if (!checkuser) {
            await new mku({ id: users, ban: "true" }).save()
            return m.reply(`_${pushnamer} has been *Banned* from using ${global.BotName}._`)
         }else{
-               if (usr.ban == "true") return m.reply(`_${pushnamer} is already *Banned* from Using ${global.BotName}._`)
+               if (checkuser.ban == "true") return m.reply(`_${pushnamer} is already *Banned* from Using ${global.BotName}._`)
                   await mku.updateOne({ id: users }, { ban: "true" })
                   return m.reply(`_Successfully *Banned* ${pushnamer} from using ${global.BotName}._`)
         }
-     })
-            } catch (e) {
-                console.log(e)
-                return m.reply("Please mention any user.❌ ")
-              }
 }
 break
 
@@ -1704,26 +1697,19 @@ break
 
 case'unban': {
 	if (!isCreator) return replay(mess.botowner)
-	let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-	if (!users) return replay(`_Mention/Tag the person you want to *UnBan*, My Lord!_`)
-	try {
+	if (!m.quoted) return replay(`_Mention/Tag the person you want to *UnBan*, My Lord!_`)
 	let pushnamer = Miku.getName(users);
-	mku.findOne({ id: users }).then(async(usr) => {
-		if (!usr) {
+		if (!checkuser) {
            await new mku({ id: users, ban: "false" }).save()
            return m.reply(`_${pushnamer} has been *Unban* from using ${global.BotName}_`)
         }else{
-               if (usr.ban == "false") return m.reply(`_${pushnamer} is already *Unban* from Using ${global.BotName}_`)
+               if (checkuser.ban == "false") return m.reply(`_${pushnamer} is already *Unban* from Using ${global.BotName}_`)
                   await mku.updateOne({ id: users }, { ban: "false" })
                   return m.reply(`_Successfully *Unban* ${pushnamer} from using ${global.BotName}._`)
         }
-     })
-            } catch (e) {
-                console.log(e)
-                return m.reply("Please mention any user.❌ ")
-              }
 }
 break
+
 
 
 
