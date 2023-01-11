@@ -2083,6 +2083,22 @@ case 'bank':  case 'levee': {
      var bio= await Miku.fetchStatus(m.sender)
      var bioo = bio.status
      const adn= isAdmins? "True":"False"
+     const balance = await eco.balance(user, cara);
+     var role = 'brokie😭'
+     if (`${balance.bank}`           <= 1000){
+        role = 'broke😭'
+      } else if (`${balance.bank}`   <= 10000){
+            role = 'Poor😢'
+        } else if (`${balance.bank}` <= 50000){
+            role = 'Average💸'
+        } else if (`${balance.bank}` <= 1000000){
+            role = 'Rich💸💰'
+        } else if (`${balance.bank}` <= 10000000){
+            role = 'Millionaire🤑'
+        } else if (`${balance.bank}` <= 90000000){
+            role = 'Billionaire🤑🤑'
+        }    
+        
 
      
      
@@ -2095,10 +2111,10 @@ case 'bank':  case 'levee': {
      
       pfp ='https://static.zerochan.net/Unidentified.full.3846306.png'
     }
-    const balance = await eco.balance(user, cara);
-    const profilexx = `*🏦 ${pushname}'s Bank:*\n\n💎${balance.bank}/${balance.bankCapacity}\n\n*Level* : ${levelMenu}\n*Exp* : ${xpMenu} out of ${reqXp}\n*Role* : ${role}`
+    
+    const profilexx = `*🏦 ${pushname}'s Bank:*\n\n💎${balance.bank}/${balance.bankCapacity}\n\n\n*Wealth: ${role}*`
      //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
-    const ronintxt = `🏦 ${pushname}'s Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`
+   
     
     
 
